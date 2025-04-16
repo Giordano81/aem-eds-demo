@@ -14,8 +14,9 @@
   /* colors */
   --background-color: white;
   --light-color: #f8f8f8;
+  --unes-color: #e38821;
   --dark-color: #505050;
-  --text-color: #131313;
+  --text-color: #e61313;
   --link-color: #3b63fb;
   --link-hover-color: #1d3ecf;
 
@@ -252,6 +253,12 @@ main > .section:first-of-type {
 main .section.light,
 main .section.highlight {
   background-color: var(--light-color);
+  margin: 0;
+  padding: 40px 0;
+}
+
+main .section.unescolor {
+  background-color: var(--unes-color);
   margin: 0;
   padding: 40px 0;
 }
