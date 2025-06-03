@@ -145,3 +145,23 @@ async function loadPage() {
 }
 
 loadPage();
+
+// Caricamento automatico di tutti i file JS in /js/
+(async () => {
+  // Carica solo gli index.js delle sottocartelle
+  const customScripts = [
+    'api/index.js',
+    'custom/index.js',
+    // aggiungi qui altre sottocartelle se necessario
+  ];
+  await Promise.all(
+    customScripts.map(async (file) => {
+      try {
+        await import(`../js/${file}`);
+      } catch (e) {
+        // eslint-disable-next-line no-console
+        console.error(`Impossibile caricare ${file}:`, e);
+      }
+    }),
+  );
+})();

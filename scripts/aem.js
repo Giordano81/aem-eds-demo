@@ -593,9 +593,15 @@ async function loadBlock(block) {
     const { blockName } = block.dataset;
     try {
       const cssLoaded = loadCSS(`${window.hlx.codeBasePath}/blocks/${blockName}/${blockName}.css`);
+      // load the block's CSS CUSTOM file, if it exists
+      const customCssPath = `${window.hlx.codeBasePath}/blocks/${blockName}/${blockName}-custom.css`;
+      await fetch(customCssPath, { method: 'HEAD' }).then((resp) => {
+        if (resp.ok) loadCSS(customCssPath);
+      });
       const decorationComplete = new Promise((resolve) => {
         (async () => {
           try {
+            // Import JS principale del blocco
             const mod = await import(
               `${window.hlx.codeBasePath}/blocks/${blockName}/${blockName}.js`
             );
@@ -605,6 +611,19 @@ async function loadBlock(block) {
           } catch (error) {
             // eslint-disable-next-line no-console
             console.log(`failed to load module for ${blockName}`, error);
+          }
+          // Import JS custom del blocco, se esiste
+          const customJsPath = `${window.hlx.codeBasePath}/blocks/${blockName}/${blockName}-custom.js`;
+          try {
+            const resp = await fetch(customJsPath, { method: 'HEAD' });
+            if (resp.ok) {
+              const customMod = await import(customJsPath);
+              if (customMod.default) {
+                await customMod.default(block);
+              }
+            }
+          } catch (e) {
+            // nessun custom js, ignora
           }
           resolve();
         })();
