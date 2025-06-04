@@ -6,7 +6,7 @@ const url = require('url');
 const server = http.createServer((req, res) => {
   const parsedUrl = url.parse(req.url, true);
   if (parsedUrl.pathname === '/api/product.js') {
-    const sku = parsedUrl.query.sku;
+    const { sku } = parsedUrl.query;
     if (!sku) {
       res.writeHead(400, { 'Content-Type': 'application/json' });
       res.end(JSON.stringify({ error: 'SKU mancante' }));
@@ -18,7 +18,7 @@ const server = http.createServer((req, res) => {
       id: sku,
       name: `Prodotto mock ${sku}`,
       price: 99.99,
-      description: 'Questo è un prodotto mockato per test locali.'
+      description: 'Questo è un prodotto mockato per test locali.',
     }));
     return;
   }
