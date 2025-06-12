@@ -1,12 +1,16 @@
 /**
- * Questo file permette di estendere il comportamento del blocco header senza toccare il file originale header.js.
+ * Questo file permette di estendere il comportamento del blocco
+ * header senza toccare il file originale header.js.
  *
  * - Hai accesso diretto al DOM del blocco tramite il parametro `block`.
  * - Puoi aggiungere, modificare o rimuovere elementi, gestire eventi, fare chiamate API, ecc.
- * - Puoi interagire con dati provenienti da AEM (es: fetch verso endpoint AEM, manipolazione di contenuti dinamici, ecc.).
- * - Il codice custom viene eseguito dopo quello di header.js, quindi puoi estendere o sovrascrivere comportamenti senza conflitti.
+ * - Puoi interagire con dati provenienti da AEM (es: fetch verso endpoint AEM,
+ *   manipolazione di contenuti dinamici, ecc.).
+ * - Il codice custom viene eseguito dopo quello di header.js,
+ *   quindi puoi estendere o sovrascrivere comportamenti senza conflitti.
  *
- * In pratica: è come “toccare” il file JS del blocco, ma in modo separato, sicuro e aggiornabile, senza rischiare conflitti con aggiornamenti futuri del core.
+ * In pratica: è come “toccare” il file JS del blocco, ma in modo separato, sicuro e aggiornabile,
+ * senza rischiare conflitti con aggiornamenti futuri del core.
  *
  * Esempi:
  *   // Aggiungere un bottone custom:
@@ -27,7 +31,7 @@
 
 export default function decorate(block) {
   // JS custom solo per il blocco header
-  console.log('Header custom JS attivo!', block);
+  console.log("Header custom JS attivo!", block);
 }
 
 // 1.Aggiungere un bottone custom solo nell’header:

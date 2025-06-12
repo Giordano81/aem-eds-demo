@@ -1,4 +1,4 @@
 import './fetchTest.js';
 import './postTest.js';
-import './mock.js';
+import './demoApi.js';
 // aggiungi qui altri file della cartella api
