@@ -1,0 +1,120 @@
+main > .section > div.teaser-wrapper {
+  max-width: unset;
+}
+
+.teaser-block {
+  position: relative;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  overflow: hidden;
+  max-width: -webkit-fill-available;
+}
+
+.teaser-block::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, var(--teaser-overlay-opacity, 0));
+}
+
+.teaser-small {
+  padding: 32px;
+}
+
+.teaser-medium {
+  padding: 64px;
+}
+
+.teaser-big {
+  height: 1117px;
+}
+
+.teaser-content {
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  padding: 32px;
+}
+
+.teaser-subtitle-with-quotes {
+  font-size: 1.25rem;
+  margin: 0;
+  font-weight: 400;
+  position: relative;
+}
+
+.teaser-subtitle-with-quotes::before,
+.teaser-subtitle-with-quotes::after {
+  content: '"';
+  font-size: 50px;
+  color: #A4B9CE; /* Change color for the quotes */
+  position: absolute;
+}
+
+.teaser-subtitle-with-quotes::before {
+  left: -20px;
+  top: -20px;
+}
+
+.teaser-subtitle-with-quotes::after {
+  right: -20px;
+  top: 0;
+}
+
+.teaser-ver-align-top {
+  justify-content: flex-start;
+}
+
+.teaser-ver-align-center {
+  justify-content: center;
+}
+
+.teaser-ver-align-bottom {
+  justify-content: flex-end;
+}
+
+.teaser-hor-align-left {
+  align-items: flex-start;
+}
+
+.teaser-hor-align-center {
+  align-items: center;
+}
+
+.teaser-hor-align-right {
+  align-items: flex-end;
+}
+
+a.cta-primary {
+  background-color: #152F44;
+  color: #FFF;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+a.cta-secondary {
+  background-color: #6c757d; /* Gray */
+  color: #FFF;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+a.cta-tertiary {
+  background-color: #f8f9fa; /* Light Gray */
+  color: #343a40; /* Dark Text */
+  padding: 10px 20px;
+  border: 1px solid #ced4da; /* Border */
+  border-radius: 5px;
+  cursor: pointer;
+}

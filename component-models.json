@@ -222,21 +222,21 @@
   {
     "id": "quote",
     "fields": [
-       {
-         "component": "richtext",
-         "name": "quote",
-         "value": "",
-         "label": "Quote",
-         "valueType": "string"
-       },
-       {
-         "component": "text",
-         "valueType": "string",
-         "name": "author",
-         "label": "Author",
-         "value": ""
-       },
-       {
+      {
+        "component": "richtext",
+        "name": "quote",
+        "value": "",
+        "label": "Quote",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "author",
+        "label": "Author",
+        "value": ""
+      },
+      {
         "component": "select",
         "name": "classes",
         "value": "",
@@ -261,7 +261,250 @@
             "value": "bg-blue"
           }
         ]
-       }
-     ]
+      }
+    ]
+  },
+  {
+    "id": "teaser",
+    "fields": [
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "title",
+        "label": "Title"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "subtitle",
+        "label": "Subtitle"
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "subtitleQuotes",
+        "label": "Add quotes in subtitle"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "horizontalAlign",
+        "label": "Horizontal Align",
+        "options": [
+          {
+            "name": "Left",
+            "value": "teaser-hor-align-left"
+          },
+          {
+            "name": "Center",
+            "value": "teaser-hor-align-center"
+          },
+          {
+            "name": "Right",
+            "value": "teaser-hor-align-right"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "verticalAlign",
+        "label": "Vertical Align",
+        "options": [
+          {
+            "name": "Top",
+            "value": "teaser-ver-align-top"
+          },
+          {
+            "name": "Center",
+            "value": "teaser-ver-align-center"
+          },
+          {
+            "name": "Bottom",
+            "value": "teaser-ver-align-bottom"
+          }
+        ]
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "image",
+        "label": "Backgound image",
+        "validation": {
+          "rootPath": "/content/dam"
+        }
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "imageOpacity",
+        "label": "Add opacity to image"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "backgroundColor",
+        "label": "Hex for the background color (without # character)"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "ctaText",
+        "label": "CTA text"
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "ctaLink",
+        "label": "CTA link",
+        "validation": {
+          "rootPath": "/content/aem-eds-demo"
+        }
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "ctaStyle",
+        "label": "CTA style",
+        "options": [
+          {
+            "name": "Primary",
+            "value": "cta-primary"
+          },
+          {
+            "name": "Secondary",
+            "value": "cta-secondary"
+          },
+          {
+            "name": "Tertiary",
+            "value": "cta-tertiary"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "componentSize",
+        "label": "Component size",
+        "options": [
+          {
+            "name": "Small",
+            "value": "teaser-small"
+          },
+          {
+            "name": "Medium",
+            "value": "teaser-medium"
+          },
+          {
+            "name": "Large",
+            "value": "teaser-big"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "photo-gallery",
+    "fields": [
+      {
+        "component": "number",
+        "name": "itemsPerRow",
+        "label": "Items per row",
+        "valueType": "number",
+        "required": true
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "loadMore",
+        "label": "Add load more"
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "spaceBetweenItems",
+        "label": "Add space between items"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "textPosition",
+        "label": "Text Position",
+        "options": [
+          {
+            "name": "Center",
+            "value": "center"
+          },
+          {
+            "name": "Bottom",
+            "value": "bottom"
+          },
+          {
+            "name": "Outside",
+            "value": "outside"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "photo-item",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false,
+        "required": true
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "label": "Text",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "ctaText",
+        "label": "CTA text"
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "ctaLink",
+        "label": "CTA link",
+        "validation": {
+          "rootPath": "/content/aem-eds-demo"
+        }
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "ctaStyle",
+        "label": "CTA style",
+        "options": [
+          {
+            "name": "Primary",
+            "value": "cta-primary"
+          },
+          {
+            "name": "Secondary",
+            "value": "cta-secondary"
+          },
+          {
+            "name": "Tertiary",
+            "value": "cta-tertiary"
+          }
+        ]
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "imageOpacity",
+        "label": "Add opacity to image"
+      }
+    ]
   }
 ]

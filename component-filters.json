@@ -16,7 +16,9 @@
       "cards",
       "columns",
       "fragment",
-      "quote"
+      "quote",
+      "teaser",
+      "photo-gallery"
     ]
   },
   {
@@ -38,6 +40,18 @@
       "image",
       "button",
       "title"
+    ]
+  },
+  {
+    "id": "teaser",
+    "components": [
+      "button"
+    ]
+  },
+  {
+    "id": "photo-gallery",
+    "components": [
+      "photo-item"
     ]
   }
 ]
