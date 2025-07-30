@@ -17,7 +17,7 @@
       "columns",
       "fragment",
       "quote",
-      "teaser",
+      "banner",
       "photo-gallery"
     ]
   },
@@ -43,7 +43,7 @@
     ]
   },
   {
-    "id": "teaser",
+    "id": "banner",
     "components": [
       "button"
     ]

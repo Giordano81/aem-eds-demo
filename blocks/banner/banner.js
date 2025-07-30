@@ -13,7 +13,9 @@ function getProps() {
     { name: 'ctaText' },
     { name: 'ctaLink', attribute: 'href' },
     { name: 'ctaStyle' },
-    { name: 'componentSize' }];
+    { name: 'componentSize' },
+    { name: 'overflowElements', isBoolean: true }
+  ];
 }
 
 export default function decorate(block) {
@@ -21,23 +23,23 @@ export default function decorate(block) {
   let modelData = getBlockModel(block, getProps());
 
   // Create main container
-  const teaser = document.createElement('div');
-  teaser.className = 'teaser-block';
+  const banner = document.createElement('div');
+  banner.className = 'banner-block';
   if (modelData.image) {
-    teaser.style.backgroundImage = `url('${modelData.image}')`;
+    banner.style.backgroundImage = `url('${modelData.image}')`;
   } else if (modelData.backgroundColor) {
-    teaser.style.backgroundColor = `#${modelData.backgroundColor}`;
+    banner.style.backgroundColor = `#${modelData.backgroundColor}`;
   }
   if (modelData.imageOpacity) {
-    teaser.style.setProperty('--teaser-overlay-opacity', '0.4');
+    banner.style.setProperty('--banner-overlay-opacity', '0.4');
   }
   if (modelData.componentSize) {
-    teaser.classList.add(modelData.componentSize);
+    banner.classList.add(modelData.componentSize);
   }
 
   // Create content container
   const content = document.createElement('div');
-  content.className = 'teaser-content';
+  content.className = 'banner-content';
   if (modelData.horizontalAlign) {
     content.classList.add(modelData.horizontalAlign);
   }
@@ -47,14 +49,14 @@ export default function decorate(block) {
 
   // Create title
   const h1 = document.createElement('h1');
-  h1.className = 'teaser-title';
+  h1.className = 'banner-title';
   h1.innerHTML = modelData.title;
 
   // Create subtitle
   const p = document.createElement('p');
-  p.className = 'teaser-subtitle';
+  p.className = 'banner-subtitle';
   if (modelData.subtitleQuotes) {
-    p.classList.add('teaser-subtitle-with-quotes');
+    p.classList.add('banner-subtitle-with-quotes');
   }
   p.innerHTML = modelData.subtitle;
 
@@ -73,8 +75,8 @@ export default function decorate(block) {
     content.appendChild(button);
   }
 
-  teaser.appendChild(content);
+  banner.appendChild(content);
 
   block.innerHTML = '';
-  block.append(teaser);
+  block.append(banner);
 }

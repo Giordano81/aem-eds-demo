@@ -1,8 +1,8 @@
-main > .section > div.teaser-wrapper {
+main > .section > div.banner-wrapper {
   max-width: unset;
 }
 
-.teaser-block {
+.banner-block {
   position: relative;
   width: 100%;
   background-size: cover;
@@ -15,26 +15,26 @@ main > .section > div.teaser-wrapper {
   max-width: -webkit-fill-available;
 }
 
-.teaser-block::before {
+.banner-block::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, var(--teaser-overlay-opacity, 0));
+  background: rgba(0, 0, 0, var(--banner-overlay-opacity, 0));
 }
 
-.teaser-small {
+.banner-small {
   padding: 32px;
 }
 
-.teaser-medium {
+.banner-medium {
   padding: 64px;
 }
 
-.teaser-big {
+.banner-big {
   height: 1117px;
 }
 
-.teaser-content {
+.banner-content {
   z-index: 1;
   display: flex;
   flex-direction: column;
@@ -43,52 +43,52 @@ main > .section > div.teaser-wrapper {
   padding: 32px;
 }
 
-.teaser-subtitle-with-quotes {
+.banner-subtitle-with-quotes {
   font-size: 1.25rem;
   margin: 0;
   font-weight: 400;
   position: relative;
 }
 
-.teaser-subtitle-with-quotes::before,
-.teaser-subtitle-with-quotes::after {
+.banner-subtitle-with-quotes::before,
+.banner-subtitle-with-quotes::after {
   content: '"';
   font-size: 50px;
   color: #A4B9CE; /* Change color for the quotes */
   position: absolute;
 }
 
-.teaser-subtitle-with-quotes::before {
+.banner-subtitle-with-quotes::before {
   left: -20px;
   top: -20px;
 }
 
-.teaser-subtitle-with-quotes::after {
+.banner-subtitle-with-quotes::after {
   right: -20px;
   top: 0;
 }
 
-.teaser-ver-align-top {
+.banner-ver-align-top {
   justify-content: flex-start;
 }
 
-.teaser-ver-align-center {
+.banner-ver-align-center {
   justify-content: center;
 }
 
-.teaser-ver-align-bottom {
+.banner-ver-align-bottom {
   justify-content: flex-end;
 }
 
-.teaser-hor-align-left {
+.banner-hor-align-left {
   align-items: flex-start;
 }
 
-.teaser-hor-align-center {
+.banner-hor-align-center {
   align-items: center;
 }
 
-.teaser-hor-align-right {
+.banner-hor-align-right {
   align-items: flex-end;
 }
 

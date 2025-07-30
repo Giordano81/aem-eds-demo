@@ -15,3 +15,5 @@ warn: [2232] Proxy GET request to https://main--aem-eds-demo--giordano81.aem.pag
 warn: [2565] Proxy GET request to https://main--aem-eds-demo--giordano81.aem.page/scripts/purify.min.js.map: 404 (text/html; charset=utf-8)
 warn: [2928] Proxy GET request to https://main--aem-eds-demo--giordano81.aem.page/scripts/purify.min.js.map: 404 (text/html; charset=utf-8)
 warn: [3029] Proxy GET request to https://main--aem-eds-demo--giordano81.aem.page/scripts/purify.min.js.map: 404 (text/html; charset=utf-8)
+warn: [6911] Proxy GET request to https://main--aem-eds-demo--giordano81.aem.page/blocks/teaser/teaser.css: 404 (text/html; charset=utf-8)
+warn: [6912] Proxy GET request to https://main--aem-eds-demo--giordano81.aem.page/blocks/teaser/teaser.js: 404 (text/html; charset=utf-8)

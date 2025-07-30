@@ -265,7 +265,7 @@
     ]
   },
   {
-    "id": "teaser",
+    "id": "banner",
     "fields": [
       {
         "component": "richtext",
@@ -293,15 +293,15 @@
         "options": [
           {
             "name": "Left",
-            "value": "teaser-hor-align-left"
+            "value": "banner-hor-align-left"
           },
           {
             "name": "Center",
-            "value": "teaser-hor-align-center"
+            "value": "banner-hor-align-center"
           },
           {
             "name": "Right",
-            "value": "teaser-hor-align-right"
+            "value": "banner-hor-align-right"
           }
         ]
       },
@@ -313,15 +313,15 @@
         "options": [
           {
             "name": "Top",
-            "value": "teaser-ver-align-top"
+            "value": "banner-ver-align-top"
           },
           {
             "name": "Center",
-            "value": "teaser-ver-align-center"
+            "value": "banner-ver-align-center"
           },
           {
             "name": "Bottom",
-            "value": "teaser-ver-align-bottom"
+            "value": "banner-ver-align-bottom"
           }
         ]
       },
@@ -389,17 +389,23 @@
         "options": [
           {
             "name": "Small",
-            "value": "teaser-small"
+            "value": "banner-small"
           },
           {
             "name": "Medium",
-            "value": "teaser-medium"
+            "value": "banner-medium"
           },
           {
             "name": "Large",
-            "value": "teaser-big"
+            "value": "banner-big"
           }
         ]
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "overflowElements",
+        "label": "Overflow elements"
       }
     ]
   },
