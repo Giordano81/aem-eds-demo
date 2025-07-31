@@ -13,9 +13,6 @@ function getItemsProps() {
   return [
     { name: 'image', attribute: 'src' },
     { name: 'text', tags: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p'] },
-    { name: 'ctaText' },
-    { name: 'ctaLink', attribute: 'href' },
-    { name: 'ctaStyle' },
     { name: 'imageOpacity', isBoolean: true }
   ];
 }
@@ -36,7 +33,7 @@ export default function decorate(block) {
   if (modelData.spaceBetweenItems) {
     gridContainer.classList.add('space-between-items');
   }
-  block.append(gridContainer);
+  block.appendChild(gridContainer);
 
   if (modelData.loadMore) {
     // Show only the first row initially
@@ -56,7 +53,7 @@ export default function decorate(block) {
       loadMoreButton.style.display = 'none';
       loadLessButton.style.display = 'block';
     };
-    block.append(loadMoreButton);
+    block.appendChild(loadMoreButton);
 
     // Create "Load Less" button
     const loadLessButton = document.createElement('button');
@@ -75,7 +72,7 @@ export default function decorate(block) {
       loadLessButton.style.display = 'none';
       loadMoreButton.style.display = 'block';
     };
-    block.append(loadLessButton);
+    block.appendChild(loadLessButton);
   } else {
     // Display all items immediately
     modelData.items.forEach(item => {
@@ -89,11 +86,11 @@ function createGridItem(item, modelData) {
   gridItem.className = 'photo-gallery-item';
 
   const img = document.createElement('img');
-  img.src = item.image;
+  img.src = item.image.value;
   img.alt = item.alt;
 
   const text = document.createElement('div');
-  text.textContent = item.text;
+  text.textContent = item.text.value;
 
   // Choose overlay or bottom text
   if (modelData.textPosition === 'center') {

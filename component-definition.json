@@ -24,6 +24,7 @@
               "page": {
                 "resourceType": "core/franklin/components/title/v1/title",
                 "template": {
+                  "name": "Title",
                   "model": "title"
                 }
               }
@@ -37,7 +38,10 @@
             "xwalk": {
               "page": {
                 "resourceType": "core/franklin/components/image/v1/image",
-                "template": {}
+                "template": {
+                  "name": "Image",
+                  "model": "image"
+                }
               }
             }
           }
@@ -50,6 +54,7 @@
               "page": {
                 "resourceType": "core/franklin/components/button/v1/button",
                 "template": {
+                  "name": "Button",
                   "model": "button"
                 }
               }
@@ -215,7 +220,40 @@
                 "resourceType": "core/franklin/components/block/v1/block/item",
                 "template": {
                   "name": "Photo Item",
-                  "model": "photo-item"
+                  "model": "photo-item",
+                  "filter": "photo-item"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Teaser",
+          "id": "teaser",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Teaser",
+                  "model": "teaser",
+                  "filter": "teaser"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Image Carousel",
+          "id": "imageCarousel",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Image Carousel",
+                  "model": "imageCarousel",
+                  "filter": "imageCarousel"
                 }
               }
             }

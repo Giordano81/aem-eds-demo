@@ -18,7 +18,9 @@
       "fragment",
       "quote",
       "banner",
-      "photo-gallery"
+      "photo-gallery",
+      "teaser",
+      "imageCarousel"
     ]
   },
   {
@@ -49,9 +51,28 @@
     ]
   },
   {
+    "id": "teaser",
+    "components": [
+      "button",
+      "imageCarousel"
+    ]
+  },
+  {
     "id": "photo-gallery",
     "components": [
       "photo-item"
+    ]
+  },
+  {
+    "id": "photo-item",
+    "components": [
+      "button"
+    ]
+  },
+  {
+    "id": "imageCarousel",
+    "components": [
+      "image"
     ]
   }
 ]

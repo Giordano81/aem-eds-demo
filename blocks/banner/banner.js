@@ -1,4 +1,4 @@
-import { getBlockModel } from '../../scripts/blockHelper.js';
+import { getBlockModel, getButtonModel, createButtonElement, createTextElement } from '../../scripts/blockHelper.js';
 
 function getProps() {
   return [
@@ -10,23 +10,20 @@ function getProps() {
     { name: 'image', attribute: 'src' },
     { name: 'imageOpacity', isBoolean: true },
     { name: 'backgroundColor' },
-    { name: 'ctaText' },
-    { name: 'ctaLink', attribute: 'href' },
-    { name: 'ctaStyle' },
-    { name: 'componentSize' },
-    { name: 'overflowElements', isBoolean: true }
+    { name: 'componentSize' }
   ];
 }
 
 export default function decorate(block) {
-  // let modelData = getPropValue(block);
   let modelData = getBlockModel(block, getProps());
+  modelData.button = getButtonModel(block.children[getProps().length]);
+  debugger;
 
   // Create main container
   const banner = document.createElement('div');
   banner.className = 'banner-block';
-  if (modelData.image) {
-    banner.style.backgroundImage = `url('${modelData.image}')`;
+  if (modelData.image?.value) {
+    banner.style.backgroundImage = `url('${modelData.image.value}')`;
   } else if (modelData.backgroundColor) {
     banner.style.backgroundColor = `#${modelData.backgroundColor}`;
   }
@@ -47,36 +44,20 @@ export default function decorate(block) {
     content.classList.add(modelData.verticalAlign);
   }
 
-  // Create title
-  const h1 = document.createElement('h1');
-  h1.className = 'banner-title';
-  h1.innerHTML = modelData.title;
+  content.appendChild(createTextElement(modelData.title, ['banner-title']));
 
-  // Create subtitle
-  const p = document.createElement('p');
-  p.className = 'banner-subtitle';
+  const subtitleClasses = ['banner-subtitle'];
   if (modelData.subtitleQuotes) {
-    p.classList.add('banner-subtitle-with-quotes');
+    subtitleClasses.push('banner-subtitle-with-quotes');
   }
-  p.innerHTML = modelData.subtitle;
+  content.appendChild(createTextElement(modelData.subtitle, subtitleClasses));
 
-  // Assemble
-  content.appendChild(h1);
-  content.appendChild(p);
-
-  // Create button
-  if (modelData.ctaText && modelData.ctaLink) {
-    const button = document.createElement('a');
-    button.className = modelData.ctaStyle || 'cta-primary';
-    button.textContent = modelData.ctaText;
-    button.href = modelData.ctaLink;
-    // button.style.setProperty('--link-color', '#fff');
-
-    content.appendChild(button);
+  if (modelData.button.link && modelData.button.text) {
+    content.appendChild(createButtonElement(modelData.button));
   }
 
   banner.appendChild(content);
 
   block.innerHTML = '';
-  block.append(banner);
+  block.appendChild(banner);
 }

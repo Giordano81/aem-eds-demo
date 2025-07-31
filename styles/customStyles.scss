@@ -1,0 +1,28 @@
+a.button {
+  &.cta-primary {
+    background-color: #152F44;
+    color: #FFF;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  &.cta-secondary {
+    background-color: #6c757d; // Gray
+    color: #FFF;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  &.cta-tertiary {
+    background-color: #f8f9fa; // Light Gray
+    color: #343a40; // Dark Text
+    padding: 10px 20px;
+    border: 1px solid #ced4da; // Border
+    border-radius: 5px;
+    cursor: pointer;
+  }
+}

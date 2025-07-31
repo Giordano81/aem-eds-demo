@@ -114,6 +114,10 @@
           {
             "name": "secondary",
             "value": "secondary"
+          },
+          {
+            "name": "tertiary",
+            "value": "tertiary"
           }
         ]
       }
@@ -347,41 +351,6 @@
         "label": "Hex for the background color (without # character)"
       },
       {
-        "component": "text",
-        "valueType": "string",
-        "name": "ctaText",
-        "label": "CTA text"
-      },
-      {
-        "component": "aem-content",
-        "valueType": "string",
-        "name": "ctaLink",
-        "label": "CTA link",
-        "validation": {
-          "rootPath": "/content/aem-eds-demo"
-        }
-      },
-      {
-        "component": "select",
-        "valueType": "string",
-        "name": "ctaStyle",
-        "label": "CTA style",
-        "options": [
-          {
-            "name": "Primary",
-            "value": "cta-primary"
-          },
-          {
-            "name": "Secondary",
-            "value": "cta-secondary"
-          },
-          {
-            "name": "Tertiary",
-            "value": "cta-tertiary"
-          }
-        ]
-      },
-      {
         "component": "select",
         "valueType": "string",
         "name": "componentSize",
@@ -400,12 +369,6 @@
             "value": "banner-big"
           }
         ]
-      },
-      {
-        "component": "boolean",
-        "valueType": "boolean",
-        "name": "overflowElements",
-        "label": "Overflow elements"
       }
     ]
   },
@@ -471,45 +434,27 @@
         "valueType": "string"
       },
       {
-        "component": "text",
-        "valueType": "string",
-        "name": "ctaText",
-        "label": "CTA text"
-      },
-      {
-        "component": "aem-content",
-        "valueType": "string",
-        "name": "ctaLink",
-        "label": "CTA link",
-        "validation": {
-          "rootPath": "/content/aem-eds-demo"
-        }
-      },
-      {
-        "component": "select",
-        "valueType": "string",
-        "name": "ctaStyle",
-        "label": "CTA style",
-        "options": [
-          {
-            "name": "Primary",
-            "value": "cta-primary"
-          },
-          {
-            "name": "Secondary",
-            "value": "cta-secondary"
-          },
-          {
-            "name": "Tertiary",
-            "value": "cta-tertiary"
-          }
-        ]
-      },
-      {
         "component": "boolean",
         "valueType": "boolean",
         "name": "imageOpacity",
         "label": "Add opacity to image"
+      }
+    ]
+  },
+  {
+    "id": "teaser",
+    "fields": [
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "title",
+        "label": "Title"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "subtitle",
+        "label": "Subtitle"
       }
     ]
   }

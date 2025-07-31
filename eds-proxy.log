@@ -7,13 +7,13 @@
 info: Starting AEM dev server v16.10.21
 info: Local AEM dev server up and running: http://localhost:3000/
 info: Enabled reverse proxy to https://main--aem-eds-demo--Giordano81.aem.page
-warn: [463] Proxy GET request to https://main--aem-eds-demo--giordano81.aem.page/scripts/dom-helpers.js: 404 (text/html; charset=utf-8)
-warn: [501] Proxy GET request to https://main--aem-eds-demo--giordano81.aem.page/scripts/dom-helpers.js: 404 (text/html; charset=utf-8)
-warn: [553] Proxy GET request to https://main--aem-eds-demo--giordano81.aem.page/scripts/dom-helpers.js: 404 (text/html; charset=utf-8)
-warn: [2183] Proxy GET request to https://main--aem-eds-demo--giordano81.aem.page/scripts/purify.min.js.map: 404 (text/html; charset=utf-8)
-warn: [2232] Proxy GET request to https://main--aem-eds-demo--giordano81.aem.page/scripts/purify.min.js.map: 404 (text/html; charset=utf-8)
-warn: [2565] Proxy GET request to https://main--aem-eds-demo--giordano81.aem.page/scripts/purify.min.js.map: 404 (text/html; charset=utf-8)
-warn: [2928] Proxy GET request to https://main--aem-eds-demo--giordano81.aem.page/scripts/purify.min.js.map: 404 (text/html; charset=utf-8)
-warn: [3029] Proxy GET request to https://main--aem-eds-demo--giordano81.aem.page/scripts/purify.min.js.map: 404 (text/html; charset=utf-8)
-warn: [6911] Proxy GET request to https://main--aem-eds-demo--giordano81.aem.page/blocks/teaser/teaser.css: 404 (text/html; charset=utf-8)
-warn: [6912] Proxy GET request to https://main--aem-eds-demo--giordano81.aem.page/blocks/teaser/teaser.js: 404 (text/html; charset=utf-8)
+warn: [2482] Proxy GET request to https://main--aem-eds-demo--giordano81.aem.page/scripts/purify.min.js.map: 404 (text/html; charset=utf-8)
+warn: [3410] Proxy GET request to https://main--aem-eds-demo--giordano81.aem.page/scripts/purify.min.js.map: 404 (text/html; charset=utf-8)
+warn: [4420] Proxy GET request to https://main--aem-eds-demo--giordano81.aem.page/blocks/image-carousel/image-carousel.css: 404 (text/html; charset=utf-8)
+warn: [4421] Proxy GET request to https://main--aem-eds-demo--giordano81.aem.page/blocks/image-carousel/image-carousel.js: 404 (text/html; charset=utf-8)
+warn: [4476] Proxy GET request to https://main--aem-eds-demo--giordano81.aem.page/blocks/image-carousel/image-carousel.css: 404 (text/html; charset=utf-8)
+warn: [4489] Proxy GET request to https://main--aem-eds-demo--giordano81.aem.page/scripts/purify.min.js.map: 404 (text/html; charset=utf-8)
+warn: [4558] Proxy GET request to https://main--aem-eds-demo--giordano81.aem.page/blocks/image-carousel/image-carousel.js: 404 (text/html; charset=utf-8)
+warn: [4570] Proxy GET request to https://main--aem-eds-demo--giordano81.aem.page/scripts/purify.min.js.map: 404 (text/html; charset=utf-8)
+warn: [4615] Proxy GET request to https://main--aem-eds-demo--giordano81.aem.page/blocks/image-carousel/image-carousel.css: 404 (text/html; charset=utf-8)
+warn: [4616] Proxy GET request to https://main--aem-eds-demo--giordano81.aem.page/blocks/image-carousel/image-carousel.js: 404 (text/html; charset=utf-8)

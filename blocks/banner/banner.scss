@@ -13,12 +13,13 @@ main > .section > div.banner-wrapper {
   color: #fff;
   overflow: hidden;
   max-width: -webkit-fill-available;
-}
-.banner-block::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, var(--banner-overlay-opacity, 0));
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, var(--banner-overlay-opacity, 0));
+  }
 }
 
 .banner-small {
@@ -47,20 +48,24 @@ main > .section > div.banner-wrapper {
   margin: 0;
   font-weight: 400;
   position: relative;
-}
-.banner-subtitle-with-quotes::before, .banner-subtitle-with-quotes::after {
-  content: '"';
-  font-size: 50px;
-  color: #A4B9CE;
-  position: absolute;
-}
-.banner-subtitle-with-quotes::before {
-  left: -20px;
-  top: -20px;
-}
-.banner-subtitle-with-quotes::after {
-  right: -20px;
-  top: 0;
+
+  &::before,
+  &::after {
+    content: '"';
+    font-size: 50px;
+    color: #A4B9CE; // Change color for the quotes
+    position: absolute;
+  }
+
+  &::before {
+    left: -20px;
+    top: -20px;
+  }
+
+  &::after {
+    right: -20px;
+    top: 0;
+  }
 }
 
 .banner-ver-align-top {
