@@ -57,7 +57,6 @@
   justify-content: center;
   gap: 6px 12px;
   padding: 12px;
-  background-color: var(--light-color);
   line-height: 0;
 }
 .carousel .carousel-slide-indicator button {

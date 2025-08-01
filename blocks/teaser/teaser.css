@@ -1,1 +1,35 @@
+main > .section > div.teaser-wrapper {
+  max-width: unset;
+}
 
+.content-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 32px;
+  background-color: #0B1822;
+  color: #F2F2F2;
+  position: relative;
+}
+.content-container .left-section {
+  max-width: 50%;
+  padding-top: 24px;
+  padding-left: 12px;
+}
+.content-container .left-section .vertical-text {
+  position: absolute;
+  bottom: 24px;
+  left: 50px;
+  transform: rotate(-90deg);
+  transform-origin: left bottom;
+  font-size: 16.8px;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+}
+.content-container .right-section {
+  max-width: 50%;
+}
+.content-container .right-section img {
+  width: 100%;
+  height: auto;
+}

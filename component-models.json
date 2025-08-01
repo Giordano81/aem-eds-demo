@@ -348,7 +348,7 @@
         "component": "text",
         "valueType": "string",
         "name": "backgroundColor",
-        "label": "Hex for the background color (without # character)"
+        "label": "Hex for the background color"
       },
       {
         "component": "select",
@@ -455,6 +455,12 @@
         "valueType": "string",
         "name": "subtitle",
         "label": "Subtitle"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "verticalText",
+        "label": "Vertical Text"
       }
     ]
   }

@@ -24,7 +24,7 @@ export default function decorate(block) {
   if (modelData.image?.value) {
     banner.style.backgroundImage = `url('${modelData.image.value}')`;
   } else if (modelData.backgroundColor) {
-    banner.style.backgroundColor = `#${modelData.backgroundColor}`;
+    banner.style.backgroundColor = `#${modelData.backgroundColor.replace('#', '')}`;
   }
   if (modelData.imageOpacity) {
     banner.style.setProperty('--banner-overlay-opacity', '0.4');
