@@ -17,7 +17,6 @@ function getProps() {
 export default function decorate(block) {
   let modelData = getBlockModel(block, getProps());
   modelData.button = getButtonModel(block.children[getProps().length]);
-  debugger;
 
   // Create main container
   const banner = document.createElement('div');

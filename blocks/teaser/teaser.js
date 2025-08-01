@@ -1,4 +1,5 @@
-import { getBlockModel, getButtonModel, createButtonElement, createTextElement } from '../../scripts/blockHelper.js';
+import { getBlockModel, getButtonModel, createButtonElement, createTextElement, extractImageElements, getImageModel } from '../../scripts/blockHelper.js';
+import { createImageCarousel } from '../../scripts/imageCarouselHelper.js';
 
 function getProps() {
   return [
@@ -8,9 +9,16 @@ function getProps() {
 }
 
 export default function decorate(block) {
-  return;
+  // return;
+  const { block: updatedBlock, images } = extractImageElements(block);
+
   let modelData = getBlockModel(block, getProps());
   modelData.button = getButtonModel(block.children[getProps().length]);
+
+  modelData.images = [];
+  images.forEach(image => {
+    modelData.images.push(getImageModel(image));
+  });
 
   block.innerHTML = '';
 
@@ -20,5 +28,9 @@ export default function decorate(block) {
   if (modelData.button.link && modelData.button.text) {
     block.appendChild(createButtonElement(modelData.button));
   }
+
+  const carousel = createImageCarousel(modelData.images);
+  block.appendChild(carousel);
+
   debugger;
 };

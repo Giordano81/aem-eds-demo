@@ -1,3 +1,5 @@
+import { createOptimizedPicture } from './aem.js';
+
 export function getBlockModel(block, props) {
   let modelData = {};
 
@@ -111,6 +113,17 @@ export function getButtonModel(element) {
   return null;
 }
 
+export function getImageModel(element) {
+  let elementFound = element.querySelector('img');
+  if (elementFound) {
+    return {
+      image: elementFound.getAttribute('src'),
+      imageAlt: elementFound.getAttribute('alt')
+    };
+  }
+  return null;
+}
+
 export function createButtonElement(buttonModel) {
   const button = document.createElement('a');
   button.classList.add('button');
@@ -143,4 +156,24 @@ export function createTextElement(prop, classes) {
   text.innerHTML = prop.value;
 
   return text;
+}
+
+export function createImageElement(element) {
+  return createOptimizedPicture(element.image, element.imageAlt, false);;
+}
+
+export function extractImageElements(block) {
+  const images = [];
+
+  for (const child of [...block.children]) {
+    if (child.querySelector('picture')) {
+      images.push(child);
+      block.removeChild(child);
+    }
+  }
+
+  return {
+    updatedBlock: block,
+    images: images
+  }
 }

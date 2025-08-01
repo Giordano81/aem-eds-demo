@@ -54,7 +54,7 @@
     "id": "teaser",
     "components": [
       "button",
-      "imageCarousel"
+      "image"
     ]
   },
   {
@@ -67,12 +67,6 @@
     "id": "photo-item",
     "components": [
       "button"
-    ]
-  },
-  {
-    "id": "imageCarousel",
-    "components": [
-      "image"
     ]
   }
 ]
