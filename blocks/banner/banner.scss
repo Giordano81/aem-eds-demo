@@ -1,4 +1,4 @@
-main > .section > div.banner-wrapper {
+main>.section>div.banner-wrapper {
   max-width: unset;
 }
 
@@ -13,6 +13,7 @@ main > .section > div.banner-wrapper {
   color: #fff;
   overflow: hidden;
   max-width: -webkit-fill-available;
+  background-color: #0B1822;
 
   &::before {
     content: "";
@@ -30,7 +31,11 @@ main > .section > div.banner-wrapper {
   padding: 64px;
 }
 
-.banner-big {
+.banner-large {
+  height: 1117px;
+}
+
+.banner-gallery {
   height: 1117px;
 }
 
@@ -90,4 +95,23 @@ main > .section > div.banner-wrapper {
 
 .banner-hor-align-right {
   align-items: flex-end;
+}
+
+.gallery-container {
+  display: flex;
+  position: absolute;
+
+  .gallery-item {
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+    gap: 24px;
+    display: flex;
+    flex-direction: column;
+
+    picture {
+      height: 500px;
+      display: flex;
+    }
+  }
 }

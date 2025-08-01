@@ -19,8 +19,7 @@
       "quote",
       "banner",
       "photo-gallery",
-      "teaser",
-      "imageCarousel"
+      "teaser"
     ]
   },
   {
@@ -47,7 +46,8 @@
   {
     "id": "banner",
     "components": [
-      "button"
+      "button",
+      "image"
     ]
   },
   {

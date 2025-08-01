@@ -167,7 +167,7 @@ export function extractImageElements(block) {
 
   for (const child of [...block.children]) {
     if (child.querySelector('picture')) {
-      images.push(child);
+      images.push(getImageModel(child));
       block.removeChild(child);
     }
   }

@@ -1,4 +1,4 @@
-import { getBlockModel, getButtonModel, createButtonElement, createTextElement, extractImageElements, getImageModel } from '../../scripts/blockHelper.js';
+import { getBlockModel, getButtonModel, createButtonElement, createTextElement, extractImageElements } from '../../scripts/blockHelper.js';
 import { createImageCarousel } from '../../scripts/imageCarouselHelper.js';
 
 function getProps() {
@@ -17,11 +17,7 @@ export default function decorate(block) {
   if (block.children.length > getProps().length) {
     modelData.button = getButtonModel(block.children[getProps().length]);
   }
-
-  modelData.images = [];
-  images.forEach(image => {
-    modelData.images.push(getImageModel(image));
-  });
+  modelData.images = images;
 
   block.innerHTML = '';
 
