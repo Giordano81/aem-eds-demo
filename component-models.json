@@ -475,5 +475,79 @@
         "label": "Vertical"
       }
     ]
+  },
+  {
+    "id": "timeline",
+    "fields": [
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "title",
+        "label": "Title"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "subtitle",
+        "label": "Subtitle"
+      },
+      {
+        "component": "aem-content",
+        "name": "fragment",
+        "label": "Fragment",
+        "required": true
+      }
+    ]
+  },
+  {
+    "id": "timelineItem",
+    "fields": [
+      {
+        "component": "reference",
+        "name": "imageCarousel",
+        "label": "Image for carousel",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": "imageAltCarousel",
+        "label": "Alt Text for carousel"
+      },
+      {
+        "component": "reference",
+        "name": "imageBackgound",
+        "label": "Image for background",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": "imageAltBackground",
+        "label": "Alt Text for background"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "title",
+        "label": "Title"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "subtitle",
+        "label": "Subtitle"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "modalTitle",
+        "label": "Modal title"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "modalSubtitle",
+        "label": "Modal subtitle"
+      }
+    ]
   }
 ]

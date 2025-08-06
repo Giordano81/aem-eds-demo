@@ -19,7 +19,9 @@
       "quote",
       "banner",
       "photo-gallery",
-      "teaser"
+      "teaser",
+      "timeline",
+      "timelineItem"
     ]
   },
   {
@@ -67,6 +69,18 @@
     "id": "photo-item",
     "components": [
       "button"
+    ]
+  },
+  {
+    "id": "timeline",
+    "components": [
+      "timelineItem"
+    ]
+  },
+  {
+    "id": "timelineItem",
+    "components": [
+      "image"
     ]
   }
 ]

@@ -1,5 +1,15 @@
 @import url('./imageCarousel.css');
 
+:root {
+  /* colors */
+  --background-color-dark: #0B1822;
+  --text-color-light: #F2F2F2;
+}
+
+.d-none {
+  display: none !important;
+}
+
 a.button {
   &.cta-primary {
     background-color: #152F44;

@@ -7,7 +7,6 @@ export function getBlockModel(block, props) {
   // const imageProps = ['image'];
   // const properties = block.querySelectorAll('[data-aue-prop]');
   // properties.forEach((prop) => {
-  //   console.log(prop);
   //   const propName = prop.getAttribute('data-aue-prop');
   //   modelData[propName] = prop.textContent.trim();
   //   if (booleanProps.includes(propName)) {
@@ -50,7 +49,6 @@ export function getBlockModel(block, props) {
     // }
   });
 
-  console.log(modelData);
   return modelData;
 }
 
@@ -142,7 +140,9 @@ export function createButtonElement(buttonModel) {
       break;
   }
   button.textContent = buttonModel.text;
-  button.href = buttonModel.link;
+  if (buttonModel.link) {
+    button.href = buttonModel.link;
+  }
   if (buttonModel.title) {
     button.setAttribute('title', buttonModel.title);
   }

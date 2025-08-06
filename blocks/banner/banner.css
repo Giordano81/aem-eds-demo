@@ -10,10 +10,10 @@ main > .section > div.banner-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
+  color: var(--text-color-light);
   overflow: hidden;
   max-width: -webkit-fill-available;
-  background-color: #0B1822;
+  background-color: var(--background-color-dark);
 }
 .banner-block::before {
   content: "";

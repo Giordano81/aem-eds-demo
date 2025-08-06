@@ -1,0 +1,61 @@
+main > .section > div.timeline-wrapper {
+  max-width: unset;
+}
+
+.timeline-container {
+  min-height: 700px;
+  display: grid;
+  align-items: center;
+  padding: 20px;
+  background-color: var(--background-color-dark);
+  color: var(--text-color-light);
+}
+.timeline-container .text-section {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.timeline-container .carousel-section {
+  width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none;
+  margin-top: auto;
+}
+.timeline-container .carousel-section .image-list {
+  display: inline-flex;
+  gap: 8px;
+  transition: transform 0.5s ease;
+}
+.timeline-container .carousel-section .image-list picture {
+  width: 144px;
+  height: 186px;
+  display: inline-block;
+  margin-top: auto;
+}
+.timeline-container .carousel-section .image-list picture.selected {
+  width: 215px;
+  height: 234px;
+}
+.timeline-container .carousel-section .image-list picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.timeline-container .timeline-content-item {
+  background-color: var(--background-color-dark);
+  color: #FFF;
+  padding: 40px;
+  display: flex;
+  justify-content: space-between;
+}
+.timeline-container .timeline-content-item__title {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+.timeline-container .timeline-content-item__subtitle {
+  font-size: 1.1em;
+  margin-bottom: 20px;
+}
+.timeline-container .timeline-content-item > div:first-child {
+  max-width: 40%;
+}
