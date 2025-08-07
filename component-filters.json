@@ -21,7 +21,10 @@
       "photo-gallery",
       "teaser",
       "timeline",
-      "timelineItem"
+      "timelineItem",
+      "sponsors",
+      "sponsorItem",
+      "links"
     ]
   },
   {
@@ -72,15 +75,28 @@
     ]
   },
   {
-    "id": "timeline",
-    "components": [
-      "timelineItem"
-    ]
-  },
-  {
     "id": "timelineItem",
     "components": [
       "image"
+    ]
+  },
+  {
+    "id": "sponsors",
+    "components": [
+      "sponsorItem"
+    ]
+  },
+  {
+    "id": "sponsorItem",
+    "components": [
+      "image",
+      "button"
+    ]
+  },
+  {
+    "id": "links",
+    "components": [
+      "link"
     ]
   }
 ]

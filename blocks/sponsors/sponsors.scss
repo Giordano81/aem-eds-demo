@@ -1,0 +1,40 @@
+main>.section>div.sponsors-wrapper {
+  max-width: unset;
+  background-color: var(--color-dark);
+}
+
+.sponsor-container {
+  padding: 64px 0;
+  text-align: center;
+
+  .sponsor-title {
+    margin-top: 0;
+    margin-bottom: 48px;
+    text-align: left;
+  }
+
+  .sponsor-logos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 80px;
+
+    .sponsor-logo {
+      width: auto;
+      height: 85px;
+      margin: auto;
+
+      &.start {
+        margin: 0 auto 0 0;
+      }
+      
+      &.end {
+        margin: 0 0 0 auto;
+      }
+
+      img {
+        height: 85px;
+        cursor: pointer;
+      }
+    }
+  }
+}

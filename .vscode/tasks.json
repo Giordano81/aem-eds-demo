@@ -6,6 +6,12 @@
       "type": "shell",
       "command": "npm run build:scss",
       "problemMatcher": []
+    },
+    {
+      "label": "Watch SCSS",
+      "type": "shell",
+      "command": "npm run watch:scss",
+      "problemMatcher": []
     }
   ]
 }

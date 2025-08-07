@@ -1,0 +1,34 @@
+main > .section > div.sponsors-wrapper {
+  max-width: unset;
+  background-color: var(--color-dark);
+}
+
+.sponsor-container {
+  padding: 64px 0;
+  text-align: center;
+}
+.sponsor-container .sponsor-title {
+  margin-top: 0;
+  margin-bottom: 48px;
+  text-align: left;
+}
+.sponsor-container .sponsor-logos {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 80px;
+}
+.sponsor-container .sponsor-logos .sponsor-logo {
+  width: auto;
+  height: 85px;
+  margin: auto;
+}
+.sponsor-container .sponsor-logos .sponsor-logo.start {
+  margin: 0 auto 0 0;
+}
+.sponsor-container .sponsor-logos .sponsor-logo.end {
+  margin: 0 0 0 auto;
+}
+.sponsor-container .sponsor-logos .sponsor-logo img {
+  height: 85px;
+  cursor: pointer;
+}

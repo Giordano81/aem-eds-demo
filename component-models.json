@@ -472,7 +472,7 @@
         "component": "text",
         "valueType": "string",
         "name": "verticalText",
-        "label": "Vertical"
+        "label": "Vertical text"
       }
     ]
   },
@@ -547,6 +547,71 @@
         "valueType": "string",
         "name": "modalSubtitle",
         "label": "Modal subtitle"
+      }
+    ]
+  },
+  {
+    "id": "sponsors",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Title"
+      },
+      {
+        "component": "aem-content",
+        "name": "fragment",
+        "label": "Fragment",
+        "required": true
+      }
+    ]
+  },
+  {
+    "id": "sponsorItem",
+    "fields": [
+      {
+        "component": "reference",
+        "name": "logo",
+        "label": "Logo",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": "logoAltText",
+        "label": "Logo alt text"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "title",
+        "label": "Title"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "subtitle",
+        "label": "Subtitle"
+      }
+    ]
+  },
+  {
+    "id": "link",
+    "fields": [
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Title"
+      },
+      {
+        "component": "text",
+        "name": "ctaText",
+        "label": "Link text"
+      },
+      {
+        "component": "aem-content",
+        "name": "ctaLink",
+        "label": "Link"
       }
     ]
   }

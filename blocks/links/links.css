@@ -1,0 +1,43 @@
+main > .section > div.links-wrapper {
+  max-width: unset;
+}
+
+.sezioni-link {
+  padding: 30px 50px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 56px;
+}
+.sezioni-link .sezione-item {
+  border-left: 2px solid #FFF;
+  padding-left: 40px;
+}
+.sezioni-link .sezione-item p {
+  font-family: Graphik;
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 48px;
+  letter-spacing: 0px;
+  text-transform: uppercase;
+  margin: 0;
+  margin-bottom: 12px;
+}
+.sezioni-link .sezione-item a {
+  color: var(--text-color-light);
+  font-family: Graphik;
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 36px;
+}
+.sezioni-link .sezione-item a::after {
+  content: "";
+  display: inline-block;
+  width: 19px;
+  height: 19px;
+  margin-left: 8px;
+  background-image: url("../../icons/right_arrow.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  vertical-align: middle;
+}
