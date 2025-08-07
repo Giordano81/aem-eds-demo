@@ -6,7 +6,7 @@ main > .section > div.teaser-wrapper {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 32px;
+  padding: 48px;
   background-color: var(--background-color-dark);
   color: var(--text-color-light);
   position: relative;

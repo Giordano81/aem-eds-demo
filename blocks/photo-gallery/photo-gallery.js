@@ -1,4 +1,4 @@
-import { getBlockModel } from '../../scripts/blockHelper.js';
+import { getBlockModel, createImageElement } from '../../scripts/blockHelper.js';
 
 function getProps() {
   return [
@@ -85,9 +85,11 @@ function createGridItem(item, modelData) {
   const gridItem = document.createElement('div');
   gridItem.className = 'photo-gallery-item';
 
-  const img = document.createElement('img');
-  img.src = item.image.value;
-  img.alt = item.alt;
+  const imageModel = {
+    image: item.image.value,
+    imageAlt: item.alt
+  }
+  const img = createImageElement(imageModel);
 
   const text = document.createElement('div');
   text.textContent = item.text.value;

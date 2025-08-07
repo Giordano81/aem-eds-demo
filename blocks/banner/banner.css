@@ -31,11 +31,11 @@ main > .section > div.banner-wrapper {
 }
 
 .banner-large {
-  height: 1117px;
+  height: 90vh;
 }
 
 .banner-gallery {
-  height: 1117px;
+  height: 90vh;
 }
 
 .banner-content {

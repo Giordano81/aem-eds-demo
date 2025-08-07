@@ -380,7 +380,14 @@
             "value": "banner-large"
           }
         ],
-        "condition": { "!==": [{"var" : "mediaType"}, "gallery"] }
+        "condition": {
+          "!==": [
+            {
+              "var": "mediaType"
+            },
+            "gallery"
+          ]
+        }
       }
     ]
   },
@@ -612,6 +619,31 @@
         "component": "aem-content",
         "name": "ctaLink",
         "label": "Link"
+      }
+    ]
+  },
+  {
+    "id": "spacer",
+    "fields": [
+      {
+        "component": "select",
+        "name": "size",
+        "label": "Size",
+        "required": true,
+        "options": [
+          {
+            "name": "Small",
+            "value": "spacer-small"
+          },
+          {
+            "name": "Medium",
+            "value": "spacer-medium"
+          },
+          {
+            "name": "Large",
+            "value": "spacer-large"
+          }
+        ]
       }
     ]
   }

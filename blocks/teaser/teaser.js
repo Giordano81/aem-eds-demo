@@ -10,7 +10,6 @@ function getProps() {
 }
 
 export default function decorate(block) {
-  // return;
   const { block: updatedBlock, images } = extractImageElements(block);
 
   let modelData = getBlockModel(block, getProps());

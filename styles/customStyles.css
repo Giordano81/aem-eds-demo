@@ -46,6 +46,6 @@ main > .section > div.default-content-wrapper {
 
 @media (width >= 900px) {
   main > .section > div {
-    padding: 32px 64px;
+    padding: 0;
   }
 }
