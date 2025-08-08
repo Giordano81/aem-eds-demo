@@ -1,6 +1,9 @@
 main > .section > div.banner-wrapper {
   max-width: unset;
 }
+main > .section > div.banner-wrapper > div.dark-background {
+  background-color: var(--color-dark);
+}
 
 .banner-block {
   position: relative;
@@ -13,7 +16,6 @@ main > .section > div.banner-wrapper {
   color: var(--text-color-light);
   overflow: hidden;
   max-width: -webkit-fill-available;
-  background-color: var(--background-color-dark);
 }
 .banner-block::before {
   content: "";
@@ -46,50 +48,73 @@ main > .section > div.banner-wrapper {
   width: 100%;
   padding: 32px;
 }
-
-.banner-subtitle-with-quotes {
+.banner-content.banner-ver-align-top {
+  justify-content: flex-start;
+}
+.banner-content.banner-ver-align-center {
+  justify-content: center;
+}
+.banner-content.banner-ver-align-bottom {
+  justify-content: flex-end;
+}
+.banner-content.banner-hor-align-left {
+  align-items: flex-start;
+}
+.banner-content.banner-hor-align-center {
+  align-items: center;
+}
+.banner-content.banner-hor-align-right {
+  align-items: flex-end;
+}
+.banner-content .subtitles-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  height: 100%;
+  gap: 10px;
+}
+.banner-content .subtitles-container .subtitle-item {
+  display: block;
+  margin: auto;
+  padding: 10px;
+}
+.banner-content .subtitles-container .subtitle-item:first-child {
+  grid-column: 1;
+  grid-row: 1;
+}
+.banner-content .subtitles-container .subtitle-item:last-child {
+  grid-column: 2;
+  grid-row: 2;
+}
+.banner-content .banner-subtitle-with-quotes {
   font-size: 1.25rem;
   margin: 0;
   font-weight: 400;
   position: relative;
 }
-.banner-subtitle-with-quotes::before, .banner-subtitle-with-quotes::after {
+.banner-content .banner-subtitle-with-quotes::before, .banner-content .banner-subtitle-with-quotes::after {
   content: '"';
   font-size: 50px;
   color: #A4B9CE;
   position: absolute;
 }
-.banner-subtitle-with-quotes::before {
+.banner-content .banner-subtitle-with-quotes::before {
   left: -20px;
   top: -20px;
 }
-.banner-subtitle-with-quotes::after {
+.banner-content .banner-subtitle-with-quotes::after {
   right: -20px;
   top: 0;
 }
-
-.banner-ver-align-top {
-  justify-content: flex-start;
-}
-
-.banner-ver-align-center {
-  justify-content: center;
-}
-
-.banner-ver-align-bottom {
-  justify-content: flex-end;
-}
-
-.banner-hor-align-left {
-  align-items: flex-start;
-}
-
-.banner-hor-align-center {
-  align-items: center;
-}
-
-.banner-hor-align-right {
-  align-items: flex-end;
+.banner-content .vertical-text {
+  position: absolute;
+  bottom: 24px;
+  left: 50px;
+  transform: rotate(-90deg);
+  transform-origin: left bottom;
+  font-size: 16.8px;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
 }
 
 .gallery-container {

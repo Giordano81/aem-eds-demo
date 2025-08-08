@@ -3,24 +3,14 @@ import { createOptimizedPicture } from './aem.js';
 export function getBlockModel(block, props) {
   let modelData = {};
 
-  // const booleanProps = ['subtitleQuotes', 'imageOpacity'];
-  // const imageProps = ['image'];
-  // const properties = block.querySelectorAll('[data-aue-prop]');
-  // properties.forEach((prop) => {
-  //   const propName = prop.getAttribute('data-aue-prop');
-  //   modelData[propName] = prop.textContent.trim();
-  //   if (booleanProps.includes(propName)) {
-  //     modelData[propName] = modelData[propName] === 'true';
-  //   }
-  //   if (imageProps.includes(propName)) {
-  //     modelData[propName] = prop.getAttribute('src');
-  //   }
-  // });
-
   props.forEach((obj, index) => {
     const propertyName = obj.name;
-    // if (!modelData.hasOwnProperty(propertyName) || modelData[propertyName] == null || modelData[propertyName] == undefined) {
-    const textContent = block.children[index].textContent.trim();
+    let textContent;
+    try {
+      textContent = block.children[index].textContent.trim();
+    } catch (error) {
+      debugger;
+    }
     if (obj.attribute) {
       modelData[propertyName] = {
         value: findAttributeByAttr(block.children[index], obj.attribute) || textContent,
@@ -46,7 +36,6 @@ export function getBlockModel(block, props) {
     } else {
       modelData[propertyName] = textContent;
     }
-    // }
   });
 
   return modelData;
@@ -125,6 +114,7 @@ export function getImageModel(element) {
 export function createButtonElement(buttonModel) {
   const button = document.createElement('a');
   button.classList.add('button');
+  button.classList.add('cta-light');
   switch (buttonModel.type) {
     case "primary":
       button.classList.add('cta-primary');

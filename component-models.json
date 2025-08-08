@@ -284,16 +284,34 @@
         "label": "Title"
       },
       {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "mainTitleStyle",
+        "label": "Main title style"
+      },
+      {
         "component": "richtext",
         "valueType": "string",
         "name": "subtitle",
         "label": "Subtitle"
       },
       {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "secondSubtitle",
+        "label": "Second subtitle"
+      },
+      {
         "component": "boolean",
         "valueType": "boolean",
         "name": "subtitleQuotes",
         "label": "Add quotes in subtitle"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "verticalText",
+        "label": "Vertical text"
       },
       {
         "component": "select",
@@ -388,6 +406,12 @@
             "gallery"
           ]
         }
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "darkBackground",
+        "label": "Add dark background"
       }
     ]
   },

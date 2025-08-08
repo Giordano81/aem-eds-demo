@@ -1,9 +1,30 @@
 @import url("./imageCarousel.css");
+@import url("./typography.css");
 :root {
   /* colors */
   --background-color-dark: #0B1822;
   --text-color-light: #F2F2F2;
   --color-dark: #151517;
+  --color-primary-blue: #152F44;
+  --color-primary-light-blue: #34526E;
+  --color-primary-antracite: #2D2D2D;
+  --color-primary-white: #FFF;
+  --color-primary-blue-500-bkg: #0B1822;
+  --color-primary-antracite-500-bkg: #171717;
+  --color-secondary-light-blue: #41668933;
+  --color-secondary-light-blue-2: #A4B9CE;
+  --color-secondary-background-blue: #E8EDF3;
+  --color-secondary-gallery-orange: #F06123;
+  --color-secondary-pastel-orange: #FDA46F;
+  --color-grey-1: #3E3E3E;
+  --color-grey-2: #707070;
+  --color-grey-3: #A4A4A4;
+  --color-grey-4: #C6C6C6;
+  --color-grey-5: #DCDCDC;
+  --color-grey-6: #EFEFEF;
+  /* font-family */
+  --body-font-family: "Graphik", sans-serif;
+  --heading-font-family: "Graphik", sans-serif;
 }
 
 body {
@@ -15,29 +36,25 @@ body {
   display: none !important;
 }
 
-a.button.cta-primary {
-  background-color: #152F44;
-  color: #FFF;
-  padding: 10px 20px;
+a.button.cta-light {
+  text-transform: uppercase;
+  padding: 21px 36px;
   border: none;
   border-radius: 5px;
-  cursor: pointer;
+  margin: 0;
 }
-a.button.cta-secondary {
-  background-color: #6c757d;
-  color: #FFF;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+a.button.cta-light.cta-primary {
+  background-color: var(--color-primary-blue);
+  color: var(--color-primary-white);
 }
-a.button.cta-tertiary {
+a.button.cta-light.cta-secondary {
+  background-color: transparent;
+  color: var(--color-secondary-background-blue);
+  border: solid 1px var(--color-primary-light-blue);
+}
+a.button.cta-light.cta-tertiary {
   background-color: #f8f9fa;
   color: #343a40;
-  padding: 10px 20px;
-  border: 1px solid #ced4da;
-  border-radius: 5px;
-  cursor: pointer;
 }
 
 main > .section > div.default-content-wrapper {
