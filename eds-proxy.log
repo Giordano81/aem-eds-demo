@@ -7,3 +7,17 @@
 info: Starting AEM dev server v16.10.21
 info: Local AEM dev server up and running: http://localhost:3000/
 info: Enabled reverse proxy to https://main--aem-eds-demo--Giordano81.aem.page
+warn: [266] Proxy GET request to https://main--aem-eds-demo--giordano81.aem.page/blocks/sponsor-item/sponsor-item.js: 404 (text/html; charset=utf-8)
+warn: [263] Proxy GET request to https://main--aem-eds-demo--giordano81.aem.page/blocks/sponsor-item/sponsor-item.css: 404 (text/html; charset=utf-8)
+warn: [549] Proxy GET request to https://main--aem-eds-demo--giordano81.aem.page/blocks/sponsor-item/sponsor-item.css: 404 (text/html; charset=utf-8)
+warn: [550] Proxy GET request to https://main--aem-eds-demo--giordano81.aem.page/blocks/sponsor-item/sponsor-item.js: 404 (text/html; charset=utf-8)
+warn: [733] Proxy GET request to https://main--aem-eds-demo--giordano81.aem.page/blocks/timeline-item/timeline-item.css: 404 (text/html; charset=utf-8)
+warn: [734] Proxy GET request to https://main--aem-eds-demo--giordano81.aem.page/blocks/timeline-item/timeline-item.js: 404 (text/html; charset=utf-8)
+warn: [919] Proxy GET request to https://main--aem-eds-demo--giordano81.aem.page/blocks/timeline-item/timeline-item.css: 404 (text/html; charset=utf-8)
+warn: [920] Proxy GET request to https://main--aem-eds-demo--giordano81.aem.page/blocks/timeline-item/timeline-item.js: 404 (text/html; charset=utf-8)
+warn: [1032] Proxy GET request to https://main--aem-eds-demo--giordano81.aem.page/blocks/timeline-item/timeline-item.js: 404 (text/html; charset=utf-8)
+warn: [1031] Proxy GET request to https://main--aem-eds-demo--giordano81.aem.page/blocks/timeline-item/timeline-item.css: 404 (text/html; charset=utf-8)
+warn: [1081] Proxy GET request to https://main--aem-eds-demo--giordano81.aem.page/blocks/sponsor-item/sponsor-item.css: 404 (text/html; charset=utf-8)
+warn: [1082] Proxy GET request to https://main--aem-eds-demo--giordano81.aem.page/blocks/sponsor-item/sponsor-item.js: 404 (text/html; charset=utf-8)
+warn: [1353] Proxy GET request to https://main--aem-eds-demo--giordano81.aem.page/blocks/sponsor-item/sponsor-item.js: 404 (text/html; charset=utf-8)
+warn: [1352] Proxy GET request to https://main--aem-eds-demo--giordano81.aem.page/blocks/sponsor-item/sponsor-item.css: 404 (text/html; charset=utf-8)

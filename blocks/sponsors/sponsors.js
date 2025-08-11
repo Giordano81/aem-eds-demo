@@ -15,12 +15,16 @@ function getItemsProps() {
     { name: 'logo', attribute: 'src' },
     { name: 'logoAltText' },
     { name: 'title', tags: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p'] },
-    { name: 'subtitle', tags: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p'] }
+    { name: 'titleStyle' },
+    { name: 'subtitle', tags: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p'] },
+    { name: 'subtitleStyle' }
   ];
 }
 
 export default async function decorate(block) {
   let modelData = getBlockModel(block, getProps());
+
+  modelData.title.style = modelData.titleStyle;
 
   if (modelData.fragment) {
     const fragment = await loadFragment(modelData.fragment.value);
@@ -39,6 +43,9 @@ export default async function decorate(block) {
         const { otherBlocks: updatedBlock, images } = extractImageElements(otherBlocks);
         item.images = images;
 
+        item.title.style = item.titleStyle;
+        item.subtitle.style = item.subtitleStyle;
+
         if (otherBlocks.children.length) {
           item.button = getButtonModel(otherBlocks.children[0]);
         }
@@ -52,8 +59,12 @@ export default async function decorate(block) {
 
   const sponsorContainer = document.createElement('div');
   sponsorContainer.className = 'sponsor-container';
-  modelData.title.tag = 'h2';
-  sponsorContainer.appendChild(createTextElement(modelData.title, ['sponsor-title']));
+
+  if (modelData.title.value) {
+    modelData.title.tag = 'h2';
+    modelData.title.style = 'h2';
+    sponsorContainer.appendChild(createTextElement(modelData.title, ['sponsor-title']));
+  }
 
   const sponsorLogos = document.createElement('div');
   sponsorLogos.className = 'sponsor-logos';
@@ -76,8 +87,12 @@ export default async function decorate(block) {
       const textSection = document.createElement('div');
       textSection.classList.add('text-section');
       textSection.appendChild(createImageElement(model));
-      textSection.appendChild(createTextElement(item.title, ['teaser-title']));
-      textSection.appendChild(createTextElement(item.subtitle, ['teaser-subtitle']));
+      if (item.title.value) {
+        textSection.appendChild(createTextElement(item.title, ['teaser-title']));
+      }
+      if (item.subtitle.value) {
+        textSection.appendChild(createTextElement(item.subtitle, ['teaser-subtitle']));
+      }
       if (item.button?.link && item.button?.text) {
         textSection.appendChild(createButtonElement(item.button));
       }

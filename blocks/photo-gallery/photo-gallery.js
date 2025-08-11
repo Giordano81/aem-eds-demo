@@ -98,17 +98,18 @@ function createGridItem(item, modelData) {
   if (modelData.textPosition === 'center') {
     text.classList.add('overlay-text');
     text.classList.add('overlay-text-center');
-    gridItem.appendChild(img);
-    gridItem.appendChild(text);
   } else if (modelData.textPosition === 'bottom') {
     text.classList.add('overlay-text');
     text.classList.add('overlay-text-bottom');
-    gridItem.appendChild(img);
-    gridItem.appendChild(text);
   } else {
     img.style.height = 'auto';
     text.classList.add('bottom-text');
+  }
+
+  if (item.image.value) {
     gridItem.appendChild(img);
+  }
+  if (item.text.value) {
     gridItem.appendChild(text);
   }
 

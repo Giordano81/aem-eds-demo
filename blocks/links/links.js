@@ -32,15 +32,18 @@ export default function decorate(block) {
     const itemContainer = document.createElement('div');
     itemContainer.className = 'sezione-item';
 
-    const title = document.createElement('p');
-    title.textContent = item.title;
+    if (modelData.title.value) {
+      const title = document.createElement('p');
+      title.textContent = item.title;
+      itemContainer.appendChild(title);
+    }
 
-    const link = document.createElement('a');
-    link.setAttribute('href', item.ctaLink.value);
-    link.innerHTML = item.ctaText;
-
-    itemContainer.appendChild(title);
-    itemContainer.appendChild(link);
+    if (modelData.ctaText && item.ctaLink.value) {
+      const link = document.createElement('a');
+      link.setAttribute('href', item.ctaLink.value);
+      link.innerHTML = item.ctaText;
+      itemContainer.appendChild(link);
+    }
 
     mainContainer.appendChild(itemContainer);
   });

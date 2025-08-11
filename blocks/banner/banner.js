@@ -3,9 +3,11 @@ import { getBlockModel, getButtonModel, createButtonElement, createTextElement, 
 function getProps() {
   return [
     { name: 'title', tags: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p'] },
-    { name: 'mainTitleStyle', isBoolean: true },
+    { name: 'titleStyle' },
     { name: 'subtitle', tags: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p'] },
+    { name: 'subtitleStyle' },
     { name: 'secondSubtitle', tags: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p'] },
+    { name: 'secondSubtitleStyle' },
     { name: 'subtitleQuotes', isBoolean: true },
     { name: 'verticalText' },
     { name: 'horizontalAlign' },
@@ -26,6 +28,9 @@ export default function decorate(block) {
   }
   modelData.images = images;
 
+  modelData.title.style = modelData.titleStyle;
+  modelData.subtitle.style = modelData.subtitleStyle;
+  modelData.secondSubtitle.style = modelData.secondSubtitleStyle;
 
   // Create main container
   const banner = document.createElement('div');
@@ -40,13 +45,31 @@ export default function decorate(block) {
       const mainDiv = document.createElement('div');
       mainDiv.classList.add('gallery-container');
 
+      const list1 = [];
+      const list2 = [];
+      const list3 = [];
+      const list4 = [];
+
+      modelData.images.forEach((item, index) => {
+        if (index % 4 === 0) {
+          list1.push(item);
+        } else if (index % 4 === 1) {
+          list2.push(item);
+        } else if (index % 4 === 2) {
+          list3.push(item);
+        } else {
+          list4.push(item);
+        }
+      });
+      const listsImages = [list1, list2, list3, list4];
+
       for (let i = 0; i < 4; i++) {
         const galleryItem = document.createElement('div');
         galleryItem.classList.add('gallery-item');
 
         // TODO: remove mock for image
-        for (let j = 0; j < 4; j++) {
-          galleryItem.appendChild(createImageElement(modelData.images[0]));
+        for (let j = 0; j < listsImages[i].length; j++) {
+          galleryItem.appendChild(createImageElement(listsImages[i][j]));
         }
 
         mainDiv.appendChild(galleryItem);
@@ -73,9 +96,6 @@ export default function decorate(block) {
 
   if (modelData.title.value) {
     const titleClasses = ['banner-title'];
-    if (modelData.mainTitleStyle) {
-      titleClasses.push('main-title');
-    }
     content.appendChild(createTextElement(modelData.title, titleClasses));
   }
 

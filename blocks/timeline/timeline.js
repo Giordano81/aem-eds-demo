@@ -6,7 +6,9 @@ import { createImageCarousel } from '../../scripts/imageCarouselHelper.js';
 function getProps() {
   return [
     { name: 'title', tags: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p'] },
+    { name: 'titleStyle' },
     { name: 'subtitle', tags: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p'] },
+    { name: 'subtitleStyle' },
     { name: 'fragment', attribute: 'href' }
   ];
 }
@@ -18,14 +20,21 @@ function getItemsProps() {
     { name: 'imageBackgound', attribute: 'src' },
     { name: 'imageAltBackground' },
     { name: 'title', tags: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p'] },
+    { name: 'titleStyle' },
     { name: 'subtitle', tags: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p'] },
+    { name: 'subtitleStyle' },
     { name: 'modalTitle', tags: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p'] },
-    { name: 'modalSubtitle', tags: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p'] }
+    { name: 'modalTitleStyle' },
+    { name: 'modalSubtitle', tags: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p'] },
+    { name: 'modalSubtitleStyle' }
   ];
 }
 
 export default async function decorate(block) {
   let modelData = getBlockModel(block, getProps());
+
+  modelData.title.style = modelData.titleStyle;
+  modelData.subtitle.style = modelData.subtitleStyle;
 
   if (modelData.fragment) {
     const fragment = await loadFragment(modelData.fragment.value);
@@ -42,6 +51,11 @@ export default async function decorate(block) {
         const item = getBlockModel(timelineItem, getItemsProps());
         item.images = extractImageElements(otherBlocks).images;
 
+        item.title.style = item.titleStyle;
+        item.subtitle.style = item.subtitleStyle;
+        item.modalTitle.style = item.modalTitleStyle;
+        item.modalSubtitle.style = item.modalSubtitleStyle;
+
         modelData.fragment.items.push(item);
       }
     }
@@ -56,8 +70,12 @@ export default async function decorate(block) {
   // Create the text section
   const textSection = document.createElement('div');
   textSection.className = 'text-section';
-  textSection.appendChild(createTextElement(modelData.title, ['timeline-title']));
-  textSection.appendChild(createTextElement(modelData.subtitle, ['timeline-subtitle']));
+  if (modelData.title.value) {
+    textSection.appendChild(createTextElement(modelData.title, ['timeline-title']));
+  }
+  if (modelData.subtitle.value) {
+    textSection.appendChild(createTextElement(modelData.subtitle, ['timeline-subtitle']));
+  }
 
   // Create the carousel section
   const carouselSection = document.createElement('div');
@@ -97,8 +115,12 @@ export default async function decorate(block) {
       // Left content
       timelineContentItemLeft.innerHTML = '';
       timelineContentItemRight.innerHTML = '';
-      timelineContentItemLeft.appendChild(createTextElement(item.title, ['timeline-content-item__title']));
-      timelineContentItemLeft.appendChild(createTextElement(item.subtitle, ['timeline-content-item__subtitle']));
+      if (item.title.value) {
+        timelineContentItemLeft.appendChild(createTextElement(item.title, ['timeline-content-item__title']));
+      }
+      if (item.subtitle.value) {
+        timelineContentItemLeft.appendChild(createTextElement(item.subtitle, ['timeline-content-item__subtitle']));
+      }
       // Discover more button
       if (item.modalTitle.value || item.modalSubtitle.value) {
         const button = createButtonElement(buttonModel);
@@ -109,8 +131,12 @@ export default async function decorate(block) {
           const modalBody = document.createElement('div');
           const textSection = document.createElement('div');
           textSection.classList.add('text-section');
-          textSection.appendChild(createTextElement(item.modalTitle, []));
-          textSection.appendChild(createTextElement(item.modalSubtitle, []));
+          if (item.modalTitle.value) {
+            textSection.appendChild(createTextElement(item.modalTitle, []));
+          }
+          if (item.modalSubtitle.value) {
+            textSection.appendChild(createTextElement(item.modalSubtitle, []));
+          }
           modalBody.appendChild(textSection);
 
           if (item.images.length) {
@@ -127,11 +153,13 @@ export default async function decorate(block) {
       }
 
       // Right image
-      const imageModel = {
-        image: item.imageBackgound.value,
-        imageAlt: item.imageAltBackground,
+      if (item.imageBackgound.value) {
+        const imageModel = {
+          image: item.imageBackgound.value,
+          imageAlt: item.imageAltBackground,
+        }
+        timelineContentItemRight.appendChild(createImageElement(imageModel));
       }
-      timelineContentItemRight.appendChild(createImageElement(imageModel));
 
       textSection.classList.add('d-none');
       timelineContentItem.classList.remove('d-none');

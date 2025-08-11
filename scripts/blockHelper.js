@@ -9,7 +9,7 @@ export function getBlockModel(block, props) {
     try {
       textContent = block.children[index].textContent.trim();
     } catch (error) {
-      debugger;
+      console.log(error);
     }
     if (obj.attribute) {
       modelData[propertyName] = {
@@ -38,6 +38,7 @@ export function getBlockModel(block, props) {
     }
   });
 
+  console.log(modelData);
   return modelData;
 }
 
@@ -141,8 +142,36 @@ export function createButtonElement(buttonModel) {
 }
 
 export function createTextElement(prop, classes) {
-  const text = document.createElement(prop.tag || 'span');
+  const text = document.createElement(prop.tag || 'p');
+  // const text = document.createElement('p');
   text.classList.add(...classes);
+  if (prop.style) {
+    switch (prop.style) {
+      case 'main-title':
+        text.classList.add('main-title');
+        break;
+      case 'h1':
+        text.classList.add('heading-h1-light');
+        break;
+      case 'h2':
+        text.classList.add('heading-h2-light');
+        break;
+      case 'h3':
+        text.classList.add('heading-h3-light');
+        break;
+      case 'body-1':
+        text.classList.add('body-1-light');
+        break;
+      case 'body-2':
+        text.classList.add('body-2-light');
+        break;
+      case 'body-3':
+        text.classList.add('body-3-light');
+        break;
+      default:
+        break;
+    }
+  }
   text.innerHTML = prop.value;
 
   return text;

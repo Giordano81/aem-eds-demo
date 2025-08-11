@@ -4,7 +4,9 @@ import { createImageCarousel } from '../../scripts/imageCarouselHelper.js';
 function getProps() {
   return [
     { name: 'title', tags: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p'] },
+    { name: 'titleStyle' },
     { name: 'subtitle', tags: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p'] },
+    { name: 'subtitleStyle' },
     { name: 'verticalText' }
   ];
 }
@@ -18,6 +20,9 @@ export default function decorate(block) {
   }
   modelData.images = images;
 
+  modelData.title.style = modelData.titleStyle;
+  modelData.subtitle.style = modelData.subtitleStyle;
+
   block.innerHTML = '';
 
   // Create the main container
@@ -29,8 +34,12 @@ export default function decorate(block) {
   leftSection.className = 'left-section';
 
   // Append elements to the left section
-  leftSection.appendChild(createTextElement(modelData.title, ['teaser-title']));
-  leftSection.appendChild(createTextElement(modelData.subtitle, ['teaser-subtitle']));
+  if (modelData.title.value) {
+    leftSection.appendChild(createTextElement(modelData.title, ['teaser-title']));
+  }
+  if (modelData.subtitle.value) {
+    leftSection.appendChild(createTextElement(modelData.subtitle, ['teaser-subtitle']));
+  }
   if (modelData.button?.link && modelData.button?.text) {
     leftSection.appendChild(createButtonElement(modelData.button));
   }

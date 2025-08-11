@@ -284,10 +284,40 @@
         "label": "Title"
       },
       {
-        "component": "boolean",
-        "valueType": "boolean",
-        "name": "mainTitleStyle",
-        "label": "Main title style"
+        "component": "select",
+        "valueType": "string",
+        "name": "titleStyle",
+        "label": "Title style",
+        "options": [
+          {
+            "name": "Main Title",
+            "value": "main-title"
+          },
+          {
+            "name": "H1",
+            "value": "h1"
+          },
+          {
+            "name": "H2",
+            "value": "h2"
+          },
+          {
+            "name": "H3",
+            "value": "h3"
+          },
+          {
+            "name": "Body 1",
+            "value": "body-1"
+          },
+          {
+            "name": "Body 2",
+            "value": "body-2"
+          },
+          {
+            "name": "Body 3",
+            "value": "body-3"
+          }
+        ]
       },
       {
         "component": "richtext",
@@ -296,10 +326,82 @@
         "label": "Subtitle"
       },
       {
+        "component": "select",
+        "valueType": "string",
+        "name": "subtitleStyle",
+        "label": "Subtitle style",
+        "options": [
+          {
+            "name": "Main Title",
+            "value": "main-title"
+          },
+          {
+            "name": "H1",
+            "value": "h1"
+          },
+          {
+            "name": "H2",
+            "value": "h2"
+          },
+          {
+            "name": "H3",
+            "value": "h3"
+          },
+          {
+            "name": "Body 1",
+            "value": "body-1"
+          },
+          {
+            "name": "Body 2",
+            "value": "body-2"
+          },
+          {
+            "name": "Body 3",
+            "value": "body-3"
+          }
+        ]
+      },
+      {
         "component": "richtext",
         "valueType": "string",
         "name": "secondSubtitle",
         "label": "Second subtitle"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "secondSubtitleStyle",
+        "label": "Second subtitle style",
+        "options": [
+          {
+            "name": "Main Title",
+            "value": "main-title"
+          },
+          {
+            "name": "H1",
+            "value": "h1"
+          },
+          {
+            "name": "H2",
+            "value": "h2"
+          },
+          {
+            "name": "H3",
+            "value": "h3"
+          },
+          {
+            "name": "Body 1",
+            "value": "body-1"
+          },
+          {
+            "name": "Body 2",
+            "value": "body-2"
+          },
+          {
+            "name": "Body 3",
+            "value": "body-3"
+          }
+        ]
       },
       {
         "component": "boolean",
@@ -494,10 +596,82 @@
         "label": "Title"
       },
       {
+        "component": "select",
+        "valueType": "string",
+        "name": "titleStyle",
+        "label": "Title style",
+        "options": [
+          {
+            "name": "Main Title",
+            "value": "main-title"
+          },
+          {
+            "name": "H1",
+            "value": "h1"
+          },
+          {
+            "name": "H2",
+            "value": "h2"
+          },
+          {
+            "name": "H3",
+            "value": "h3"
+          },
+          {
+            "name": "Body 1",
+            "value": "body-1"
+          },
+          {
+            "name": "Body 2",
+            "value": "body-2"
+          },
+          {
+            "name": "Body 3",
+            "value": "body-3"
+          }
+        ]
+      },
+      {
         "component": "richtext",
         "valueType": "string",
         "name": "subtitle",
         "label": "Subtitle"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "subtitleStyle",
+        "label": "Subtitle style",
+        "options": [
+          {
+            "name": "Main Title",
+            "value": "main-title"
+          },
+          {
+            "name": "H1",
+            "value": "h1"
+          },
+          {
+            "name": "H2",
+            "value": "h2"
+          },
+          {
+            "name": "H3",
+            "value": "h3"
+          },
+          {
+            "name": "Body 1",
+            "value": "body-1"
+          },
+          {
+            "name": "Body 2",
+            "value": "body-2"
+          },
+          {
+            "name": "Body 3",
+            "value": "body-3"
+          }
+        ]
       },
       {
         "component": "text",
@@ -517,10 +691,82 @@
         "label": "Title"
       },
       {
+        "component": "select",
+        "valueType": "string",
+        "name": "titleStyle",
+        "label": "Title style",
+        "options": [
+          {
+            "name": "Main Title",
+            "value": "main-title"
+          },
+          {
+            "name": "H1",
+            "value": "h1"
+          },
+          {
+            "name": "H2",
+            "value": "h2"
+          },
+          {
+            "name": "H3",
+            "value": "h3"
+          },
+          {
+            "name": "Body 1",
+            "value": "body-1"
+          },
+          {
+            "name": "Body 2",
+            "value": "body-2"
+          },
+          {
+            "name": "Body 3",
+            "value": "body-3"
+          }
+        ]
+      },
+      {
         "component": "richtext",
         "valueType": "string",
         "name": "subtitle",
         "label": "Subtitle"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "subtitleStyle",
+        "label": "Subtitle style",
+        "options": [
+          {
+            "name": "Main Title",
+            "value": "main-title"
+          },
+          {
+            "name": "H1",
+            "value": "h1"
+          },
+          {
+            "name": "H2",
+            "value": "h2"
+          },
+          {
+            "name": "H3",
+            "value": "h3"
+          },
+          {
+            "name": "Body 1",
+            "value": "body-1"
+          },
+          {
+            "name": "Body 2",
+            "value": "body-2"
+          },
+          {
+            "name": "Body 3",
+            "value": "body-3"
+          }
+        ]
       },
       {
         "component": "aem-content",
@@ -562,10 +808,82 @@
         "label": "Title"
       },
       {
+        "component": "select",
+        "valueType": "string",
+        "name": "titleStyle",
+        "label": "Title style",
+        "options": [
+          {
+            "name": "Main Title",
+            "value": "main-title"
+          },
+          {
+            "name": "H1",
+            "value": "h1"
+          },
+          {
+            "name": "H2",
+            "value": "h2"
+          },
+          {
+            "name": "H3",
+            "value": "h3"
+          },
+          {
+            "name": "Body 1",
+            "value": "body-1"
+          },
+          {
+            "name": "Body 2",
+            "value": "body-2"
+          },
+          {
+            "name": "Body 3",
+            "value": "body-3"
+          }
+        ]
+      },
+      {
         "component": "richtext",
         "valueType": "string",
         "name": "subtitle",
         "label": "Subtitle"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "subtitleStyle",
+        "label": "Subtitle style",
+        "options": [
+          {
+            "name": "Main Title",
+            "value": "main-title"
+          },
+          {
+            "name": "H1",
+            "value": "h1"
+          },
+          {
+            "name": "H2",
+            "value": "h2"
+          },
+          {
+            "name": "H3",
+            "value": "h3"
+          },
+          {
+            "name": "Body 1",
+            "value": "body-1"
+          },
+          {
+            "name": "Body 2",
+            "value": "body-2"
+          },
+          {
+            "name": "Body 3",
+            "value": "body-3"
+          }
+        ]
       },
       {
         "component": "richtext",
@@ -574,10 +892,82 @@
         "label": "Modal title"
       },
       {
+        "component": "select",
+        "valueType": "string",
+        "name": "modalTitleStyle",
+        "label": "Modal Title style",
+        "options": [
+          {
+            "name": "Main Title",
+            "value": "main-title"
+          },
+          {
+            "name": "H1",
+            "value": "h1"
+          },
+          {
+            "name": "H2",
+            "value": "h2"
+          },
+          {
+            "name": "H3",
+            "value": "h3"
+          },
+          {
+            "name": "Body 1",
+            "value": "body-1"
+          },
+          {
+            "name": "Body 2",
+            "value": "body-2"
+          },
+          {
+            "name": "Body 3",
+            "value": "body-3"
+          }
+        ]
+      },
+      {
         "component": "richtext",
         "valueType": "string",
         "name": "modalSubtitle",
-        "label": "Modal subtitle"
+        "label": "Modal Subtitle"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "modalSubtitleStyle",
+        "label": "Modal Subtitle style",
+        "options": [
+          {
+            "name": "Main Title",
+            "value": "main-title"
+          },
+          {
+            "name": "H1",
+            "value": "h1"
+          },
+          {
+            "name": "H2",
+            "value": "h2"
+          },
+          {
+            "name": "H3",
+            "value": "h3"
+          },
+          {
+            "name": "Body 1",
+            "value": "body-1"
+          },
+          {
+            "name": "Body 2",
+            "value": "body-2"
+          },
+          {
+            "name": "Body 3",
+            "value": "body-3"
+          }
+        ]
       }
     ]
   },
@@ -619,10 +1009,82 @@
         "label": "Title"
       },
       {
+        "component": "select",
+        "valueType": "string",
+        "name": "titleStyle",
+        "label": "Title style",
+        "options": [
+          {
+            "name": "Main Title",
+            "value": "main-title"
+          },
+          {
+            "name": "H1",
+            "value": "h1"
+          },
+          {
+            "name": "H2",
+            "value": "h2"
+          },
+          {
+            "name": "H3",
+            "value": "h3"
+          },
+          {
+            "name": "Body 1",
+            "value": "body-1"
+          },
+          {
+            "name": "Body 2",
+            "value": "body-2"
+          },
+          {
+            "name": "Body 3",
+            "value": "body-3"
+          }
+        ]
+      },
+      {
         "component": "richtext",
         "valueType": "string",
         "name": "subtitle",
         "label": "Subtitle"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "subtitleStyle",
+        "label": "Subtitle style",
+        "options": [
+          {
+            "name": "Main Title",
+            "value": "main-title"
+          },
+          {
+            "name": "H1",
+            "value": "h1"
+          },
+          {
+            "name": "H2",
+            "value": "h2"
+          },
+          {
+            "name": "H3",
+            "value": "h3"
+          },
+          {
+            "name": "Body 1",
+            "value": "body-1"
+          },
+          {
+            "name": "Body 2",
+            "value": "body-2"
+          },
+          {
+            "name": "Body 3",
+            "value": "body-3"
+          }
+        ]
       }
     ]
   },

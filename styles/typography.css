@@ -17,6 +17,9 @@
   letter-spacing: 0;
   font-weight: 300;
 }
+.heading-h1-light strong {
+  font-weight: 500;
+}
 @media (width >= 900px) {
   .heading-h1-light {
     font-size: 64px;
@@ -42,6 +45,9 @@
   line-height: 34px;
   letter-spacing: 0;
   font-weight: 300;
+}
+.heading-h2-light strong {
+  font-weight: 500;
 }
 @media (width >= 900px) {
   .heading-h2-light {
@@ -69,6 +75,9 @@
   letter-spacing: 0;
   font-weight: 300;
 }
+.heading-h3-light strong {
+  font-weight: 500;
+}
 @media (width >= 900px) {
   .heading-h3-light {
     font-size: 36px;
@@ -94,6 +103,9 @@
   line-height: 24px;
   letter-spacing: 0;
   font-weight: 300;
+}
+.body-1-light strong {
+  font-weight: 500;
 }
 @media (width >= 900px) {
   .body-1-light {
@@ -121,6 +133,9 @@
   letter-spacing: 0;
   font-weight: 300;
 }
+.body-2-light strong {
+  font-weight: 500;
+}
 @media (width >= 900px) {
   .body-2-light {
     font-size: 20px;
@@ -146,6 +161,9 @@
   line-height: 30px;
   letter-spacing: 0;
   font-weight: 300;
+}
+.body-3-light strong {
+  font-weight: 500;
 }
 
 .tag {
