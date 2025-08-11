@@ -36,7 +36,7 @@ export default async function decorate(block) {
   modelData.title.style = modelData.titleStyle;
   modelData.subtitle.style = modelData.subtitleStyle;
 
-  if (modelData.fragment) {
+  if (modelData.fragment.value) {
     const fragment = await loadFragment(modelData.fragment.value);
     modelData.fragment.html = fragment.querySelector('& > div');
     if (modelData.fragment.html) {

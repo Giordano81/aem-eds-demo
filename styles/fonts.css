@@ -39,14 +39,14 @@
 @font-face {
   font-family: Graphik;
   src: url('../fonts/Graphik/Graphik-Regular.woff2') format('woff2'), url('../fonts/Graphik/Graphik-Regular.woff') format('woff');
-  font-weight: 400;
+  font-weight: 300;
   font-style: normal;
 }
 
 @font-face {
   font-family: Graphik;
   src: url('../fonts/Graphik/Graphik-SemiBold.woff2') format('woff2'), url('../fonts/Graphik/Graphik-SemiBold.woff') format('woff');
-  font-weight: 600;
+  font-weight: 500;
   font-style: normal;
 }
 
@@ -60,7 +60,7 @@
 @font-face {
   font-family: GraphikCond;
   src: url('../fonts/Graphik/GraphikCondensed-Regular-Web.woff2') format('woff2'), url('../fonts/Graphik/GraphikCondensed-Regular-Web.woff') format('woff');
-  font-weight: 400;
+  font-weight: 500;
   font-style: normal;
 }
 

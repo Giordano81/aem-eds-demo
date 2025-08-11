@@ -466,12 +466,16 @@
             "value": "image"
           },
           {
-            "name": "Gallery",
-            "value": "gallery"
+            "name": "Background Gallery",
+            "value": "backgroundGallery"
           },
           {
             "name": "Video",
             "value": "video"
+          },
+          {
+            "name": "Gallery",
+            "value": "gallery"
           }
         ]
       },
@@ -482,38 +486,77 @@
         "label": "Add opacity to image"
       },
       {
-        "component": "select",
-        "valueType": "string",
-        "name": "componentSize",
-        "label": "Component size",
-        "options": [
-          {
-            "name": "Small",
-            "value": "banner-small"
-          },
-          {
-            "name": "Medium",
-            "value": "banner-medium"
-          },
-          {
-            "name": "Large",
-            "value": "banner-large"
-          }
-        ],
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "darkBackground",
+        "label": "Add dark background"
+      },
+      {
+        "component": "aem-content",
+        "name": "galleryMediaFragment",
+        "label": "Gallery Media Fragment",
+        "required": true,
         "condition": {
-          "!==": [
+          "===": [
             {
               "var": "mediaType"
             },
             "gallery"
           ]
         }
+      }
+    ]
+  },
+  {
+    "id": "banner-gallery-item",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "required": true
       },
       {
-        "component": "boolean",
-        "valueType": "boolean",
-        "name": "darkBackground",
-        "label": "Add dark background"
+        "component": "text",
+        "name": "altText",
+        "label": "Alt Text"
+      },
+      {
+        "component": "text",
+        "name": "text",
+        "label": "Text"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "textPosition",
+        "label": "Text Position",
+        "options": [
+          {
+            "name": "Center",
+            "value": "center"
+          },
+          {
+            "name": "Bottom",
+            "value": "bottom"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "name": "ctaText",
+        "label": "Button Text"
+      },
+      {
+        "component": "aem-content",
+        "name": "ctaLink",
+        "label": "Button Link"
+      },
+      {
+        "component": "text",
+        "name": "hoverText",
+        "label": "Hover Text"
       }
     ]
   },
@@ -672,6 +715,12 @@
             "value": "body-3"
           }
         ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "eyebrow",
+        "label": "Eyebrow"
       },
       {
         "component": "text",

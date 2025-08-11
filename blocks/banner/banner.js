@@ -1,4 +1,5 @@
 import { getBlockModel, getButtonModel, createButtonElement, createTextElement, extractImageElements, createImageElement } from '../../scripts/blockHelper.js';
+import { loadFragment } from '../fragment/fragment.js';
 
 function getProps() {
   return [
@@ -14,12 +15,24 @@ function getProps() {
     { name: 'verticalAlign' },
     { name: 'mediaType' },
     { name: 'imageOpacity', isBoolean: true },
-    { name: 'componentSize' },
-    { name: 'darkBackground', isBoolean: true }
+    { name: 'darkBackground', isBoolean: true },
+    { name: 'galleryMediaFragment', attribute: 'href' }
   ];
 }
 
-export default function decorate(block) {
+function getItemsProps() {
+  return [
+    { name: 'image', attribute: 'src' },
+    { name: 'altText' },
+    { name: 'text' },
+    { name: 'textPosition' },
+    { name: 'ctaText' },
+    { name: 'ctaLink', attribute: 'href' },
+    { name: 'hoverText' }
+  ];
+}
+
+export default async function decorate(block) {
   const { block: updatedBlock, images } = extractImageElements(block);
 
   let modelData = getBlockModel(block, getProps());
@@ -32,18 +45,64 @@ export default function decorate(block) {
   modelData.subtitle.style = modelData.subtitleStyle;
   modelData.secondSubtitle.style = modelData.secondSubtitleStyle;
 
+  if (modelData.galleryMediaFragment.value) {
+    const fragment = await loadFragment(modelData.galleryMediaFragment.value);
+    modelData.galleryMediaFragment.html = fragment.querySelector('& > div');
+    if (modelData.galleryMediaFragment.html) {
+      modelData.galleryMediaFragment.items = []
+      for (let i = 0; i < modelData.galleryMediaFragment.html.children.length; i++) {
+        const sponsorItem = modelData.galleryMediaFragment.html.children[i].querySelector('& > div');
+
+        // Remove all child blocks so is possible to extract images for carousel without touching image for logo
+        const otherBlocks = document.createElement('div');
+        while (sponsorItem.children.length > getItemsProps().length) {
+          otherBlocks.appendChild(sponsorItem.children[getItemsProps().length]);
+        }
+        const item = getBlockModel(sponsorItem, getItemsProps());
+        modelData.galleryMediaFragment.items.push(item);
+      }
+    }
+  }
+
+  block.innerHTML = '';
+
   // Create main container
   const banner = document.createElement('div');
   banner.classList.add('banner-block');
+  if (modelData.imageOpacity) {
+    banner.classList.add('with-overlay-opacity');
+    banner.style.setProperty('--banner-overlay-opacity', '0.4');
+  }
 
-  let isGallery = false;
-  if (modelData.images.length) {
+  const elementsToBeAppendedAtTheEnd = [];
+
+  // Media section
+  if (modelData.mediaType == 'gallery') {
+    banner.classList.add('banner-with-gallery');
+
+    const mainDiv = document.createElement('div');
+    mainDiv.classList.add('gallery-container');
+    // mainDiv.style.gridTemplateColumns = `repeat(${modelData.galleryMediaFragment.items.length}, 1fr)`;
+    modelData.galleryMediaFragment.items.forEach((item, index) => {
+      // const galleryItem = document.createElement('div');
+      // galleryItem.classList.add('gallery-item');
+      // const imageModel = {
+      //   image: item.image.value,
+      //   imageAlt: item.altText
+      // };
+      // galleryItem.appendChild(createImageElement(imageModel));
+      // mainDiv.appendChild(galleryItem);
+
+      mainDiv.appendChild(createGalleryItem(item));
+    });
+    elementsToBeAppendedAtTheEnd.push(mainDiv);
+  } else if (modelData.images.length) {
     if (!modelData.mediaType || modelData.mediaType == 'image') {
       banner.style.backgroundImage = `url('${modelData.images[0].image}')`;
-    } else if (modelData.mediaType == 'gallery') {
-      isGallery = true;
+    } else if (modelData.mediaType == 'backgroundGallery') {
+      banner.classList.add('banner-background-gallery');
       const mainDiv = document.createElement('div');
-      mainDiv.classList.add('gallery-container');
+      mainDiv.classList.add('background-gallery-container');
 
       const list1 = [];
       const list2 = [];
@@ -64,15 +123,15 @@ export default function decorate(block) {
       const listsImages = [list1, list2, list3, list4];
 
       for (let i = 0; i < 4; i++) {
-        const galleryItem = document.createElement('div');
-        galleryItem.classList.add('gallery-item');
+        const backgroundGalleryItem = document.createElement('div');
+        backgroundGalleryItem.classList.add('background-gallery-item');
 
         // TODO: remove mock for image
         for (let j = 0; j < listsImages[i].length; j++) {
-          galleryItem.appendChild(createImageElement(listsImages[i][j]));
+          backgroundGalleryItem.appendChild(createImageElement(listsImages[i][j]));
         }
 
-        mainDiv.appendChild(galleryItem);
+        mainDiv.appendChild(backgroundGalleryItem);
       }
 
       banner.appendChild(mainDiv);
@@ -81,16 +140,20 @@ export default function decorate(block) {
     }
   }
 
-  if (modelData.imageOpacity) {
-    banner.style.setProperty('--banner-overlay-opacity', '0.4');
-  }
-  if (isGallery) {
-    banner.classList.add('banner-gallery');
-  } else if (modelData.componentSize) {
-    banner.classList.add(modelData.componentSize);
-  }
+  banner.appendChild(createTextSection(modelData));
 
-  // Create content container
+  elementsToBeAppendedAtTheEnd.forEach(element => {
+    banner.appendChild(element);
+  });
+
+  block.appendChild(banner);
+
+  if (modelData.darkBackground) {
+    block.classList.add('dark-background');
+  }
+}
+
+function createTextSection(modelData) {
   const content = document.createElement('div');
   content.className = 'banner-content';
 
@@ -138,12 +201,64 @@ export default function decorate(block) {
     content.appendChild(smallText);
   }
 
-  banner.appendChild(content);
+  return content;
+}
 
-  block.innerHTML = '';
-  block.appendChild(banner);
+function createGalleryItem(item) {
+  const gridItem = document.createElement('div');
+  gridItem.className = 'photo-gallery-item';
 
-  if (modelData.darkBackground) {
-    block.classList.add('dark-background');
+  const imageModel = {
+    image: item.image.value,
+    imageAlt: item.altText
   }
+  const img = createImageElement(imageModel);
+
+  const text = document.createElement('div');
+  text.textContent = item.text;
+
+  if (item.ctaText && item.ctaLink.value) {
+    const buttonModel = {
+      type: 'secondary',
+      text: item.ctaText,
+      link: item.ctaLink
+    };
+    const button = createButtonElement(buttonModel);
+
+    const container = document.createElement('div');
+    container.classList.add('overlay-text', 'overlay-text-center');
+    container.appendChild(text);
+    container.appendChild(button);
+    gridItem.appendChild(container);
+
+    gridItem.classList.add('medium-shadow');
+  } else {
+    // Choose overlay or bottom text
+    if (item.textPosition === 'center') {
+      text.classList.add('overlay-text', 'overlay-text-center');
+    } else if (item.textPosition === 'bottom') {
+      text.classList.add('overlay-text', 'overlay-text-bottom');
+    }
+
+    if (item.text) {
+      gridItem.appendChild(text);
+
+      gridItem.classList.add('small-shadow');
+    }
+
+    if (item.hoverText) {
+      gridItem.classList.add('with-hover');
+
+      const hoverText = document.createElement('div');
+      hoverText.textContent = item.hoverText;
+      hoverText.classList.add('overlay-text', 'overlay-text-center', 'hover-text');
+      gridItem.appendChild(hoverText);
+    }
+  }
+
+  if (item.image.value) {
+    gridItem.appendChild(img);
+  }
+
+  return gridItem;
 }

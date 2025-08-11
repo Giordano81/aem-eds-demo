@@ -16,6 +16,14 @@ main > .section > div.teaser-wrapper {
   padding-top: 24px;
   padding-left: 12px;
 }
+.content-container .left-section .teaser-eyebrow {
+  font-size: 17px;
+  line-height: 53px;
+  font-weight: 300;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  margin: 0 0 16px 0;
+}
 .content-container .left-section .vertical-text {
   position: absolute;
   bottom: 24px;

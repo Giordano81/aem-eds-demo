@@ -7,6 +7,7 @@ function getProps() {
     { name: 'titleStyle' },
     { name: 'subtitle', tags: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p'] },
     { name: 'subtitleStyle' },
+    { name: 'eyebrow' },
     { name: 'verticalText' }
   ];
 }
@@ -34,6 +35,12 @@ export default function decorate(block) {
   leftSection.className = 'left-section';
 
   // Append elements to the left section
+  if (modelData.eyebrow) {
+    const eyebrowModel = {
+      value: modelData.eyebrow
+    };
+    leftSection.appendChild(createTextElement(eyebrowModel, ['teaser-eyebrow']));
+  }
   if (modelData.title.value) {
     leftSection.appendChild(createTextElement(modelData.title, ['teaser-title']));
   }

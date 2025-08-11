@@ -2,6 +2,7 @@
   font-size: 48px;
   letter-spacing: 5px;
   font-weight: 300;
+  margin: 0;
 }
 @media (width >= 900px) {
   .main-title {
@@ -16,6 +17,7 @@
   line-height: 36px;
   letter-spacing: 0;
   font-weight: 300;
+  margin: 0;
 }
 .heading-h1-light strong {
   font-weight: 500;
@@ -32,6 +34,7 @@
   line-height: 36px;
   letter-spacing: 0;
   font-weight: 500;
+  margin: 0;
 }
 @media (width >= 900px) {
   .heading-h1-medium {
@@ -45,6 +48,7 @@
   line-height: 34px;
   letter-spacing: 0;
   font-weight: 300;
+  margin: 0;
 }
 .heading-h2-light strong {
   font-weight: 500;
@@ -61,6 +65,7 @@
   line-height: 34px;
   letter-spacing: 0;
   font-weight: 500;
+  margin: 0;
 }
 @media (width >= 900px) {
   .heading-h2-medium {
@@ -74,6 +79,7 @@
   line-height: 30px;
   letter-spacing: 0;
   font-weight: 300;
+  margin: 0;
 }
 .heading-h3-light strong {
   font-weight: 500;
@@ -90,6 +96,7 @@
   line-height: 30px;
   letter-spacing: 0;
   font-weight: 500;
+  margin: 0;
 }
 @media (width >= 900px) {
   .heading-h3-medium {
@@ -103,6 +110,7 @@
   line-height: 24px;
   letter-spacing: 0;
   font-weight: 300;
+  margin: 0;
 }
 .body-1-light strong {
   font-weight: 500;
@@ -119,6 +127,7 @@
   line-height: 24px;
   letter-spacing: 0;
   font-weight: 500;
+  margin: 0;
 }
 @media (width >= 900px) {
   .body-1-medium {
@@ -132,6 +141,7 @@
   line-height: 20px;
   letter-spacing: 0;
   font-weight: 300;
+  margin: 0;
 }
 .body-2-light strong {
   font-weight: 500;
@@ -148,6 +158,7 @@
   line-height: 20px;
   letter-spacing: 0;
   font-weight: 500;
+  margin: 0;
 }
 @media (width >= 900px) {
   .body-2-medium {
@@ -161,6 +172,7 @@
   line-height: 30px;
   letter-spacing: 0;
   font-weight: 300;
+  margin: 0;
 }
 .body-3-light strong {
   font-weight: 500;
@@ -171,6 +183,7 @@
   line-height: 12px;
   letter-spacing: 1px;
   font-weight: 300;
+  margin: 0;
 }
 
 a.button.cta-light {
