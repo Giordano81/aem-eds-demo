@@ -7,6 +7,7 @@ function getProps() {
     { name: 'titleStyle' },
     { name: 'subtitle', tags: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p'] },
     { name: 'subtitleStyle' },
+    { name: 'subtitleSlowAnimation', isBoolean: true },
     { name: 'secondSubtitle', tags: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p'] },
     { name: 'secondSubtitleStyle' },
     { name: 'subtitleQuotes', isBoolean: true },
@@ -18,7 +19,11 @@ function getProps() {
     { name: 'imageOpacity', isBoolean: true },
     { name: 'darkBackground', isBoolean: true },
     { name: 'galleryMediaFragment', attribute: 'href' },
-    { name: 'video', attribute: 'href' }
+    { name: 'video', attribute: 'href' },
+    { name: 'galleryZoom', isBoolean: true },
+    { name: 'galleryAnimation' },
+    { name: 'galleryFastAnimation', isBoolean: true },
+    { name: 'galleryFullscreen', isBoolean: true }
   ];
 }
 
@@ -45,6 +50,7 @@ export default async function decorate(block) {
 
   modelData.title.style = modelData.titleStyle;
   modelData.subtitle.style = modelData.subtitleStyle;
+  modelData.subtitle.slowAnimation = modelData.subtitleSlowAnimation;
   modelData.secondSubtitle.style = modelData.secondSubtitleStyle;
 
   if (modelData.galleryMediaFragment.value) {
@@ -82,38 +88,20 @@ export default async function decorate(block) {
 
   // Media section
   if (modelData.mediaType == 'gallery') {
-    banner.classList.add('banner-with-gallery');
+    banner.classList.add(modelData.galleryFullscreen ? 'banner-with-gallery-fullscreen' : 'banner-with-gallery');
 
     const mainDiv = document.createElement('div');
     mainDiv.classList.add('gallery-container');
+    if (modelData.galleryFastAnimation) {
+      mainDiv.classList.add('gallery-fast-animation');
+    }
     modelData.galleryMediaFragment.items.forEach((item, index) => {
-      mainDiv.appendChild(createGalleryItem(item));
+      mainDiv.appendChild(createGalleryItem(item, modelData));
     });
+    if (modelData.galleryAnimation) {
+      mainDiv.classList.add(modelData.galleryAnimation);
+    }
     elementsToBeAppendedAtTheEnd.push(mainDiv);
-
-    window.addEventListener('scroll', () => {
-      const testElement = document.getElementsByClassName('gallery-container')[0];
-      const rect = testElement.getBoundingClientRect();
-      let isInView = false;
-      if (rect.top <= (window.innerHeight / 2) && rect.bottom >= 0) {
-        isInView = true;
-        const children = testElement.querySelectorAll('.photo-gallery-item');
-        let currentIndex = 0;
-        function showNextImage() {
-          if (currentIndex < children.length) {
-            const currentImage = children[currentIndex];
-            currentImage.classList.add('visible');
-
-            setTimeout(() => {
-              currentIndex++;
-              showNextImage();
-            }, 1000);
-          }
-        }
-        showNextImage();
-      }
-    });
-
   } else if (modelData.mediaType == 'video') {
     const videoContainer = document.createElement('div');
     videoContainer.classList.add('video-container');
@@ -149,7 +137,7 @@ export default async function decorate(block) {
         textSection.classList.add('text-section-splitted');
 
         const imageContainer = document.createElement('div');
-        imageContainer.classList.add('image-section-splitted');
+        imageContainer.classList.add('image-section-splitted', 'fade-in-animation');
         imageContainer.appendChild(createImageElement(modelData.images[0]));
         elementsToBeAppendedAtTheEnd.push(imageContainer);
       } else {
@@ -202,9 +190,9 @@ function createTextSection(modelData) {
     if (modelData.subtitle.value) {
       content.appendChild(createTextElement(modelData.subtitle, subtitleClasses));
     }
-    if (modelData.secondSubtitle.value) {
-      content.appendChild(createTextElement(modelData.secondSubtitle, subtitleClasses));
-    }
+    // if (modelData.secondSubtitle.value) {
+    //   content.appendChild(createTextElement(modelData.secondSubtitle, subtitleClasses));
+    // }
 
     if (modelData.horizontalAlign) {
       content.classList.add(modelData.horizontalAlign);
@@ -228,7 +216,7 @@ function createTextSection(modelData) {
   return content;
 }
 
-function createGalleryItem(item) {
+function createGalleryItem(item, modelData) {
   const gridItem = document.createElement('div');
   gridItem.className = 'photo-gallery-item';
 
@@ -251,11 +239,14 @@ function createGalleryItem(item) {
 
     const container = document.createElement('div');
     container.classList.add('overlay-text', 'overlay-text-center');
-    container.appendChild(text);
+    if (item.text) {
+      container.appendChild(text);
+    }
     container.appendChild(button);
     gridItem.appendChild(container);
 
-    gridItem.classList.add('medium-shadow');
+    if (!modelData.galleryFullscreen)
+      gridItem.classList.add('medium-shadow');
   } else {
     // Choose overlay or bottom text
     if (item.textPosition === 'center') {
@@ -267,17 +258,22 @@ function createGalleryItem(item) {
     if (item.text) {
       gridItem.appendChild(text);
 
-      gridItem.classList.add('small-shadow');
+      if (!modelData.galleryFullscreen)
+        gridItem.classList.add('small-shadow');
     }
+  }
 
-    if (item.hoverText) {
-      gridItem.classList.add('with-hover');
+  if (item.hoverText) {
+    gridItem.classList.add('with-hover-text');
 
-      const hoverText = document.createElement('div');
-      hoverText.textContent = item.hoverText;
-      hoverText.classList.add('overlay-text', 'overlay-text-center', 'hover-text');
-      gridItem.appendChild(hoverText);
-    }
+    const hoverText = document.createElement('div');
+    hoverText.textContent = item.hoverText;
+    hoverText.classList.add('overlay-text', 'overlay-text-center', 'hover-text');
+    gridItem.appendChild(hoverText);
+  }
+
+  if (modelData.galleryZoom) {
+    gridItem.classList.add('with-hover');
   }
 
   if (item.image.value) {

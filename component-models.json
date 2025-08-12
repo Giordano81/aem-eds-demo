@@ -126,6 +126,12 @@
             "value": "tertiary"
           }
         ]
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "slowAnimation",
+        "label": "Slow animation"
       }
     ]
   },
@@ -362,6 +368,12 @@
         ]
       },
       {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "subtitleSlowAnimation",
+        "label": "Subtitle with slow animation"
+      },
+      {
         "component": "richtext",
         "valueType": "string",
         "name": "secondSubtitle",
@@ -530,6 +542,65 @@
               "var": "mediaType"
             },
             "video"
+          ]
+        }
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "galleryZoom",
+        "label": "Add gallery zoom on hover",
+        "condition": {
+          "===": [
+            {
+              "var": "mediaType"
+            },
+            "gallery"
+          ]
+        }
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "galleryAnimation",
+        "label": "Gallery images animation",
+        "required": true,
+        "options": [
+          {
+            "name": "From bottom",
+            "value": "animation-from-bottom"
+          },
+          {
+            "name": "Fade in",
+            "value": "animation-fade-in"
+          }
+        ]
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "galleryFastAnimation",
+        "label": "Gallery fast animation",
+        "condition": {
+          "===": [
+            {
+              "var": "mediaType"
+            },
+            "gallery"
+          ]
+        }
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "galleryFullscreen",
+        "label": "Gallery media fullscreen",
+        "condition": {
+          "===": [
+            {
+              "var": "mediaType"
+            },
+            "gallery"
           ]
         }
       }

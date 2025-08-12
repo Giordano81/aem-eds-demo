@@ -27,26 +27,56 @@ main>.section>div.banner-wrapper {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     grid-template-rows: repeat(2, 1fr);
+  }
 
-    .banner-content {
-      padding: 50px;
-      width: 50%;
-      margin: auto;
+  &.banner-with-gallery-fullscreen {
+    .gallery-container {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+
+      .photo-gallery-item {
+        &::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          height: 100%;
+          width: 100%;
+          background-color: rgba(var(--color-primary-blue-500-bkg-rgb), 0.6);
+        }
+      }
     }
   }
 
   &.splitted-in-2-rows {
-    display: grid;
-    grid-template-rows: repeat(2, 1fr);
+    display: flex;
+    flex-direction: column;
 
     .text-section-splitted {
-      grid-row: 1;
-      height: 100%;
-      padding: 90px 0;
+      height: fit-content;
     }
 
     .image-section-splitted {
-      grid-row: 2;
+      height: 100%;
+      width: 100vw;
+      overflow: hidden;
+
+      // Animation
+      opacity: 0;
+      transition: opacity 0.6s ease;
+
+      &.visible {
+        opacity: 1;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
     }
   }
 
@@ -63,7 +93,10 @@ main>.section>div.banner-wrapper {
     z-index: 1;
     display: flex;
     flex-direction: column;
-    padding: 32px;
+
+    padding: 50px;
+    width: 50%;
+    margin: auto;
 
     &.banner-ver-align-top {
       justify-content: flex-start;
@@ -168,16 +201,6 @@ main>.section>div.banner-wrapper {
       line-height: 21.6px;
       letter-spacing: 1.2px;
 
-      // Animation
-      transform: translateY(100%);
-      opacity: 0;
-      transition: transform 1s ease, opacity 1s ease;
-
-      &.visible {
-        transform: translateY(0);
-        opacity: 1;
-      }
-
       &.small-shadow {
         &::before {
           content: "";
@@ -198,13 +221,22 @@ main>.section>div.banner-wrapper {
 
       &.with-hover {
         &:hover {
-
           picture {
-            filter: blur(7.199999809265137px);
-
             img {
               transform: scale(1.2);
             }
+          }
+        }
+      }
+
+      &.with-hover-text {
+        picture {
+          filter: blur(7.20px);
+        }
+
+        &:hover {
+          .overlay-text {
+            z-index: 0;
           }
 
           .hover-text {
@@ -215,15 +247,15 @@ main>.section>div.banner-wrapper {
         .hover-text {
           opacity: 0;
           transition: opacity 0.3s ease;
-          z-index: 1;
+          z-index: 1 !important;
         }
       }
 
-      picture,
       img {
         width: 100%;
         height: 100%;
         transition: filter 0.3s ease, transform 0.3s ease;
+        object-fit: cover;
       }
 
       .overlay-text {
@@ -231,6 +263,7 @@ main>.section>div.banner-wrapper {
         padding: 8px;
         width: 100%;
         text-align: center;
+        z-index: 1;
 
         &.overlay-text-center {
           top: 50%;
@@ -252,6 +285,37 @@ main>.section>div.banner-wrapper {
           border: 1px solid #FFF;
           padding: 12px 16px;
           margin-top: 36px;
+        }
+      }
+    }
+
+    // Animations
+    &.animation-from-bottom {
+      .photo-gallery-item {
+        transform: translateY(100%);
+        opacity: 0;
+        transition: transform 1s ease, opacity 1s ease;
+
+        &.visible {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      &.gallery-fast-animation {
+        .photo-gallery-item {
+          transition: transform 0.3s ease, opacity 0s ease;
+        }
+      }
+    }
+
+    &.animation-fade-in {
+      .photo-gallery-item {
+        opacity: 0;
+        transition: opacity 0.2s ease;
+
+        &.visible {
+          opacity: 1;
         }
       }
     }

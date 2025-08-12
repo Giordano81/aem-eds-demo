@@ -82,6 +82,10 @@ function findAttributeByTag(element, tag) {
 }
 
 export function getButtonModel(element) {
+  const props = [
+    { name: 'slowAnimation', isBoolean: true }
+  ];
+
   let elementFound = element.querySelector('a');
   if (elementFound) {
     let type = '';
@@ -92,13 +96,27 @@ export function getButtonModel(element) {
     } else {
       type = 'default';
     }
-    return {
+
+    let result = {
       link: elementFound.getAttribute('href'),
       text: elementFound.textContent.trim(),
       title: elementFound.getAttribute('title'),
-      type: type,
-    };
+      type: type
+    }
+
+    const otherBlocks = document.createElement('div');
+    while (element.children.length > props.length) {
+      otherBlocks.appendChild(element.children[props.length]);
+    }
+    let modelData = getBlockModel(otherBlocks, props);
+
+    for (const key in modelData) {
+      result[key] = modelData[key];
+    }
+
+    return result;
   }
+
   return null;
 }
 
@@ -115,8 +133,10 @@ export function getImageModel(element) {
 
 export function createButtonElement(buttonModel) {
   const button = document.createElement('a');
-  button.classList.add('button');
-  button.classList.add('cta-light');
+  button.classList.add('button', 'cta-light', 'button-animation');
+  if (buttonModel.delayed) {
+    button.setAttribute('data-delayed', 'true')
+  }
   switch (buttonModel.type) {
     case "primary":
       button.classList.add('cta-primary');
@@ -138,7 +158,9 @@ export function createButtonElement(buttonModel) {
   if (buttonModel.title) {
     button.setAttribute('title', buttonModel.title);
   }
-  // button.style.setProperty('--link-color', '#fff');
+  if (buttonModel.slowAnimation) {
+    button.setAttribute('data-delayed', 'true');
+  }
   return button;
 }
 
@@ -174,6 +196,9 @@ export function createTextElement(prop, classes) {
     }
   }
   text.innerHTML = prop.value;
+  if (prop.slowAnimation) {
+    text.setAttribute('data-delayed', 'true');
+  }
 
   const container = document.createElement('div');
   container.classList.add('text-container');

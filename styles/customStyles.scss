@@ -13,6 +13,7 @@
   --color-primary-antracite: #2D2D2D;
   --color-primary-white: #FFF;
   --color-primary-blue-500-bkg: #0B1822;
+  --color-primary-blue-500-bkg-rgb: 11, 24, 34;
   --color-primary-antracite-500-bkg: #171717;
 
   --color-secondary-light-blue: #41668933;
@@ -48,6 +49,15 @@ a.button.cta-light {
   border: none;
   border-radius: 5px;
   margin: 0;
+
+  &.button-animation {
+    opacity: 0;
+    transition: opacity 1s ease;
+
+    &.visible {
+      opacity: 1;
+    }
+  }
 
   &.cta-primary {
     background-color: var(--color-primary-blue);
