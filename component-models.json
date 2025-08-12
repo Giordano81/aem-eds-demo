@@ -1016,6 +1016,12 @@
             "value": "body-3"
           }
         ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "tagName",
+        "label": "Tag name"
       }
     ]
   },

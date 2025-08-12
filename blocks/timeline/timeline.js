@@ -1,4 +1,4 @@
-import { getBlockModel, getButtonModel, createTextElement, createImageElement, createButtonElement, extractImageElements } from '../../scripts/blockHelper.js';
+import { getBlockModel, getButtonModel, createTextElement, createImageElement, createButtonElement, extractImageElements, crateBackgroundGallery } from '../../scripts/blockHelper.js';
 import { createModal } from '../modal/modal.js';
 import { loadFragment } from '../fragment/fragment.js';
 import { createImageCarousel } from '../../scripts/imageCarouselHelper.js';
@@ -26,7 +26,8 @@ function getItemsProps() {
     { name: 'modalTitle', tags: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p'] },
     { name: 'modalTitleStyle' },
     { name: 'modalSubtitle', tags: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p'] },
-    { name: 'modalSubtitleStyle' }
+    { name: 'modalSubtitleStyle' },
+    { name: 'tagName' }
   ];
 }
 
@@ -62,10 +63,28 @@ export default async function decorate(block) {
   }
 
   block.innerHTML = '';
+  block.parentElement.classList.add('double-content');
+
+  const initialContainer = document.createElement('div');
+  initialContainer.classList.add('initial-container');
+  if (modelData.title.value) {
+    const initialText = document.createElement('div');
+    initialText.className = 'text-section';
+    initialText.appendChild(createTextElement(modelData.title, ['timeline-title']));
+    initialContainer.appendChild(initialText);
+  }
+  let images = (modelData.fragment?.items || []).map((item) => {
+    return {
+      image: item.imageCarousel.value,
+      imageAlt: item.imageAltCarousel
+    }
+  });
+  initialContainer.appendChild(crateBackgroundGallery(images));
+  block.appendChild(initialContainer);
 
   // Create the main container
   const mainContainer = document.createElement('div');
-  mainContainer.className = 'timeline-container';
+  mainContainer.className = 'timeline-section';
 
   // Create the text section
   const textSection = document.createElement('div');
@@ -101,6 +120,14 @@ export default async function decorate(block) {
 
   // Create image elements and append to the image list
   (modelData.fragment?.items || []).forEach(item => {
+    const imageContainer = document.createElement('div');
+    imageContainer.classList.add('image-container');
+    if (item.tagName) {
+      const tag = document.createElement('div');
+      tag.classList.add('tag-name');
+      tag.textContent = item.tagName;
+      imageContainer.appendChild(tag);
+    }
     const model = {
       image: item.imageCarousel.value,
       imageAlt: item.imageAltCarousel,
@@ -108,7 +135,7 @@ export default async function decorate(block) {
     const image = createImageElement(model);
     image.onclick = () => {
       [...imageList.children].forEach(child => {
-        child.classList.remove('selected');
+        child.querySelector('picture').classList.remove('selected');
       });
       image.classList.add('selected');
 
@@ -164,7 +191,8 @@ export default async function decorate(block) {
       textSection.classList.add('d-none');
       timelineContentItem.classList.remove('d-none');
     };
-    imageList.appendChild(image);
+    imageContainer.appendChild(image);
+    imageList.appendChild(imageContainer);
   });
 
   carouselSection.appendChild(imageList);
@@ -173,4 +201,13 @@ export default async function decorate(block) {
   mainContainer.appendChild(carouselSection);
   block.appendChild(mainContainer);
 
+  // window.addEventListener('scroll', () => {
+  //   const testElement = document.getElementsByClassName('initial-container')[0];
+  //   const rect = testElement.getBoundingClientRect();
+  //   let isInView = false;
+  //   if (rect.top <= window.innerHeight && rect.bottom >= 0) {
+  //     isInView = true;
+  //   }
+  //   console.log(`Top: ${rect.top} - Bottom: ${rect.bottom} - Is in view: ${isInView}`);
+  // });
 }

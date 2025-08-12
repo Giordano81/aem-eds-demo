@@ -1,4 +1,4 @@
-import { getBlockModel, getButtonModel, createButtonElement, createTextElement, extractImageElements, createImageElement } from '../../scripts/blockHelper.js';
+import { getBlockModel, getButtonModel, createButtonElement, createTextElement, extractImageElements, createImageElement, crateBackgroundGallery } from '../../scripts/blockHelper.js';
 import { loadFragment } from '../fragment/fragment.js';
 
 function getProps() {
@@ -114,39 +114,39 @@ export default async function decorate(block) {
       }
     } else if (modelData.mediaType == 'backgroundGallery') {
       banner.classList.add('banner-background-gallery');
-      const mainDiv = document.createElement('div');
-      mainDiv.classList.add('background-gallery-container');
+      
+      // const mainDiv = document.createElement('div');
+      // mainDiv.classList.add('background-gallery-container');
 
-      const list1 = [];
-      const list2 = [];
-      const list3 = [];
-      const list4 = [];
+      // const list1 = [];
+      // const list2 = [];
+      // const list3 = [];
+      // const list4 = [];
 
-      modelData.images.forEach((item, index) => {
-        if (index % 4 === 0) {
-          list1.push(item);
-        } else if (index % 4 === 1) {
-          list2.push(item);
-        } else if (index % 4 === 2) {
-          list3.push(item);
-        } else {
-          list4.push(item);
-        }
-      });
-      const listsImages = [list1, list2, list3, list4];
+      // modelData.images.forEach((item, index) => {
+      //   if (index % 4 === 0) {
+      //     list1.push(item);
+      //   } else if (index % 4 === 1) {
+      //     list2.push(item);
+      //   } else if (index % 4 === 2) {
+      //     list3.push(item);
+      //   } else {
+      //     list4.push(item);
+      //   }
+      // });
+      // const listsImages = [list1, list2, list3, list4];
 
-      for (let i = 0; i < 4; i++) {
-        const backgroundGalleryItem = document.createElement('div');
-        backgroundGalleryItem.classList.add('background-gallery-item');
+      // for (let i = 0; i < 4; i++) {
+      //   const backgroundGalleryItem = document.createElement('div');
+      //   backgroundGalleryItem.classList.add('background-gallery-item');
 
-        // TODO: remove mock for image
-        for (let j = 0; j < listsImages[i].length; j++) {
-          backgroundGalleryItem.appendChild(createImageElement(listsImages[i][j]));
-        }
+      //   for (let j = 0; j < listsImages[i].length; j++) {
+      //     backgroundGalleryItem.appendChild(createImageElement(listsImages[i][j]));
+      //   }
 
-        mainDiv.appendChild(backgroundGalleryItem);
-      }
-
+      //   mainDiv.appendChild(backgroundGalleryItem);
+      // }
+      const mainDiv = crateBackgroundGallery(modelData.images);
       banner.appendChild(mainDiv);
     } else if (modelData.mediaType == 'video') {
 

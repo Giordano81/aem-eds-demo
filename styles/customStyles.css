@@ -6,6 +6,7 @@
   --text-color-light: #F2F2F2;
   --color-dark: #151517;
   --color-primary-blue: #152F44;
+  --color-primary-blue-rgb: 21, 47, 68;
   --color-primary-light-blue: #34526E;
   --color-primary-antracite: #2D2D2D;
   --color-primary-white: #FFF;
@@ -65,4 +66,26 @@ main > .section > div.default-content-wrapper {
   main > .section > div {
     padding: 0;
   }
+}
+.background-gallery-container {
+  display: flex;
+  position: absolute;
+  height: 100%;
+  overflow: hidden;
+}
+.background-gallery-container .background-gallery-item {
+  flex: 1;
+  padding: 20px;
+  text-align: center;
+  gap: 24px;
+  display: flex;
+  flex-direction: column;
+}
+.background-gallery-container .background-gallery-item picture {
+  height: 500px;
+  min-height: 500px;
+  display: flex;
+}
+.background-gallery-container .background-gallery-item picture img {
+  object-fit: cover;
 }

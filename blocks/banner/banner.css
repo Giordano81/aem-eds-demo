@@ -198,22 +198,5 @@ main > .section > div.banner-wrapper > div.dark-background {
 }
 
 .banner-background-gallery {
-  height: 90vh;
-}
-
-.background-gallery-container {
-  display: flex;
-  position: absolute;
-}
-.background-gallery-container .background-gallery-item {
-  flex: 1;
-  padding: 20px;
-  text-align: center;
-  gap: 24px;
-  display: flex;
-  flex-direction: column;
-}
-.background-gallery-container .background-gallery-item picture {
-  height: 500px;
-  display: flex;
+  height: 100%;
 }

@@ -196,3 +196,37 @@ export function extractImageElements(block) {
     images: images
   }
 }
+
+export function crateBackgroundGallery(images) {
+  const list1 = [];
+  const list2 = [];
+  const list3 = [];
+  const list4 = [];
+
+  images.forEach((item, index) => {
+    if (index % 4 === 0) {
+      list1.push(item);
+    } else if (index % 4 === 1) {
+      list2.push(item);
+    } else if (index % 4 === 2) {
+      list3.push(item);
+    } else {
+      list4.push(item);
+    }
+  });
+  const listsImages = [list1, list2, list3, list4];
+
+  const mainDiv = document.createElement('div');
+  mainDiv.classList.add('background-gallery-container');
+  for (let i = 0; i < 4; i++) {
+    const backgroundGalleryItem = document.createElement('div');
+    backgroundGalleryItem.classList.add('background-gallery-item');
+
+    for (let j = 0; j < listsImages[i].length; j++) {
+      backgroundGalleryItem.appendChild(createImageElement(listsImages[i][j]));
+    }
+
+    mainDiv.appendChild(backgroundGalleryItem);
+  }
+  return mainDiv;
+}
