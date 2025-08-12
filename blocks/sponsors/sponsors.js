@@ -81,7 +81,6 @@ export default async function decorate(block) {
       const dialogClasses = [];
 
       const modalBody = document.createElement('div');
-      modalBody.className = 'content-container';
 
       // Create the left section
       const textSection = document.createElement('div');

@@ -14,6 +14,7 @@ function getProps() {
     { name: 'horizontalAlign' },
     { name: 'verticalAlign' },
     { name: 'mediaType' },
+    { name: 'splittedIn2', isBoolean: true },
     { name: 'imageOpacity', isBoolean: true },
     { name: 'darkBackground', isBoolean: true },
     { name: 'galleryMediaFragment', attribute: 'href' }
@@ -76,6 +77,8 @@ export default async function decorate(block) {
 
   const elementsToBeAppendedAtTheEnd = [];
 
+  const textSection = createTextSection(modelData);
+
   // Media section
   if (modelData.mediaType == 'gallery') {
     banner.classList.add('banner-with-gallery');
@@ -98,7 +101,17 @@ export default async function decorate(block) {
     elementsToBeAppendedAtTheEnd.push(mainDiv);
   } else if (modelData.images.length) {
     if (!modelData.mediaType || modelData.mediaType == 'image') {
-      banner.style.backgroundImage = `url('${modelData.images[0].image}')`;
+      if (modelData.splittedIn2) {
+        banner.classList.add('splitted-in-2-rows');
+        textSection.classList.add('text-section-splitted');
+
+        const imageContainer = document.createElement('div');
+        imageContainer.classList.add('image-section-splitted');
+        imageContainer.appendChild(createImageElement(modelData.images[0]));
+        elementsToBeAppendedAtTheEnd.push(imageContainer);
+      } else {
+        banner.style.backgroundImage = `url('${modelData.images[0].image}')`;
+      }
     } else if (modelData.mediaType == 'backgroundGallery') {
       banner.classList.add('banner-background-gallery');
       const mainDiv = document.createElement('div');
@@ -140,7 +153,7 @@ export default async function decorate(block) {
     }
   }
 
-  banner.appendChild(createTextSection(modelData));
+  banner.appendChild(textSection);
 
   elementsToBeAppendedAtTheEnd.forEach(element => {
     banner.appendChild(element);

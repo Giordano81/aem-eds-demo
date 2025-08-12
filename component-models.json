@@ -482,6 +482,20 @@
       {
         "component": "boolean",
         "valueType": "boolean",
+        "name": "splittedIn2",
+        "label": "Splitted in 2 rows",
+        "condition": {
+          "===": [
+            {
+              "var": "mediaType"
+            },
+            "image"
+          ]
+        }
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
         "name": "imageOpacity",
         "label": "Add opacity to image"
       },
@@ -581,26 +595,6 @@
         "valueType": "boolean",
         "name": "spaceBetweenItems",
         "label": "Add space between items"
-      },
-      {
-        "component": "select",
-        "valueType": "string",
-        "name": "textPosition",
-        "label": "Text Position",
-        "options": [
-          {
-            "name": "Center",
-            "value": "center"
-          },
-          {
-            "name": "Bottom",
-            "value": "bottom"
-          },
-          {
-            "name": "Outside",
-            "value": "outside"
-          }
-        ]
       }
     ]
   },
@@ -616,21 +610,26 @@
         "required": true
       },
       {
-        "component": "richtext",
+        "component": "text",
         "name": "text",
         "label": "Text",
         "valueType": "string"
-      },
-      {
-        "component": "boolean",
-        "valueType": "boolean",
-        "name": "imageOpacity",
-        "label": "Add opacity to image"
       }
     ]
   },
   {
     "id": "teaser",
+    "fields": [
+      {
+        "component": "aem-content",
+        "name": "fragment",
+        "label": "Fragment",
+        "required": true
+      }
+    ]
+  },
+  {
+    "id": "teaser-item",
     "fields": [
       {
         "component": "richtext",

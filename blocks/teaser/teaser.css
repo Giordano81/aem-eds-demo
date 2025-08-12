@@ -2,7 +2,7 @@ main > .section > div.teaser-wrapper {
   max-width: unset;
 }
 
-.content-container {
+.teaser-content-container {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -11,12 +11,12 @@ main > .section > div.teaser-wrapper {
   color: var(--text-color-light);
   position: relative;
 }
-.content-container .left-section {
+.teaser-content-container .left-section {
   max-width: 50%;
   padding-top: 24px;
   padding-left: 12px;
 }
-.content-container .left-section .teaser-eyebrow {
+.teaser-content-container .left-section .teaser-eyebrow {
   font-size: 17px;
   line-height: 53px;
   font-weight: 300;
@@ -24,7 +24,7 @@ main > .section > div.teaser-wrapper {
   text-transform: uppercase;
   margin: 0 0 16px 0;
 }
-.content-container .left-section .vertical-text {
+.teaser-content-container .left-section .vertical-text {
   position: absolute;
   bottom: 24px;
   left: 50px;
@@ -34,10 +34,10 @@ main > .section > div.teaser-wrapper {
   color: rgba(255, 255, 255, 0.6);
   text-transform: uppercase;
 }
-.content-container .right-section {
+.teaser-content-container .right-section {
   max-width: 50%;
 }
-.content-container .right-section img {
+.teaser-content-container .right-section img {
   width: 100%;
   height: auto;
 }

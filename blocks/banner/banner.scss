@@ -35,6 +35,21 @@ main>.section>div.banner-wrapper {
     }
   }
 
+  &.splitted-in-2-rows {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+
+    .text-section-splitted {
+      grid-row: 1;
+      height: 100%;
+      padding: 90px 0;
+    }
+
+    .image-section-splitted {
+      grid-row: 2;
+    }
+  }
+
   .with-overlay-opacity {
     &::before {
       content: "";
@@ -73,6 +88,10 @@ main>.section>div.banner-wrapper {
 
     &.banner-hor-align-right {
       align-items: flex-end;
+    }
+
+    .button {
+      margin-top: 48px;
     }
 
     .subtitles-container {

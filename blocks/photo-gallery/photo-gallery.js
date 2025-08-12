@@ -4,16 +4,14 @@ function getProps() {
   return [
     { name: 'itemsPerRow', isNumber: true },
     { name: 'loadMore', isBoolean: true },
-    { name: 'spaceBetweenItems', isBoolean: true },
-    { name: 'textPosition' },
+    { name: 'spaceBetweenItems', isBoolean: true }
   ];
 }
 
 function getItemsProps() {
   return [
     { name: 'image', attribute: 'src' },
-    { name: 'text', tags: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p'] },
-    { name: 'imageOpacity', isBoolean: true }
+    { name: 'text' }
   ];
 }
 
@@ -39,12 +37,13 @@ export default function decorate(block) {
     // Show only the first row initially
     const initialItems = modelData.items.slice(0, modelData.itemsPerRow);
     initialItems.forEach(item => {
-      gridContainer.appendChild(createGridItem(item, modelData));
+      gridContainer.appendChild(createGridItem(item));
     });
 
     // Create "Load More" button
     const loadMoreButton = document.createElement('button');
     loadMoreButton.textContent = 'Load More';
+    loadMoreButton.classList.add('photo-gallery-button');
     loadMoreButton.style.display = 'block';
     loadMoreButton.onclick = () => {
       modelData.items.slice(modelData.itemsPerRow).forEach(item => {
@@ -58,6 +57,7 @@ export default function decorate(block) {
     // Create "Load Less" button
     const loadLessButton = document.createElement('button');
     loadLessButton.textContent = 'Load Less';
+    loadLessButton.classList.add('photo-gallery-button');
     loadLessButton.style.display = 'none';
     loadLessButton.onclick = (event) => {
 
@@ -81,35 +81,22 @@ export default function decorate(block) {
   }
 }
 
-function createGridItem(item, modelData) {
+function createGridItem(item) {
   const gridItem = document.createElement('div');
   gridItem.className = 'photo-gallery-item';
 
-  const imageModel = {
-    image: item.image.value,
-    imageAlt: item.alt
-  }
-  const img = createImageElement(imageModel);
-
-  const text = document.createElement('div');
-  text.textContent = item.text.value;
-
-  // Choose overlay or bottom text
-  if (modelData.textPosition === 'center') {
-    text.classList.add('overlay-text');
-    text.classList.add('overlay-text-center');
-  } else if (modelData.textPosition === 'bottom') {
-    text.classList.add('overlay-text');
-    text.classList.add('overlay-text-bottom');
-  } else {
-    img.style.height = 'auto';
-    text.classList.add('bottom-text');
-  }
-
   if (item.image.value) {
+    const imageModel = {
+      image: item.image.value,
+      imageAlt: item.alt
+    }
+    const img = createImageElement(imageModel);
     gridItem.appendChild(img);
   }
-  if (item.text.value) {
+  if (item.text) {
+    const text = document.createElement('div');
+    text.textContent = item.text;
+    text.classList.add('bottom-text');
     gridItem.appendChild(text);
   }
 
