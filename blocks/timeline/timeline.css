@@ -1,5 +1,5 @@
 main > .section > div.timeline-wrapper {
-  max-width: unset;
+  max-width: 100%;
   height: 100vh;
 }
 main > .section > div.timeline-wrapper.double-content {

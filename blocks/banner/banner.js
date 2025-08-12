@@ -17,7 +17,8 @@ function getProps() {
     { name: 'splittedIn2', isBoolean: true },
     { name: 'imageOpacity', isBoolean: true },
     { name: 'darkBackground', isBoolean: true },
-    { name: 'galleryMediaFragment', attribute: 'href' }
+    { name: 'galleryMediaFragment', attribute: 'href' },
+    { name: 'video', attribute: 'href' }
   ];
 }
 
@@ -85,20 +86,62 @@ export default async function decorate(block) {
 
     const mainDiv = document.createElement('div');
     mainDiv.classList.add('gallery-container');
-    // mainDiv.style.gridTemplateColumns = `repeat(${modelData.galleryMediaFragment.items.length}, 1fr)`;
     modelData.galleryMediaFragment.items.forEach((item, index) => {
-      // const galleryItem = document.createElement('div');
-      // galleryItem.classList.add('gallery-item');
-      // const imageModel = {
-      //   image: item.image.value,
-      //   imageAlt: item.altText
-      // };
-      // galleryItem.appendChild(createImageElement(imageModel));
-      // mainDiv.appendChild(galleryItem);
-
       mainDiv.appendChild(createGalleryItem(item));
     });
     elementsToBeAppendedAtTheEnd.push(mainDiv);
+
+    window.addEventListener('scroll', () => {
+      const testElement = document.getElementsByClassName('gallery-container')[0];
+      const rect = testElement.getBoundingClientRect();
+      let isInView = false;
+      if (rect.top <= (window.innerHeight / 2) && rect.bottom >= 0) {
+        isInView = true;
+        const children = testElement.querySelectorAll('.photo-gallery-item');
+        let currentIndex = 0;
+        function showNextImage() {
+          if (currentIndex < children.length) {
+            const currentImage = children[currentIndex];
+            currentImage.classList.add('visible');
+
+            setTimeout(() => {
+              currentIndex++;
+              showNextImage();
+            }, 1000);
+          }
+        }
+        showNextImage();
+      }
+    });
+
+  } else if (modelData.mediaType == 'video') {
+    const videoContainer = document.createElement('div');
+    videoContainer.classList.add('video-container');
+
+    const video = document.createElement('video');
+    video.autoplay = true;
+    video.muted = true;
+    video.loop = true;
+    const source = document.createElement('source');
+    source.src = modelData.video.value;
+    video.appendChild(source);
+
+    const playPauseButton = document.createElement('div');
+    playPauseButton.classList.add('button-play-pause');
+    playPauseButton.onclick = (event) => {
+      if (video.paused) {
+        video.play();
+        playPauseButton.classList.remove('paused');
+      } else {
+        video.pause();
+        playPauseButton.classList.add('paused');
+      }
+    };
+
+    videoContainer.appendChild(video);
+    videoContainer.appendChild(playPauseButton);
+
+    banner.appendChild(videoContainer);
   } else if (modelData.images.length) {
     if (!modelData.mediaType || modelData.mediaType == 'image') {
       if (modelData.splittedIn2) {
@@ -114,42 +157,8 @@ export default async function decorate(block) {
       }
     } else if (modelData.mediaType == 'backgroundGallery') {
       banner.classList.add('banner-background-gallery');
-      
-      // const mainDiv = document.createElement('div');
-      // mainDiv.classList.add('background-gallery-container');
-
-      // const list1 = [];
-      // const list2 = [];
-      // const list3 = [];
-      // const list4 = [];
-
-      // modelData.images.forEach((item, index) => {
-      //   if (index % 4 === 0) {
-      //     list1.push(item);
-      //   } else if (index % 4 === 1) {
-      //     list2.push(item);
-      //   } else if (index % 4 === 2) {
-      //     list3.push(item);
-      //   } else {
-      //     list4.push(item);
-      //   }
-      // });
-      // const listsImages = [list1, list2, list3, list4];
-
-      // for (let i = 0; i < 4; i++) {
-      //   const backgroundGalleryItem = document.createElement('div');
-      //   backgroundGalleryItem.classList.add('background-gallery-item');
-
-      //   for (let j = 0; j < listsImages[i].length; j++) {
-      //     backgroundGalleryItem.appendChild(createImageElement(listsImages[i][j]));
-      //   }
-
-      //   mainDiv.appendChild(backgroundGalleryItem);
-      // }
       const mainDiv = crateBackgroundGallery(modelData.images);
       banner.appendChild(mainDiv);
-    } else if (modelData.mediaType == 'video') {
-
     }
   }
 
@@ -175,19 +184,21 @@ function createTextSection(modelData) {
     content.appendChild(createTextElement(modelData.title, titleClasses));
   }
 
-  const subtitleClasses = ['banner-subtitle'];
-  if (modelData.subtitleQuotes) {
-    subtitleClasses.push('banner-subtitle-with-quotes');
-  }
-  const hasBothSubtitles = modelData.subtitle.value && modelData.secondSubtitle.value;
-  if (hasBothSubtitles) {
+  if (modelData.subtitle.value && modelData.secondSubtitle.value) {
     const subtitlesContainer = document.createElement('div');
     subtitlesContainer.classList.add('subtitles-container');
-    subtitleClasses.push('subtitle-item');
-    subtitlesContainer.appendChild(createTextElement(modelData.subtitle, subtitleClasses));
-    subtitlesContainer.appendChild(createTextElement(modelData.secondSubtitle, subtitleClasses));
+    const subtitle = createTextElement(modelData.subtitle, []);
+    const secondSubtitle = createTextElement(modelData.secondSubtitle, []);
+    subtitle.classList.add('subtitle-item');
+    secondSubtitle.classList.add('subtitle-item');
+    subtitlesContainer.appendChild(subtitle);
+    subtitlesContainer.appendChild(secondSubtitle);
     content.appendChild(subtitlesContainer);
   } else {
+    const subtitleClasses = [];
+    if (modelData.subtitleQuotes) {
+      subtitleClasses.push('banner-subtitle-with-quotes');
+    }
     if (modelData.subtitle.value) {
       content.appendChild(createTextElement(modelData.subtitle, subtitleClasses));
     }

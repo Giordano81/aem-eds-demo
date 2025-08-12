@@ -43,41 +43,42 @@ export function getBlockModel(block, props) {
 }
 
 function findAttributeByAttr(element, attribute) {
-  // Check if the current element has the attribute "asd"
   if (element.hasAttribute(attribute)) {
     const value = element.getAttribute(attribute);
-    return value; // Exit and return the value
+    return value;
   }
 
-  // If not found, check all children recursively
   for (let child of element.children) {
     const result = findAttributeByAttr(child, attribute);
     if (result) {
-      return result; // Return if found in any descendant
+      return result;
     }
   }
 
-  // If not found in any children or descendants
-  return null; // Return null if the attribute is not found
+  return null;
 }
 
 function findAttributeByTag(element, tag) {
-  // Check if the current element has the attribute "asd"
   if (element.tagName.toLowerCase() == tag) {
-    const value = element.innerHTML;
-    return value; // Exit and return the value
-  }
-
-  // If not found, check all children recursively
-  for (let child of element.children) {
-    const result = findAttributeByTag(child, tag);
-    if (result) {
-      return result; // Return if found in any descendant
+    if (element.nextSibling) {
+      let value = [];
+      [...element.parentElement.children].forEach(child => {
+        value.push(child.innerHTML);
+      });
+      return value.join('<br>');
+    } else {
+      return element.innerHTML;
     }
   }
 
-  // If not found in any children or descendants
-  return null; // Return null if the attribute is not found
+  for (let child of element.children) {
+    const result = findAttributeByTag(child, tag);
+    if (result) {
+      return result;
+    }
+  }
+
+  return null;
 }
 
 export function getButtonModel(element) {
@@ -174,7 +175,10 @@ export function createTextElement(prop, classes) {
   }
   text.innerHTML = prop.value;
 
-  return text;
+  const container = document.createElement('div');
+  container.classList.add('text-container');
+  container.appendChild(text);
+  return container;
 }
 
 export function createImageElement(element) {

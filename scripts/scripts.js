@@ -141,6 +141,7 @@ function loadDelayed() {
 async function loadPage() {
   await loadEager(document);
   await loadLazy(document);
+  import('../js/animations.js');
   loadDelayed();
 }
 
@@ -151,7 +152,7 @@ loadPage();
   // Carica solo gli index.js delle sottocartelle
   const customScripts = [
     'api/index.js',
-    'custom/index.js',
+    'custom/index.js'
     // aggiungi qui altre sottocartelle se necessario
   ];
   await Promise.all(

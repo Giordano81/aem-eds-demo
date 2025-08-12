@@ -518,6 +518,20 @@
             "gallery"
           ]
         }
+      },
+      {
+        "component": "aem-content",
+        "name": "video",
+        "label": "Video",
+        "required": true,
+        "condition": {
+          "===": [
+            {
+              "var": "mediaType"
+            },
+            "video"
+          ]
+        }
       }
     ]
   },

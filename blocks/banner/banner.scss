@@ -1,5 +1,5 @@
 main>.section>div.banner-wrapper {
-  max-width: unset;
+  max-width: 100%;
   height: 100vh;
 
   &>div {
@@ -168,6 +168,16 @@ main>.section>div.banner-wrapper {
       line-height: 21.6px;
       letter-spacing: 1.2px;
 
+      // Animation
+      transform: translateY(100%);
+      opacity: 0;
+      transition: transform 1s ease, opacity 1s ease;
+
+      &.visible {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
       &.small-shadow {
         &::before {
           content: "";
@@ -242,6 +252,53 @@ main>.section>div.banner-wrapper {
           border: 1px solid #FFF;
           padding: 12px 16px;
           margin-top: 36px;
+        }
+      }
+    }
+  }
+
+  .video-container {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+
+    video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      z-index: 1;
+      transform: translate(-50%, -50%);
+    }
+
+    .button-play-pause {
+      position: absolute;
+      bottom: 20px;
+      left: 80px;
+      z-index: 2;
+      padding: 10px;
+      border: none;
+      cursor: pointer;
+
+      &::after {
+        content: '';
+        display: inline-block;
+        width: 19px;
+        height: 19px;
+        background-image: url('../../icons/stop.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        vertical-align: middle;
+      }
+
+      &.paused {
+        &::after {
+          background-image: url('../../icons/play.svg');
         }
       }
     }

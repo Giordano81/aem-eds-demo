@@ -89,3 +89,31 @@ main > .section > div.default-content-wrapper {
 .background-gallery-container .background-gallery-item picture img {
   object-fit: cover;
 }
+
+.text-container {
+  overflow: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span,
+p {
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 1s ease, opacity 1s ease;
+}
+h1.visible,
+h2.visible,
+h3.visible,
+h4.visible,
+h5.visible,
+h6.visible,
+span.visible,
+p.visible {
+  transform: translateY(0);
+  opacity: 1;
+}

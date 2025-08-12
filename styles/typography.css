@@ -3,11 +3,12 @@
   letter-spacing: 5px;
   font-weight: 300;
   margin: 0;
+  text-transform: uppercase;
 }
 @media (width >= 900px) {
   .main-title {
     font-size: 144px;
-    line-height: 118.8px;
+    line-height: 150px;
     letter-spacing: 0;
   }
 }
