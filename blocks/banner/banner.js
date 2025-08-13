@@ -23,7 +23,8 @@ function getProps() {
     { name: 'galleryZoom', isBoolean: true },
     { name: 'galleryAnimation' },
     { name: 'galleryFastAnimation', isBoolean: true },
-    { name: 'galleryFullscreen', isBoolean: true }
+    { name: 'galleryFullscreen', isBoolean: true },
+    { name: 'removeFullscreen', isBoolean: true }
   ];
 }
 
@@ -161,6 +162,9 @@ export default async function decorate(block) {
   if (modelData.darkBackground) {
     block.classList.add('dark-background');
   }
+  if (modelData.removeFullscreen) {
+    block.closest('.banner-wrapper').classList.add('not-fullscreen');
+  }
 }
 
 function createTextSection(modelData) {
@@ -240,6 +244,7 @@ function createGalleryItem(item, modelData) {
     const container = document.createElement('div');
     container.classList.add('overlay-text', 'overlay-text-center');
     if (item.text) {
+      text.classList.add('body-1-medium');
       container.appendChild(text);
     }
     container.appendChild(button);
@@ -250,7 +255,7 @@ function createGalleryItem(item, modelData) {
   } else {
     // Choose overlay or bottom text
     if (item.textPosition === 'center') {
-      text.classList.add('overlay-text', 'overlay-text-center');
+      text.classList.add('overlay-text', 'overlay-text-center', 'body-1-medium');
     } else if (item.textPosition === 'bottom') {
       text.classList.add('overlay-text', 'overlay-text-bottom');
     }

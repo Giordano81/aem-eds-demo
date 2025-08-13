@@ -117,20 +117,22 @@ main>.section>div.default-content-wrapper {
 }
 
 // Animation
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-span,
-p {
-  transform: translateY(100%);
-  opacity: 0;
-  transition: transform 1s ease, opacity 1s ease;
+.text-container {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  span,
+  p {
+    transform: translateY(100%);
+    opacity: 0;
+    transition: transform 1s ease, opacity 1s ease;
 
-  &.visible {
-    transform: translateY(0);
-    opacity: 1;
+    &.visible {
+      transform: translateY(0);
+      opacity: 1;
+    }
   }
 }

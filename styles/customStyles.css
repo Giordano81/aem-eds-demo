@@ -102,26 +102,26 @@ main > .section > div.default-content-wrapper {
   overflow: hidden;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-span,
-p {
+.text-container h1,
+.text-container h2,
+.text-container h3,
+.text-container h4,
+.text-container h5,
+.text-container h6,
+.text-container span,
+.text-container p {
   transform: translateY(100%);
   opacity: 0;
   transition: transform 1s ease, opacity 1s ease;
 }
-h1.visible,
-h2.visible,
-h3.visible,
-h4.visible,
-h5.visible,
-h6.visible,
-span.visible,
-p.visible {
+.text-container h1.visible,
+.text-container h2.visible,
+.text-container h3.visible,
+.text-container h4.visible,
+.text-container h5.visible,
+.text-container h6.visible,
+.text-container span.visible,
+.text-container p.visible {
   transform: translateY(0);
   opacity: 1;
 }

@@ -1,4 +1,4 @@
-import { getBlockModel, createTextElement, createImageElement, createButtonElement, extractImageElements, getButtonModel } from '../../scripts/blockHelper.js';
+import { getBlockModel, createTextElement } from '../../scripts/blockHelper.js';
 
 function getProps() {
   return [
@@ -32,13 +32,11 @@ export default function decorate(block) {
     const itemContainer = document.createElement('div');
     itemContainer.className = 'sezione-item';
 
-    if (modelData.title.value) {
-      const title = document.createElement('p');
-      title.textContent = item.title;
-      itemContainer.appendChild(title);
+    if (item.title) {
+      itemContainer.appendChild(createTextElement({value: item.title}));
     }
 
-    if (modelData.ctaText && item.ctaLink.value) {
+    if (item.ctaText && item.ctaLink.value) {
       const link = document.createElement('a');
       link.setAttribute('href', item.ctaLink.value);
       link.innerHTML = item.ctaText;

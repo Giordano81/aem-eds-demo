@@ -3,10 +3,14 @@ main > .section > div.sponsors-wrapper {
   height: 100vh;
   background-color: var(--color-dark);
 }
+main > .section > div.sponsors-wrapper > div {
+  height: 100%;
+}
 
 .sponsor-container {
-  padding: 64px 0;
+  padding: 100px 77px;
   text-align: center;
+  height: 100%;
 }
 .sponsor-container .sponsor-title {
   margin-top: 0;
@@ -17,11 +21,12 @@ main > .section > div.sponsors-wrapper {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 80px;
+  height: 100%;
 }
 .sponsor-container .sponsor-logos .sponsor-logo {
   width: auto;
   height: 85px;
-  margin: auto;
+  margin: 0 auto auto auto;
 }
 .sponsor-container .sponsor-logos .sponsor-logo.start {
   margin: 0 auto 0 0;

@@ -38,7 +38,6 @@ export function getBlockModel(block, props) {
     }
   });
 
-  console.log(modelData);
   return modelData;
 }
 
@@ -108,7 +107,10 @@ export function getButtonModel(element) {
     while (element.children.length > props.length) {
       otherBlocks.appendChild(element.children[props.length]);
     }
-    let modelData = getBlockModel(otherBlocks, props);
+    let modelData;
+    if (otherBlocks.children.length) {
+      modelData = getBlockModel(otherBlocks, props);
+    }
 
     for (const key in modelData) {
       result[key] = modelData[key];
@@ -166,8 +168,8 @@ export function createButtonElement(buttonModel) {
 
 export function createTextElement(prop, classes) {
   const text = document.createElement(prop.tag || 'p');
-  // const text = document.createElement('p');
-  text.classList.add(...classes);
+  if (classes)
+    text.classList.add(...classes);
   if (prop.style) {
     switch (prop.style) {
       case 'main-title':
