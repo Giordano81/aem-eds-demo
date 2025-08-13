@@ -116,8 +116,21 @@ main>.section>div.default-content-wrapper {
   overflow: hidden;
 }
 
+.page-vertical-text {
+  position: fixed;
+  bottom: 24px;
+  left: 50px;
+  transform: rotate(-90deg);
+  transform-origin: left bottom;
+  font-size: 16.8px;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  z-index: 999;
+}
+
 // Animation
 .text-container {
+
   h1,
   h2,
   h3,

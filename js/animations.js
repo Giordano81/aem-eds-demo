@@ -2,6 +2,7 @@ const textContainer = Array.from(document.querySelectorAll('div.text-container')
 const buttons = Array.from(document.querySelectorAll('.button-animation'));
 const bannerGalleryContainer = Array.from(document.querySelectorAll('.gallery-container'));
 const fadeinAnimation = Array.from(document.querySelectorAll('.fade-in-animation'));
+const verticalText = Array.from(document.querySelectorAll('main > div [class$="-wrapper"]'));
 
 window.addEventListener('scroll', () => {
   scrollEvent();
@@ -73,8 +74,31 @@ function scrollEvent() {
       i--;
     }
   }
+
+  for (let i = 0; i < verticalText.length; i++) {
+    const text = document.querySelector('.page-vertical-text');
+    if (!text) break;
+
+    const el = verticalText[i];
+    const rect = el.getBoundingClientRect();
+    const isInView = rect.top <= (window.innerHeight / 2) && rect.bottom >= 0;
+    if (isInView) {
+      const child = el.querySelector('[data-vertical-text]')
+      text.textContent = child ? child.getAttribute('data-vertical-text') : '';
+    }
+  }
+}
+
+function initVerticalText() {
+  if (document.querySelectorAll('[data-vertical-text]').length) {
+    const smallText = document.createElement('span');
+    smallText.classList.add('page-vertical-text');
+    document.querySelector('main').appendChild(smallText);
+  }
 }
 
 setTimeout(() => {
   scrollEvent();
 }, 500);
+
+initVerticalText();

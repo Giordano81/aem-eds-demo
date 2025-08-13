@@ -174,6 +174,10 @@ function createTextSection(modelData) {
   if (modelData.title.value) {
     const titleClasses = ['banner-title'];
     content.appendChild(createTextElement(modelData.title, titleClasses));
+
+    if (modelData.title.style === 'main-title') {
+      content.style.width = '100%';
+    }
   }
 
   if (modelData.subtitle.value && modelData.secondSubtitle.value) {
@@ -186,6 +190,7 @@ function createTextSection(modelData) {
     subtitlesContainer.appendChild(subtitle);
     subtitlesContainer.appendChild(secondSubtitle);
     content.appendChild(subtitlesContainer);
+    content.style.width = '100%';
   } else {
     const subtitleClasses = [];
     if (modelData.subtitleQuotes) {
@@ -211,10 +216,7 @@ function createTextSection(modelData) {
   }
 
   if (modelData.verticalText) {
-    const smallText = document.createElement('span');
-    smallText.className = 'vertical-text';
-    smallText.textContent = modelData.verticalText;
-    content.appendChild(smallText);
+    content.setAttribute('data-vertical-text', modelData.verticalText);
   }
 
   return content;

@@ -76,10 +76,7 @@ export default async function decorate(block) {
     leftSection.appendChild(createButtonElement(firstElement.button));
   }
   if (firstElement.verticalText) {
-    const smallText = document.createElement('span');
-    smallText.className = 'vertical-text';
-    smallText.textContent = firstElement.verticalText;
-    leftSection.appendChild(smallText);
+    leftSection.setAttribute('data-vertical-text', modelData.verticalText);
   }
 
   // Create the right section
