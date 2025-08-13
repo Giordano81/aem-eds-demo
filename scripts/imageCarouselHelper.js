@@ -26,10 +26,25 @@ export function createImageCarousel(imageList) {
   slidesWrapper.setAttribute('id', `carousel-${window.carouselId}-slides`);
 
   container.append(slidesWrapper);
+
+  if (!isSingleSlide) {
+    const indicator = document.createElement('div');
+    indicator.classList.add('carousel-indicator');
+    const indicatorWidth = 100 / imageList.length
+    indicator.setAttribute('data-slides-count', imageList.length);
+    indicator.setAttribute('data-width', indicatorWidth);
+    indicator.style.width = `${indicatorWidth}%`;
+    indicator.style.left = 0;
+    container.appendChild(indicator);
+  }
+
   block.append(container);
 
   let slideIndicators;
   if (!isSingleSlide) {
+    // DO NOT REMOVE THIS slideIndicatorsNav OR THE CAROUSEL WILL NOT WORK
+    // If you remove this block, the IntersectionObserver will trigger more times during the initialization
+    // and set the slideIndex to the last slide instead of the first
     const slideIndicatorsNav = document.createElement('nav');
     slideIndicatorsNav.setAttribute('aria-label', placeholders.carouselSlideControls || 'Carousel slide controls');
     slideIndicators = document.createElement('ol');
@@ -53,14 +68,14 @@ export function createImageCarousel(imageList) {
     const slide = createImageSlide(image, idx, window.carouselId);
     slidesWrapper.append(slide);
 
-    if (slideIndicators) {
-      const indicator = document.createElement('li');
-      indicator.classList.add('carousel-slide-indicator');
-      indicator.dataset.targetSlide = idx;
-      indicator.setAttribute('aria-controls', `carousel-${window.carouselId}-slides`);
-      indicator.innerHTML = `<button type="button"><span>${idx + 1}</span></button>`;
-      slideIndicators.append(indicator);
-    }
+    // if (slideIndicators) {
+    //   const indicator = document.createElement('li');
+    //   indicator.classList.add('carousel-slide-indicator');
+    //   indicator.dataset.targetSlide = idx;
+    //   indicator.setAttribute('aria-controls', `carousel-${window.carouselId}-slides`);
+    //   indicator.innerHTML = `<button type="button"><span>${idx + 1}</span></button>`;
+    //   slideIndicators.append(indicator);
+    // }
   });
 
   if (!isSingleSlide) {
@@ -88,15 +103,15 @@ function updateActiveSlide(slide) {
     aSlide.setAttribute('tabindex', idx !== slideIndex ? '-1' : '0');
   });
 
-  const indicators = block.querySelectorAll('.carousel-slide-indicator');
-  indicators.forEach((indicator, idx) => {
-    const button = indicator.querySelector('button');
-    if (idx !== slideIndex) {
-      button.removeAttribute('disabled');
-    } else {
-      button.setAttribute('disabled', 'true');
-    }
-  });
+  // const indicators = block.querySelectorAll('.carousel-slide-indicator');
+  // indicators.forEach((indicator, idx) => {
+  //   const button = indicator.querySelector('button');
+  //   if (idx !== slideIndex) {
+  //     button.removeAttribute('disabled');
+  //   } else {
+  //     button.setAttribute('disabled', 'true');
+  //   }
+  // });
 }
 
 function showSlide(block, slideIndex = 0) {
@@ -114,18 +129,25 @@ function showSlide(block, slideIndex = 0) {
     left: activeSlide.offsetLeft,
     behavior: 'smooth',
   });
+  const indicator = block.querySelector('.carousel-indicator');
+  if (indicator) {
+    const left = realSlideIndex * +indicator.getAttribute('data-width');
+    if (left != null && !isNaN(left)) {
+      indicator.style.left = `${left}%`;
+    }
+  }
 }
 
 function bindEvents(block) {
-  const slideIndicators = block.querySelector('.carousel-slide-indicators');
-  if (!slideIndicators) return;
+  // const slideIndicators = block.querySelector('.carousel-slide-indicators');
+  // if (!slideIndicators) return;
 
-  slideIndicators.querySelectorAll('button').forEach((button) => {
-    button.addEventListener('click', (e) => {
-      const slideIndicator = e.currentTarget.parentElement;
-      showSlide(block, parseInt(slideIndicator.dataset.targetSlide, 10));
-    });
-  });
+  // slideIndicators.querySelectorAll('button').forEach((button) => {
+  //   button.addEventListener('click', (e) => {
+  //     const slideIndicator = e.currentTarget.parentElement;
+  //     showSlide(block, parseInt(slideIndicator.dataset.targetSlide, 10));
+  //   });
+  // });
 
   block.querySelector('.slide-prev')?.addEventListener('click', () => {
     showSlide(block, parseInt(block.dataset.activeSlide, 10) - 1);

@@ -50,6 +50,7 @@ main > .section > div.banner-wrapper .banner-block.splitted-in-2-rows {
 }
 main > .section > div.banner-wrapper .banner-block.splitted-in-2-rows .text-section-splitted {
   height: fit-content;
+  padding: 80px 0;
 }
 main > .section > div.banner-wrapper .banner-block.splitted-in-2-rows .image-section-splitted {
   height: 100%;

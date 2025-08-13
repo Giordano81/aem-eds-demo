@@ -432,6 +432,7 @@
         "valueType": "string",
         "name": "horizontalAlign",
         "label": "Horizontal Align",
+        "required": true,
         "options": [
           {
             "name": "Left",
@@ -452,6 +453,7 @@
         "valueType": "string",
         "name": "verticalAlign",
         "label": "Vertical Align",
+        "required": true,
         "options": [
           {
             "name": "Top",

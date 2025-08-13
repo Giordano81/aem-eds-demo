@@ -1,10 +1,18 @@
 .carousel {
   .carousel-slides-container {
     position: relative;
+
+    .carousel-indicator {
+      position: absolute;
+      bottom: 10px;
+      left: 0;
+      height: 5px;
+      background-color: #FFF;
+      transition: left 0.5s ease;
+    }
   }
 
-  .carousel-slides,
-  .carousel-slide-indicators {
+  .carousel-slides {
     list-style: none;
     margin: 0;
     padding: 0;
@@ -62,15 +70,6 @@
       position: relative;
       width: var(--slide-content-width, auto);
     }
-  }
-
-  .carousel-slide-indicators {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 6px 12px;
-    padding: 12px;
-    line-height: 0;
   }
 
   .carousel-slide-indicator {
