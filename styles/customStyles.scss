@@ -119,6 +119,10 @@ main>.section>div.default-content-wrapper {
   overflow: hidden;
 }
 
+.dark-background {
+  background-color: var(--color-dark);
+}
+
 .page-vertical-text {
   position: fixed;
   bottom: 24px;

@@ -29,7 +29,9 @@
       "spacer",
       "banner-gallery-item",
       "podcast",
-      "podcast-item"
+      "podcast-item",
+      "articles",
+      "article-item"
     ]
   },
   {
@@ -112,6 +114,12 @@
   },
   {
     "id": "podcast-item",
+    "components": [
+      "image"
+    ]
+  },
+  {
+    "id": "article-item",
     "components": [
       "image"
     ]

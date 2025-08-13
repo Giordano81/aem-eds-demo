@@ -1,0 +1,98 @@
+main>.section>div.articles-wrapper {
+  max-width: 100%;
+  height: 100vh;
+  width: 100%;
+  margin: 0;
+
+  &>div {
+    height: 100%;
+  }
+
+  .main-container {
+    padding: 0 64px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .articles-section {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      margin-top: 64px;
+
+      .article-item {
+        width: 33%;
+        min-width: 33%;
+        position: relative;
+
+        img {
+          height: 382px;
+          max-height: 382px;
+          object-fit: cover;
+        }
+
+        .article-tag-container {
+          background-color: var(--color-primary-blue);
+          padding: 13px 19px;
+          position: absolute;
+          top: 19px;
+          right: 21px;
+          border-radius: 5px;
+
+          .article-tag {
+            font-weight: 600;
+            font-size: 12px;
+            line-height: 19.2px;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            margin: 0;
+          }
+        }
+
+        .article-title {
+          font-weight: 600;
+          font-size: 28.8px;
+          line-height: 38.4px;
+          letter-spacing: 0.48px;
+          margin-top: 10px;
+        }
+
+        .article-date {
+          font-weight: 400;
+          font-size: 14.4px;
+          line-height: 19.2px;
+          letter-spacing: 0px;
+          margin-top: 24px;
+        }
+
+        .article-link {
+          font-size: 15.6px;
+          line-height: 21.6px;
+          font-weight: 400;
+          letter-spacing: 1.2px;
+          text-transform: uppercase;
+          margin-top: 22px;
+          position: relative;
+
+          &::after {
+            content: '';
+            display: inline-block;
+            width: 19px;
+            height: 19px;
+            margin-left: 8px;
+            background-image: url('../../icons/right_arrow.svg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            vertical-align: middle;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+          }
+        }
+      }
+    }
+  }
+}

@@ -1427,5 +1427,145 @@
         "label": "Link"
       }
     ]
+  },
+  {
+    "id": "articles",
+    "fields": [
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "title",
+        "label": "Title"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "titleStyle",
+        "label": "Title style",
+        "options": [
+          {
+            "name": "Main Title",
+            "value": "main-title"
+          },
+          {
+            "name": "H1",
+            "value": "h1"
+          },
+          {
+            "name": "H2",
+            "value": "h2"
+          },
+          {
+            "name": "H3",
+            "value": "h3"
+          },
+          {
+            "name": "Body 1",
+            "value": "body-1"
+          },
+          {
+            "name": "Body 2",
+            "value": "body-2"
+          },
+          {
+            "name": "Body 3",
+            "value": "body-3"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "subtitle",
+        "label": "Subtitle"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "subtitleStyle",
+        "label": "Subtitle style",
+        "options": [
+          {
+            "name": "Main Title",
+            "value": "main-title"
+          },
+          {
+            "name": "H1",
+            "value": "h1"
+          },
+          {
+            "name": "H2",
+            "value": "h2"
+          },
+          {
+            "name": "H3",
+            "value": "h3"
+          },
+          {
+            "name": "Body 1",
+            "value": "body-1"
+          },
+          {
+            "name": "Body 2",
+            "value": "body-2"
+          },
+          {
+            "name": "Body 3",
+            "value": "body-3"
+          }
+        ]
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "subtitleSlowAnimation",
+        "label": "Subtitle with slow animation"
+      },
+      {
+        "component": "aem-content",
+        "name": "fragment",
+        "label": "Fragment",
+        "required": true
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "darkBackground",
+        "label": "Add dark background"
+      }
+    ]
+  },
+  {
+    "id": "article-item",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "tag",
+        "label": "Tag"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Title"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "date",
+        "label": "Date"
+      },
+      {
+        "component": "text",
+        "name": "ctaText",
+        "label": "Link text"
+      },
+      {
+        "component": "aem-content",
+        "name": "ctaLink",
+        "label": "Link"
+      }
+    ]
   }
 ]

@@ -21,7 +21,7 @@ function getItemsProps() {
     { name: 'text' },
     { name: 'audio', attribute: 'href' },
     { name: 'ctaText' },
-    { name: 'ctaLink' },
+    { name: 'ctaLink', attribute: 'href' },
   ];
 }
 
@@ -145,11 +145,11 @@ export default async function decorate(block) {
     const carouselText = document.createElement('div');
     if (item.text)
       carouselText.appendChild(createTextElement(item.text, ['body-2-light', 'podcast-carousel-text']));
-    if (item.ctaLink && item.ctaText) {
+    if (item.ctaLink.value && item.ctaText) {
       const link = document.createElement('a');
       link.classList.add('body-2-medium');
       link.textContent = item.ctaText;
-      link.href = item.ctaLink;
+      link.href = item.ctaLink.value;
       carouselText.appendChild(link);
     }
     carouselItem.appendChild(carouselText);

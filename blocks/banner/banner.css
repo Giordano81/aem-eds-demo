@@ -11,9 +11,6 @@ main > .section > div.banner-wrapper.not-fullscreen .banner-content {
 main > .section > div.banner-wrapper > div {
   height: 100%;
 }
-main > .section > div.banner-wrapper > div.dark-background {
-  background-color: var(--color-dark);
-}
 main > .section > div.banner-wrapper .banner-block {
   position: relative;
   width: 100%;
