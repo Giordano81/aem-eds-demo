@@ -2,8 +2,7 @@ main > .section > div.teaser-wrapper {
   max-width: 100%;
   height: 100vh;
 }
-
-.teaser-content-container {
+main > .section > div.teaser-wrapper .teaser-content-container {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -12,12 +11,12 @@ main > .section > div.teaser-wrapper {
   color: var(--text-color-light);
   position: relative;
 }
-.teaser-content-container .left-section {
+main > .section > div.teaser-wrapper .teaser-content-container .left-section {
   max-width: 50%;
   padding-top: 24px;
   padding-left: 12px;
 }
-.teaser-content-container .left-section .teaser-eyebrow {
+main > .section > div.teaser-wrapper .teaser-content-container .left-section .teaser-eyebrow {
   font-size: 17px;
   line-height: 53px;
   font-weight: 300;
@@ -25,7 +24,7 @@ main > .section > div.teaser-wrapper {
   text-transform: uppercase;
   margin: 0 0 16px 0;
 }
-.teaser-content-container .left-section .vertical-text {
+main > .section > div.teaser-wrapper .teaser-content-container .left-section .vertical-text {
   position: absolute;
   bottom: 24px;
   left: 50px;
@@ -35,10 +34,10 @@ main > .section > div.teaser-wrapper {
   color: rgba(255, 255, 255, 0.6);
   text-transform: uppercase;
 }
-.teaser-content-container .right-section {
+main > .section > div.teaser-wrapper .teaser-content-container .right-section {
   max-width: 50%;
 }
-.teaser-content-container .right-section img {
+main > .section > div.teaser-wrapper .teaser-content-container .right-section img {
   width: 100%;
   height: auto;
 }

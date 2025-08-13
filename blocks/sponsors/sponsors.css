@@ -6,35 +6,34 @@ main > .section > div.sponsors-wrapper {
 main > .section > div.sponsors-wrapper > div {
   height: 100%;
 }
-
-.sponsor-container {
+main > .section > div.sponsors-wrapper .sponsor-container {
   padding: 100px 77px;
   text-align: center;
   height: 100%;
 }
-.sponsor-container .sponsor-title {
+main > .section > div.sponsors-wrapper .sponsor-container .sponsor-title {
   margin-top: 0;
   margin-bottom: 48px;
   text-align: left;
 }
-.sponsor-container .sponsor-logos {
+main > .section > div.sponsors-wrapper .sponsor-container .sponsor-logos {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 80px;
   height: 100%;
 }
-.sponsor-container .sponsor-logos .sponsor-logo {
+main > .section > div.sponsors-wrapper .sponsor-container .sponsor-logos .sponsor-logo {
   width: auto;
   height: 85px;
   margin: 0 auto auto auto;
 }
-.sponsor-container .sponsor-logos .sponsor-logo.start {
+main > .section > div.sponsors-wrapper .sponsor-container .sponsor-logos .sponsor-logo.start {
   margin: 0 auto 0 0;
 }
-.sponsor-container .sponsor-logos .sponsor-logo.end {
+main > .section > div.sponsors-wrapper .sponsor-container .sponsor-logos .sponsor-logo.end {
   margin: 0 0 0 auto;
 }
-.sponsor-container .sponsor-logos .sponsor-logo img {
+main > .section > div.sponsors-wrapper .sponsor-container .sponsor-logos .sponsor-logo img {
   height: 85px;
   cursor: pointer;
 }

@@ -2,18 +2,17 @@ main > .section > div.links-wrapper {
   max-width: 100%;
   height: fit-content;
 }
-
-.sezioni-link {
+main > .section > div.links-wrapper .sezioni-link {
   padding: 70px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 80px 24px;
 }
-.sezioni-link .sezione-item {
+main > .section > div.links-wrapper .sezioni-link .sezione-item {
   border-left: 2px solid #FFF;
   padding-left: 40px;
 }
-.sezioni-link .sezione-item p {
+main > .section > div.links-wrapper .sezioni-link .sezione-item p {
   font-family: Graphik;
   font-weight: 500;
   font-size: 36px;
@@ -23,14 +22,14 @@ main > .section > div.links-wrapper {
   margin: 0;
   margin-bottom: 12px;
 }
-.sezioni-link .sezione-item a {
+main > .section > div.links-wrapper .sezioni-link .sezione-item a {
   color: var(--text-color-light);
   font-family: Graphik;
   font-weight: 300;
   font-size: 24px;
   line-height: 36px;
 }
-.sezioni-link .sezione-item a::after {
+main > .section > div.links-wrapper .sezioni-link .sezione-item a::after {
   content: "";
   display: inline-block;
   width: 19px;

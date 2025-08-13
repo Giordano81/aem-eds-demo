@@ -3,44 +3,44 @@ main>.section>div.sponsors-wrapper {
   height: 100vh;
   background-color: var(--color-dark);
 
-  & > div {
+  &>div {
     height: 100%;
   }
-}
 
-.sponsor-container {
-  padding: 100px 77px;
-  text-align: center;
-  height: 100%;
-
-  .sponsor-title {
-    margin-top: 0;
-    margin-bottom: 48px;
-    text-align: left;
-  }
-
-  .sponsor-logos {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 80px;
+  .sponsor-container {
+    padding: 100px 77px;
+    text-align: center;
     height: 100%;
 
-    .sponsor-logo {
-      width: auto;
-      height: 85px;
-      margin: 0 auto auto auto;
+    .sponsor-title {
+      margin-top: 0;
+      margin-bottom: 48px;
+      text-align: left;
+    }
 
-      &.start {
-        margin: 0 auto 0 0;
-      }
-      
-      &.end {
-        margin: 0 0 0 auto;
-      }
+    .sponsor-logos {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 80px;
+      height: 100%;
 
-      img {
+      .sponsor-logo {
+        width: auto;
         height: 85px;
-        cursor: pointer;
+        margin: 0 auto auto auto;
+
+        &.start {
+          margin: 0 auto 0 0;
+        }
+
+        &.end {
+          margin: 0 0 0 auto;
+        }
+
+        img {
+          height: 85px;
+          cursor: pointer;
+        }
       }
     }
   }

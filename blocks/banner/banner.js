@@ -49,11 +49,6 @@ export default async function decorate(block) {
   }
   modelData.images = images;
 
-  modelData.title.style = modelData.titleStyle;
-  modelData.subtitle.style = modelData.subtitleStyle;
-  modelData.subtitle.slowAnimation = modelData.subtitleSlowAnimation;
-  modelData.secondSubtitle.style = modelData.secondSubtitleStyle;
-
   if (modelData.galleryMediaFragment.value) {
     const fragment = await loadFragment(modelData.galleryMediaFragment.value);
     modelData.galleryMediaFragment.html = fragment.querySelector('& > div');

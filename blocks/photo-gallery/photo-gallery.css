@@ -3,34 +3,32 @@ main > .section > div.photo-gallery-wrapper {
   height: 100vh;
   padding: 0 70px;
 }
-
-#photo-gallery-container {
+main > .section > div.photo-gallery-wrapper #photo-gallery-container {
   display: grid;
   gap: 0;
 }
-#photo-gallery-container.space-between-items {
+main > .section > div.photo-gallery-wrapper #photo-gallery-container.space-between-items {
   gap: 16px;
 }
-#photo-gallery-container .photo-gallery-item {
+main > .section > div.photo-gallery-wrapper #photo-gallery-container .photo-gallery-item {
   display: flex;
   flex-direction: column;
 }
-#photo-gallery-container .photo-gallery-item picture {
+main > .section > div.photo-gallery-wrapper #photo-gallery-container .photo-gallery-item picture {
   height: 100%;
   border: solid 0.5px var(--color-primary-light-blue);
 }
-#photo-gallery-container .photo-gallery-item picture img {
+main > .section > div.photo-gallery-wrapper #photo-gallery-container .photo-gallery-item picture img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-#photo-gallery-container .photo-gallery-item .bottom-text {
+main > .section > div.photo-gallery-wrapper #photo-gallery-container .photo-gallery-item .bottom-text {
   text-align: start;
   padding: 4px 8px;
   border: solid 0.5px var(--color-primary-light-blue);
 }
-
-.photo-gallery-button {
+main > .section > div.photo-gallery-wrapper .photo-gallery-button {
   font-size: 19.2px;
   line-height: 21.6px;
   font-weight: 400;

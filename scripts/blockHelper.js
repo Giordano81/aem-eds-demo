@@ -38,6 +38,25 @@ export function getBlockModel(block, props) {
     }
   });
 
+  if (modelData.hasOwnProperty('title') && modelData.hasOwnProperty('titleStyle')) {
+    modelData.title.style = modelData.titleStyle;
+  }
+  if (modelData.hasOwnProperty('subtitle') && modelData.hasOwnProperty('subtitleStyle')) {
+    modelData.subtitle.style = modelData.subtitleStyle;
+  }
+  if (modelData.hasOwnProperty('subtitle') && modelData.hasOwnProperty('subtitleSlowAnimation')) {
+    modelData.subtitle.slowAnimation = modelData.subtitleSlowAnimation;
+  }
+  if (modelData.hasOwnProperty('secondSubtitle') && modelData.hasOwnProperty('secondSubtitleStyle')) {
+    modelData.secondSubtitle.style = modelData.secondSubtitleStyle;
+  }
+  if (modelData.hasOwnProperty('modalTitle') && modelData.hasOwnProperty('modalTitleStyle')) {
+    modelData.modalTitle.style = modelData.modalTitleStyle;
+  }
+  if (modelData.hasOwnProperty('modalSubtitle') && modelData.hasOwnProperty('modalSubtitleStyle')) {
+    modelData.modalSubtitle.style = modelData.modalSubtitleStyle;
+  }
+
   return modelData;
 }
 
@@ -133,9 +152,11 @@ export function getImageModel(element) {
   return null;
 }
 
-export function createButtonElement(buttonModel) {
+export function createButtonElement(buttonModel, avoidAnimation = false) {
   const button = document.createElement('a');
-  button.classList.add('button', 'cta-light', 'button-animation');
+  button.classList.add('button', 'cta-light');
+  if (!avoidAnimation)
+    button.classList.add('button-animation');
   if (buttonModel.delayed) {
     button.setAttribute('data-delayed', 'true')
   }
@@ -166,7 +187,12 @@ export function createButtonElement(buttonModel) {
   return button;
 }
 
-export function createTextElement(prop, classes) {
+export function createTextElement(prop, classes, avoidAnimation = false) {
+  if (typeof prop === 'string') {
+    prop = {
+      value: prop
+    }
+  }
   const text = document.createElement(prop.tag || 'p');
   if (classes)
     text.classList.add(...classes);
@@ -201,6 +227,8 @@ export function createTextElement(prop, classes) {
   if (prop.slowAnimation) {
     text.setAttribute('data-delayed', 'true');
   }
+  if (avoidAnimation)
+    return text;
 
   const container = document.createElement('div');
   container.classList.add('text-container');

@@ -1,0 +1,101 @@
+main > .section > div.podcast-wrapper {
+  max-width: 100%;
+  height: 100vh;
+  width: 100%;
+  margin: 0;
+}
+main > .section > div.podcast-wrapper > div {
+  height: 100%;
+}
+main > .section > div.podcast-wrapper .main-container {
+  display: flex;
+  gap: 36px;
+  padding: 100px 0 100px 70px;
+}
+main > .section > div.podcast-wrapper .main-container .podcast-text-section {
+  width: 25%;
+  max-width: 25%;
+}
+main > .section > div.podcast-wrapper .main-container .podcast-carousel-section {
+  width: 75%;
+  max-width: 75%;
+  display: flex;
+  gap: 36px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+main > .section > div.podcast-wrapper .main-container .podcast-carousel-section .podcast-carousel-item {
+  min-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  height: 100%;
+}
+main > .section > div.podcast-wrapper .main-container .podcast-carousel-section .podcast-carousel-item > :first-child {
+  height: 400px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+  position: relative;
+}
+main > .section > div.podcast-wrapper .main-container .podcast-carousel-section .podcast-carousel-item > :first-child.is-playing .button-play-pause::after {
+  background-image: url("../../icons/podcast-stop.svg");
+}
+main > .section > div.podcast-wrapper .main-container .podcast-carousel-section .podcast-carousel-item > :first-child.is-playing .remaining-time,
+main > .section > div.podcast-wrapper .main-container .podcast-carousel-section .podcast-carousel-item > :first-child.is-playing .progress-container {
+  display: block;
+}
+main > .section > div.podcast-wrapper .main-container .podcast-carousel-section .podcast-carousel-item > :first-child.with-background-image {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+main > .section > div.podcast-wrapper .main-container .podcast-carousel-section .podcast-carousel-item > :first-child p {
+  margin: 0;
+}
+main > .section > div.podcast-wrapper .main-container .podcast-carousel-section .podcast-carousel-item > :first-child audio {
+  display: none;
+}
+main > .section > div.podcast-wrapper .main-container .podcast-carousel-section .podcast-carousel-item > :first-child .button-play-pause {
+  width: fit-content;
+  margin: 0 auto;
+}
+main > .section > div.podcast-wrapper .main-container .podcast-carousel-section .podcast-carousel-item > :first-child .button-play-pause::after {
+  content: "";
+  display: inline-block;
+  width: 53px;
+  height: 53px;
+  background-image: url("../../icons/podcast-play.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  vertical-align: middle;
+}
+main > .section > div.podcast-wrapper .main-container .podcast-carousel-section .podcast-carousel-item > :first-child .remaining-time {
+  font-size: 12px;
+  line-height: 21.6px;
+  font-weight: 400;
+  letter-spacing: 0;
+  position: absolute;
+  bottom: 7px;
+  right: 7px;
+  display: none;
+}
+main > .section > div.podcast-wrapper .main-container .podcast-carousel-section .podcast-carousel-item > :first-child .progress-container {
+  width: 100%;
+  background-color: #2D2D2D;
+  height: 6px;
+  position: absolute;
+  bottom: 0;
+  display: none;
+}
+main > .section > div.podcast-wrapper .main-container .podcast-carousel-section .podcast-carousel-item > :first-child .progress-container .progress-bar {
+  height: 100%;
+  width: 0;
+  background-color: #DCDCDC;
+}
+main > .section > div.podcast-wrapper .main-container .podcast-carousel-section .podcast-carousel-item > :nth-child(2) a {
+  text-decoration: underline;
+}

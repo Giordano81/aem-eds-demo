@@ -24,8 +24,6 @@ function getItemsProps() {
 export default async function decorate(block) {
   let modelData = getBlockModel(block, getProps());
 
-  modelData.title.style = modelData.titleStyle;
-
   if (modelData.fragment.value) {
     const fragment = await loadFragment(modelData.fragment.value);
     modelData.fragment.html = fragment.querySelector('& > div');
@@ -42,10 +40,7 @@ export default async function decorate(block) {
         const item = getBlockModel(sponsorItem, getItemsProps());
         const { otherBlocks: updatedBlock, images } = extractImageElements(otherBlocks);
         item.images = images;
-
-        item.title.style = item.titleStyle;
-        item.subtitle.style = item.subtitleStyle;
-
+        
         if (otherBlocks.children.length) {
           item.button = getButtonModel(otherBlocks.children[0]);
         }
@@ -87,10 +82,10 @@ export default async function decorate(block) {
       textSection.classList.add('text-section');
       textSection.appendChild(createImageElement(model));
       if (item.title.value) {
-        textSection.appendChild(createTextElement(item.title, ['teaser-title']));
+        textSection.appendChild(createTextElement(item.title, ['teaser-title'], true));
       }
       if (item.subtitle.value) {
-        textSection.appendChild(createTextElement(item.subtitle, ['teaser-subtitle']));
+        textSection.appendChild(createTextElement(item.subtitle, ['teaser-subtitle'], true));
       }
       if (item.button?.link && item.button?.text) {
         textSection.appendChild(createButtonElement(item.button));

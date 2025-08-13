@@ -19,8 +19,7 @@ main > .section > div.timeline-wrapper > div {
   height: 100%;
   width: 100%;
 }
-
-.timeline-section {
+main > .section > div.timeline-wrapper .timeline-section {
   display: grid;
   align-items: center;
   padding: 20px;
@@ -28,35 +27,34 @@ main > .section > div.timeline-wrapper > div {
   background-color: var(--background-color-dark);
   color: var(--text-color-light);
 }
-.timeline-section .text-section {
+main > .section > div.timeline-wrapper .timeline-section .text-section {
   text-align: center;
   margin-bottom: 20px;
 }
-.timeline-section .carousel-section {
+main > .section > div.timeline-wrapper .timeline-section .carousel-section {
   width: 100%;
   overflow-x: auto;
-  white-space: nowrap;
   scrollbar-width: none;
   margin-top: auto;
 }
-.timeline-section .carousel-section .image-list {
+main > .section > div.timeline-wrapper .timeline-section .carousel-section .image-list {
   display: inline-flex;
   gap: 8px;
   transition: transform 0.5s ease;
 }
-.timeline-section .carousel-section .image-list .image-container {
+main > .section > div.timeline-wrapper .timeline-section .carousel-section .image-list .image-container {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
-.timeline-section .carousel-section .image-list .image-container picture {
+main > .section > div.timeline-wrapper .timeline-section .carousel-section .image-list .image-container picture {
   width: 144px;
   height: 186px;
   display: block;
   margin-top: auto;
   position: relative;
 }
-.timeline-section .carousel-section .image-list .image-container picture::after {
+main > .section > div.timeline-wrapper .timeline-section .carousel-section .image-list .image-container picture::after {
   content: "";
   position: absolute;
   top: 0;
@@ -67,19 +65,19 @@ main > .section > div.timeline-wrapper > div {
   width: 100%;
   background-color: rgba(var(--color-primary-blue-rgb), 0.6);
 }
-.timeline-section .carousel-section .image-list .image-container picture.selected {
+main > .section > div.timeline-wrapper .timeline-section .carousel-section .image-list .image-container picture.selected {
   width: 215px;
   height: 234px;
 }
-.timeline-section .carousel-section .image-list .image-container picture.selected::after {
+main > .section > div.timeline-wrapper .timeline-section .carousel-section .image-list .image-container picture.selected::after {
   content: none;
 }
-.timeline-section .carousel-section .image-list .image-container picture img {
+main > .section > div.timeline-wrapper .timeline-section .carousel-section .image-list .image-container picture img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-.timeline-section .carousel-section .image-list .image-container .tag-name {
+main > .section > div.timeline-wrapper .timeline-section .carousel-section .image-list .image-container .tag-name {
   font-size: 19.65px;
   line-height: 100%;
   letter-spacing: 0;
@@ -87,32 +85,31 @@ main > .section > div.timeline-wrapper > div {
   font-weight: 400;
   display: none;
 }
-.timeline-section .carousel-section .image-list .image-container:hover picture::after {
+main > .section > div.timeline-wrapper .timeline-section .carousel-section .image-list .image-container:hover picture::after {
   content: none;
 }
-.timeline-section .carousel-section .image-list .image-container:hover .tag-name {
+main > .section > div.timeline-wrapper .timeline-section .carousel-section .image-list .image-container:hover .tag-name {
   display: block;
 }
-.timeline-section .timeline-content-item {
+main > .section > div.timeline-wrapper .timeline-section .timeline-content-item {
   background-color: var(--background-color-dark);
   color: #FFF;
   padding: 40px;
   display: flex;
   justify-content: space-between;
 }
-.timeline-section .timeline-content-item__title {
+main > .section > div.timeline-wrapper .timeline-section .timeline-content-item__title {
   font-size: 2em;
   margin-bottom: 20px;
 }
-.timeline-section .timeline-content-item__subtitle {
+main > .section > div.timeline-wrapper .timeline-section .timeline-content-item__subtitle {
   font-size: 1.1em;
   margin-bottom: 20px;
 }
-.timeline-section .timeline-content-item > div:first-child {
+main > .section > div.timeline-wrapper .timeline-section .timeline-content-item > div:first-child {
   max-width: 40%;
 }
-
-.initial-container {
+main > .section > div.timeline-wrapper .initial-container {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -120,15 +117,15 @@ main > .section > div.timeline-wrapper > div {
   width: 100%;
   position: relative;
 }
-.initial-container .text-section {
+main > .section > div.timeline-wrapper .initial-container .text-section {
   text-align: center;
   margin-bottom: 20px;
   z-index: 1;
 }
-.initial-container picture {
+main > .section > div.timeline-wrapper .initial-container picture {
   position: relative;
 }
-.initial-container picture::after {
+main > .section > div.timeline-wrapper .initial-container picture::after {
   content: "";
   position: absolute;
   top: 0;

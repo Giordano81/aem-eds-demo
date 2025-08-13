@@ -34,9 +34,6 @@ function getItemsProps() {
 export default async function decorate(block) {
   let modelData = getBlockModel(block, getProps());
 
-  modelData.title.style = modelData.titleStyle;
-  modelData.subtitle.style = modelData.subtitleStyle;
-
   if (modelData.fragment.value) {
     const fragment = await loadFragment(modelData.fragment.value);
     modelData.fragment.html = fragment.querySelector('& > div');
@@ -51,11 +48,6 @@ export default async function decorate(block) {
         }
         const item = getBlockModel(timelineItem, getItemsProps());
         item.images = extractImageElements(otherBlocks).images;
-
-        item.title.style = item.titleStyle;
-        item.subtitle.style = item.subtitleStyle;
-        item.modalTitle.style = item.modalTitleStyle;
-        item.modalSubtitle.style = item.modalSubtitleStyle;
 
         modelData.fragment.items.push(item);
       }
@@ -143,14 +135,14 @@ export default async function decorate(block) {
       timelineContentItemLeft.innerHTML = '';
       timelineContentItemRight.innerHTML = '';
       if (item.title.value) {
-        timelineContentItemLeft.appendChild(createTextElement(item.title, ['timeline-content-item__title']));
+        timelineContentItemLeft.appendChild(createTextElement(item.title, ['timeline-content-item__title'], true));
       }
       if (item.subtitle.value) {
-        timelineContentItemLeft.appendChild(createTextElement(item.subtitle, ['timeline-content-item__subtitle']));
+        timelineContentItemLeft.appendChild(createTextElement(item.subtitle, ['timeline-content-item__subtitle'], true));
       }
       // Discover more button
       if (item.modalTitle.value || item.modalSubtitle.value) {
-        const button = createButtonElement(buttonModel);
+        const button = createButtonElement(buttonModel, true);
         button.onclick = async (event) => {
           event.stopPropagation();
 
@@ -159,10 +151,10 @@ export default async function decorate(block) {
           const textSection = document.createElement('div');
           textSection.classList.add('text-section');
           if (item.modalTitle.value) {
-            textSection.appendChild(createTextElement(item.modalTitle, []));
+            textSection.appendChild(createTextElement(item.modalTitle, [], true));
           }
           if (item.modalSubtitle.value) {
-            textSection.appendChild(createTextElement(item.modalSubtitle, []));
+            textSection.appendChild(createTextElement(item.modalSubtitle, [], true));
           }
           modalBody.appendChild(textSection);
 

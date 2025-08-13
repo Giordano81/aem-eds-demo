@@ -76,7 +76,7 @@ export default async function decorate(block) {
     leftSection.appendChild(createButtonElement(firstElement.button));
   }
   if (firstElement.verticalText) {
-    leftSection.setAttribute('data-vertical-text', modelData.verticalText);
+    leftSection.setAttribute('data-vertical-text', firstElement.verticalText);
   }
 
   // Create the right section

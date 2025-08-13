@@ -1,15 +1,12 @@
 main > .section > div.spacer-wrapper {
   max-width: unset;
 }
-
-.spacer-small {
+main > .section > div.spacer-wrapper .spacer-small {
   height: 32px;
 }
-
-.spacer-medium {
+main > .section > div.spacer-wrapper .spacer-medium {
   height: 64px;
 }
-
-.spacer-large {
+main > .section > div.spacer-wrapper .spacer-large {
   height: 96px;
 }
