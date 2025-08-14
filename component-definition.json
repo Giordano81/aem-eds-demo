@@ -97,6 +97,38 @@
               }
             }
           }
+        },
+        {
+          "title": "Footer Section",
+          "id": "footerSection",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/section/v1/section",
+                "template": {
+                  "name": "Footer Section",
+                  "model": "footerSection",
+                  "filter": "footerSection"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Header Section",
+          "id": "headerSection",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/section/v1/section",
+                "template": {
+                  "name": "Header Section",
+                  "model": "headerSection",
+                  "filter": "headerSection"
+                }
+              }
+            }
+          }
         }
       ]
     },

@@ -2,7 +2,9 @@
   {
     "id": "main",
     "components": [
-      "section"
+      "section",
+      "footerSection",
+      "headerSection"
     ]
   },
   {
@@ -32,6 +34,24 @@
       "podcast-item",
       "articles",
       "article-item"
+    ]
+  },
+  {
+    "id": "footerSection",
+    "components": [
+      "image",
+      "columns",
+      "text",
+      "button"
+    ]
+  },
+  {
+    "id": "headerSection",
+    "components": [
+      "image",
+      "columns",
+      "text",
+      "button"
     ]
   },
   {

@@ -85,7 +85,7 @@ main > .section > div.podcast-wrapper .main-container .podcast-carousel-section 
 }
 main > .section > div.podcast-wrapper .main-container .podcast-carousel-section .podcast-carousel-item > :first-child .progress-container {
   width: 100%;
-  background-color: #2D2D2D;
+  background-color: var(--color-primary-antracite);
   height: 6px;
   position: absolute;
   bottom: 0;
@@ -94,7 +94,7 @@ main > .section > div.podcast-wrapper .main-container .podcast-carousel-section 
 main > .section > div.podcast-wrapper .main-container .podcast-carousel-section .podcast-carousel-item > :first-child .progress-container .progress-bar {
   height: 100%;
   width: 0;
-  background-color: #DCDCDC;
+  background-color: var(--color-grey-5);
 }
 main > .section > div.podcast-wrapper .main-container .podcast-carousel-section .podcast-carousel-item > :nth-child(2) a {
   text-decoration: underline;

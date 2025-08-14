@@ -110,7 +110,9 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
 export default async function decorate(block) {
   // load nav as fragment
   const navMeta = getMetadata('nav');
-  const navPath = navMeta ? new URL(navMeta, window.location).pathname : '/nav';
+  const basePath = '/content/aem-eds-demo';
+  const fallBackFooter = window.location.pathname.indexOf(basePath) > -1 ? `${basePath}/nav` : "/nav";
+  const navPath = navMeta ? new URL(navMeta, window.location).pathname : fallBackFooter;
   const fragment = await loadFragment(navPath);
 
   // decorate nav DOM
@@ -119,48 +121,94 @@ export default async function decorate(block) {
   nav.id = 'nav';
   while (fragment.firstElementChild) nav.append(fragment.firstElementChild);
 
-  const classes = ['brand', 'sections', 'tools'];
-  classes.forEach((c, i) => {
-    const section = nav.children[i];
-    if (section) section.classList.add(`nav-${c}`);
+  // Add link to logo
+  const imageButton = nav.querySelector('&>div:first-child>div .button-container a');
+  if (imageButton) {
+    const image = nav.querySelector('&>div>div picture');
+    imageButton.textContent = '';
+    imageButton.appendChild(image);
+    imageButton.classList.remove('button');
+    nav.querySelector('&>div>div').innerHTML = '';
+    nav.querySelector('&>div>div').appendChild(imageButton);
+  }
+
+  // Remove class to menu items
+  const menuButtons = nav.querySelectorAll('&>div:nth-child(2)>div .button-container a');
+  menuButtons.forEach(item => {
+    item.classList.remove('button');
+  });
+  const menuItems = nav.querySelectorAll('&>div:nth-child(2)>div>div>div>div');
+  menuItems.forEach(item => {
+    item.classList.add('menu-item');
+    const children = item.querySelectorAll('&>.button-container');
+    children[0].classList.add('menu-first-level');
+    if (children.length > 1) {
+      const submenu = document.createElement('div');
+      submenu.classList.add('submenu');
+      
+      for (let i = 1; i < children.length; i++) {
+        submenu.appendChild(children[i]);
+      }
+      
+      item.appendChild(submenu);
+    }
   });
 
-  const navBrand = nav.querySelector('.nav-brand');
-  const brandLink = navBrand.querySelector('.button');
-  if (brandLink) {
-    brandLink.className = '';
-    brandLink.closest('.button-container').className = '';
-  }
-
-  const navSections = nav.querySelector('.nav-sections');
-  if (navSections) {
-    navSections.querySelectorAll(':scope .default-content-wrapper > ul > li').forEach((navSection) => {
-      if (navSection.querySelector('ul')) navSection.classList.add('nav-drop');
-      navSection.addEventListener('click', () => {
-        if (isDesktop.matches) {
-          const expanded = navSection.getAttribute('aria-expanded') === 'true';
-          toggleAllNavSections(navSections);
-          navSection.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-        }
-      });
-    });
-  }
-
-  // hamburger for mobile
-  const hamburger = document.createElement('div');
-  hamburger.classList.add('nav-hamburger');
-  hamburger.innerHTML = `<button type="button" aria-controls="nav" aria-label="Open navigation">
-      <span class="nav-hamburger-icon"></span>
-    </button>`;
-  hamburger.addEventListener('click', () => toggleMenu(nav, navSections));
-  nav.prepend(hamburger);
-  nav.setAttribute('aria-expanded', 'false');
-  // prevent mobile nav behavior on window resize
-  toggleMenu(nav, navSections, isDesktop.matches);
-  isDesktop.addEventListener('change', () => toggleMenu(nav, navSections, isDesktop.matches));
+  // Add language selector
+  nav.appendChild(createLanguageSelector());
 
   const navWrapper = document.createElement('div');
   navWrapper.className = 'nav-wrapper';
   navWrapper.append(nav);
   block.append(navWrapper);
+}
+
+function createLanguageSelector() {
+  const languageContainer = document.createElement('div');
+  languageContainer.classList.add('language-selector');
+  const language = document.createElement('div');
+  language.textContent = "EN"; // TODO: prendere la lingua corretta di navigazione
+  languageContainer.appendChild(language);
+  languageContainer.addEventListener('click', () => {
+    if (languageContainer.classList.contains('opened')) {
+      languageContainer.classList.remove('opened');
+    } else {
+      languageContainer.classList.add('opened');
+    }
+  });
+  // Create the language options
+  const optionsList = document.createElement('ul');
+  optionsList.classList.add('options');
+  // TODO: togliere mock
+  const optionsData = [
+    {
+      href: 'https://www.pietroberetta.com/content/pbselection/it',
+      imgSrc: '/content/dam/aem-eds-demo/logos/it.svg',
+      imgAlt: 'it_flag',
+      text: 'IT'
+    },
+    {
+      href: 'https://www.pietroberetta.com/content/pbselection/en',
+      imgSrc: '/content/dam/aem-eds-demo/logos/rowDark.svg',
+      imgAlt: 'rowDark_flag',
+      text: 'EN'
+    }
+  ];
+  optionsData.forEach(option => {
+    const listItem = document.createElement('li');
+    const anchor = document.createElement('a');
+    anchor.href = option.href;
+    const image = document.createElement('img');
+    image.src = option.imgSrc;
+    image.alt = option.imgAlt;
+    const span = document.createElement('span');
+    span.textContent = option.text;
+    anchor.appendChild(image);
+    anchor.appendChild(span);
+    listItem.appendChild(anchor);
+    optionsList.appendChild(listItem);
+  });
+
+  languageContainer.appendChild(optionsList);
+  return languageContainer;
 }

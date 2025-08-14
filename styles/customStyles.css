@@ -13,6 +13,7 @@
   --color-primary-blue-500-bkg: #0B1822;
   --color-primary-blue-500-bkg-rgb: 11, 24, 34;
   --color-primary-antracite-500-bkg: #171717;
+  --color-primary-antracite-500-bkg-rgb: 23, 23, 23;
   --color-secondary-light-blue: #41668933;
   --color-secondary-light-blue-2: #A4B9CE;
   --color-secondary-background-blue: #E8EDF3;
@@ -34,6 +35,10 @@
 body {
   background-color: var(--background-color-dark);
   color: var(--text-color-light);
+}
+
+main > .section {
+  margin: 0;
 }
 
 .d-none {
