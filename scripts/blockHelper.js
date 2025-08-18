@@ -1,5 +1,7 @@
 import { createOptimizedPicture } from './aem.js';
 
+// TODO: centralizzare la lista di tags e inserirla qui
+
 export function getBlockModel(block, props) {
   let modelData = {};
 
@@ -22,7 +24,7 @@ export function getBlockModel(block, props) {
         valueFound = findAttributeByTag(block.children[index], obj.tags[i]);
         if (valueFound) {
           tagFound = obj.tags[i];
-          break
+          break;
         };
       }
       modelData[propertyName] = {
@@ -76,7 +78,7 @@ function findAttributeByAttr(element, attribute) {
   return null;
 }
 
-function findAttributeByTag(element, tag) {
+export function findAttributeByTag(element, tag) {
   if (element.tagName.toLowerCase() == tag) {
     if (element.nextSibling) {
       let value = [];
@@ -237,7 +239,7 @@ export function createTextElement(prop, classes, avoidAnimation = false) {
 }
 
 export function createImageElement(element) {
-  return createOptimizedPicture(element.image, element.imageAlt, false);;
+  return createOptimizedPicture(element.image, element.imageAlt, false);
 }
 
 export function extractImageElements(block) {
@@ -250,10 +252,24 @@ export function extractImageElements(block) {
     }
   }
 
+  // TODO: togliere updatedBlock, viene già aggiornato il block originale
   return {
     updatedBlock: block,
     images: images
   }
+}
+
+export function extractButtonElements(block) {
+  const buttons = [];
+
+  for (const child of [...block.children]) {
+    if (child.querySelector('.button-container')) {
+      buttons.push(getButtonModel(child));
+      block.removeChild(child);
+    }
+  }
+
+  return buttons;
 }
 
 export function crateBackgroundGallery(images) {

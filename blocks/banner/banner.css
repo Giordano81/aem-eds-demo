@@ -56,11 +56,6 @@ main > .section > div.banner-wrapper .banner-block.splitted-in-2-rows .image-sec
   height: 100%;
   width: 100vw;
   overflow: hidden;
-  opacity: 0;
-  transition: opacity 0.6s ease;
-}
-main > .section > div.banner-wrapper .banner-block.splitted-in-2-rows .image-section-splitted.visible {
-  opacity: 1;
 }
 main > .section > div.banner-wrapper .banner-block.splitted-in-2-rows .image-section-splitted img {
   width: 100%;
@@ -132,7 +127,7 @@ main > .section > div.banner-wrapper .banner-block .banner-content .banner-subti
 main > .section > div.banner-wrapper .banner-block .banner-content .banner-subtitle-with-quotes::before, main > .section > div.banner-wrapper .banner-block .banner-content .banner-subtitle-with-quotes::after {
   content: '"';
   font-size: 50px;
-  color: #A4B9CE;
+  color: var(--color-secondary-light-blue-2);
   position: absolute;
 }
 main > .section > div.banner-wrapper .banner-block .banner-content .banner-subtitle-with-quotes::before {

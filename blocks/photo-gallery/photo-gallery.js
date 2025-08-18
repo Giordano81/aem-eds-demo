@@ -11,11 +11,14 @@ function getProps() {
 function getItemsProps() {
   return [
     { name: 'image', attribute: 'src' },
+    { name: 'imageAltText' },
     { name: 'text' }
   ];
 }
 
 export default function decorate(block) {
+}
+export function createBlock(block) {
   let modelData = getBlockModel(block, getProps());
   modelData.items = [];
   for (let i = getProps().length; i < block.children.length; i++) {
@@ -25,8 +28,10 @@ export default function decorate(block) {
 
   block.innerHTML = '';
 
+  block.classList.add('fade-in-animation');
+
   const gridContainer = document.createElement('div');
-  gridContainer.id = 'photo-gallery-container';
+  gridContainer.classList.add('photo-gallery-container');
   gridContainer.style.gridTemplateColumns = `repeat(${modelData.itemsPerRow}, 1fr)`;
   if (modelData.spaceBetweenItems) {
     gridContainer.classList.add('space-between-items');
@@ -62,7 +67,7 @@ export default function decorate(block) {
     loadLessButton.onclick = (event) => {
 
       // Remove all items except the first row
-      const children = event.target.parentElement.querySelector('div#photo-gallery-container')?.children;
+      const children = event.target.parentElement.querySelector('div.photo-gallery-container')?.children;
       const allItems = children ? Array.from(children) : [];
       allItems.forEach((item, index) => {
         if (index >= modelData.itemsPerRow) {
@@ -88,7 +93,7 @@ function createGridItem(item) {
   if (item.image.value) {
     const imageModel = {
       image: item.image.value,
-      imageAlt: item.alt
+      imageAlt: item.imageAlt
     }
     const img = createImageElement(imageModel);
     gridItem.appendChild(img);

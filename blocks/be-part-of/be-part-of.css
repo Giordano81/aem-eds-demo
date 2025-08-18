@@ -1,0 +1,97 @@
+main > .section > div.be-part-of-wrapper {
+  max-width: 100%;
+}
+main > .section > div.be-part-of-wrapper > div {
+  height: 100%;
+}
+main > .section > div.be-part-of-wrapper .main-section.first-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 200px 300px;
+  text-align: center;
+}
+main > .section > div.be-part-of-wrapper .main-section.first-section .arrow-container {
+  text-align: center;
+  position: relative;
+  margin-top: 60px;
+  text-decoration: none;
+  cursor: pointer;
+}
+main > .section > div.be-part-of-wrapper .main-section.first-section .arrow-container .arrow-text {
+  font-weight: 400;
+  font-size: 13px;
+  text-transform: uppercase;
+}
+main > .section > div.be-part-of-wrapper .main-section.first-section .arrow-container .arrow-image {
+  width: 20px;
+  height: 20px;
+  background: url("../../icons/long_arrow_down.svg") no-repeat center center;
+  background-size: contain;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: moveArrow 1.2s infinite;
+}
+@keyframes moveArrow {
+  0%, 100% {
+    transform: translate(-50%, 0);
+  }
+  50% {
+    transform: translate(-50%, 20px);
+  }
+}
+main > .section > div.be-part-of-wrapper .main-section.second-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 60px 70px;
+  text-align: center;
+}
+main > .section > div.be-part-of-wrapper .main-section.second-section .contest-tag {
+  font-weight: 300;
+  font-size: 16.8px;
+  line-height: 52.8px;
+  text-transform: uppercase;
+  margin-bottom: 36px;
+}
+main > .section > div.be-part-of-wrapper .main-section.second-section .contest-text {
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 34px;
+  margin-top: 62px;
+}
+main > .section > div.be-part-of-wrapper .main-section.second-section .contest-title {
+  margin-top: 56px;
+  margin-bottom: 32px;
+}
+main > .section > div.be-part-of-wrapper .main-section.second-section .contest-cards-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 36px;
+  margin-bottom: 56px;
+}
+main > .section > div.be-part-of-wrapper .main-section.second-section .contest-cards-container .contest-card {
+  background-color: rgba(var(--color-grey-1-rgb), 0.7);
+  border-radius: 10px;
+  padding: 46px 24px 30px 24px;
+  position: relative;
+}
+main > .section > div.be-part-of-wrapper .main-section.second-section .contest-cards-container .contest-card .contest-card-counter {
+  position: absolute;
+  top: 22px;
+  left: 22px;
+  color: var(--color-secondary-light-blue-2);
+}
+main > .section > div.be-part-of-wrapper .main-section.second-section .button {
+  font-weight: 400;
+  font-size: 19.2px;
+  line-height: 21.6px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+main > .section > div.be-part-of-wrapper .main-section.third-section {
+  padding-bottom: 33px;
+}

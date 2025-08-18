@@ -69,7 +69,9 @@ function scrollEvent() {
     const isInView = rect.top <= (window.innerHeight / 1.5) && rect.bottom >= 0;
 
     if (isInView && !el.classList.contains('visible')) {
-      el.classList.add('visible');
+      setTimeout(() => {
+        el.classList.add('visible');
+      }, el.getAttribute('data-delayed') ? +el.getAttribute('data-delayed') : 0);
       fadeinAnimation.splice(i, 1);
       i--;
     }
@@ -99,6 +101,6 @@ function initVerticalText() {
 
 setTimeout(() => {
   scrollEvent();
-}, 500);
+}, 1000);
 
 initVerticalText();

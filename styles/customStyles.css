@@ -20,6 +20,7 @@
   --color-secondary-gallery-orange: #F06123;
   --color-secondary-pastel-orange: #FDA46F;
   --color-grey-1: #3E3E3E;
+  --color-grey-1-rgb: 62, 62, 62;
   --color-grey-2: #707070;
   --color-grey-3: #A4A4A4;
   --color-grey-4: #C6C6C6;
@@ -146,5 +147,13 @@ main > .section > div.default-content-wrapper {
 .text-container span.visible,
 .text-container p.visible {
   transform: translateY(0);
+  opacity: 1;
+}
+
+.fade-in-animation {
+  opacity: 0;
+  transition: opacity 2s ease;
+}
+.fade-in-animation.visible {
   opacity: 1;
 }

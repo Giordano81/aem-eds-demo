@@ -174,9 +174,7 @@
         "component": "multiselect",
         "name": "style",
         "label": "Style",
-        "options": [
-          
-        ]
+        "options": []
       }
     ]
   },
@@ -193,9 +191,7 @@
         "component": "multiselect",
         "name": "style",
         "label": "Style",
-        "options": [
-          
-        ]
+        "options": []
       }
     ]
   },
@@ -212,9 +208,7 @@
         "component": "multiselect",
         "name": "style",
         "label": "Style",
-        "options": [
-          
-        ]
+        "options": []
       }
     ]
   },
@@ -766,6 +760,12 @@
         "label": "Image",
         "multi": false,
         "required": true
+      },
+      {
+        "component": "text",
+        "name": "imageAltText",
+        "label": "Image alt text",
+        "valueType": "string"
       },
       {
         "component": "text",
@@ -1624,6 +1624,293 @@
         "component": "aem-content",
         "name": "ctaLink",
         "label": "Link"
+      }
+    ]
+  },
+  {
+    "id": "be-part-of",
+    "fields": [
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "title",
+        "label": "Title"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "titleStyle",
+        "label": "Title style",
+        "options": [
+          {
+            "name": "Main Title",
+            "value": "main-title"
+          },
+          {
+            "name": "H1",
+            "value": "h1"
+          },
+          {
+            "name": "H2",
+            "value": "h2"
+          },
+          {
+            "name": "H3",
+            "value": "h3"
+          },
+          {
+            "name": "Body 1",
+            "value": "body-1"
+          },
+          {
+            "name": "Body 2",
+            "value": "body-2"
+          },
+          {
+            "name": "Body 3",
+            "value": "body-3"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "subtitle",
+        "label": "Subtitle"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "subtitleStyle",
+        "label": "Subtitle style",
+        "options": [
+          {
+            "name": "Main Title",
+            "value": "main-title"
+          },
+          {
+            "name": "H1",
+            "value": "h1"
+          },
+          {
+            "name": "H2",
+            "value": "h2"
+          },
+          {
+            "name": "H3",
+            "value": "h3"
+          },
+          {
+            "name": "Body 1",
+            "value": "body-1"
+          },
+          {
+            "name": "Body 2",
+            "value": "body-2"
+          },
+          {
+            "name": "Body 3",
+            "value": "body-3"
+          }
+        ]
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "subtitleSlowAnimation",
+        "label": "Subtitle with slow animation"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "arrowText",
+        "label": "Arrow text"
+      },
+      {
+        "component": "container",
+        "label": "Contest",
+        "name": "container",
+        "valueType": "string",
+        "collapsible": true,
+        "fields": [
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "contestTag",
+            "label": "Contest tag text"
+          },
+          {
+            "component": "aem-content",
+            "name": "contestImage",
+            "label": "Contest image"
+          },
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "contestAlt",
+            "label": "Contest Image alt text"
+          },
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "contestText",
+            "label": "Contest text"
+          },
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "contestTitle",
+            "label": "Contest title"
+          },
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "card1Title",
+            "label": "Card 1 title"
+          },
+          {
+            "component": "richtext",
+            "valueType": "string",
+            "name": "card1Subtitle",
+            "label": "Card 1 subtitle"
+          },
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "card2Title",
+            "label": "Card 2 title"
+          },
+          {
+            "component": "richtext",
+            "valueType": "string",
+            "name": "card2Subtitle",
+            "label": "Card 2 subtitle"
+          },
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "card3Title",
+            "label": "Card 3 title"
+          },
+          {
+            "component": "richtext",
+            "valueType": "string",
+            "name": "card3Subtitle",
+            "label": "Card 3 subtitle"
+          },
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "ctaText",
+            "label": "CTA text"
+          }
+        ]
+      },
+      {
+        "component": "aem-content",
+        "name": "fragment",
+        "label": "Gallery fragment"
+      }
+    ]
+  },
+  {
+    "id": "be-part-of-teaser",
+    "fields": [
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "title",
+        "label": "Title"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "titleStyle",
+        "label": "Title style",
+        "options": [
+          {
+            "name": "Main Title",
+            "value": "main-title"
+          },
+          {
+            "name": "H1",
+            "value": "h1"
+          },
+          {
+            "name": "H2",
+            "value": "h2"
+          },
+          {
+            "name": "H3",
+            "value": "h3"
+          },
+          {
+            "name": "Body 1",
+            "value": "body-1"
+          },
+          {
+            "name": "Body 2",
+            "value": "body-2"
+          },
+          {
+            "name": "Body 3",
+            "value": "body-3"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "subtitle",
+        "label": "Subtitle"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "subtitleStyle",
+        "label": "Subtitle style",
+        "options": [
+          {
+            "name": "Main Title",
+            "value": "main-title"
+          },
+          {
+            "name": "H1",
+            "value": "h1"
+          },
+          {
+            "name": "H2",
+            "value": "h2"
+          },
+          {
+            "name": "H3",
+            "value": "h3"
+          },
+          {
+            "name": "Body 1",
+            "value": "body-1"
+          },
+          {
+            "name": "Body 2",
+            "value": "body-2"
+          },
+          {
+            "name": "Body 3",
+            "value": "body-3"
+          }
+        ]
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "subtitleSlowAnimation",
+        "label": "Subtitle with slow animation"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "eyebrow",
+        "label": "Eyebrow text"
       }
     ]
   }
