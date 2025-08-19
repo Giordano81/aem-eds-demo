@@ -169,9 +169,6 @@ export function createButtonElement(buttonModel, avoidAnimation = false) {
     case "secondary":
       button.classList.add('cta-secondary');
       break;
-    case "tertiary":
-      button.classList.add('cta-tertiary');
-      break;
     default:
       button.classList.add('cta-primary');
       break;

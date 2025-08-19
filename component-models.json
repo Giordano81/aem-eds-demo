@@ -120,10 +120,6 @@
           {
             "name": "secondary",
             "value": "secondary"
-          },
-          {
-            "name": "tertiary",
-            "value": "tertiary"
           }
         ]
       },
@@ -471,6 +467,12 @@
         "valueType": "boolean",
         "name": "subtitleQuotes",
         "label": "Add quotes in subtitle"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "eyebrow",
+        "label": "Eyebrow"
       },
       {
         "component": "text",

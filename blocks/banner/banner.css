@@ -62,11 +62,19 @@ main > .section > div.banner-wrapper .banner-block.splitted-in-2-rows .image-sec
   height: 100%;
   object-fit: cover;
 }
-main > .section > div.banner-wrapper .banner-block .with-overlay-opacity::before {
+main > .section > div.banner-wrapper .banner-block.with-overlay-opacity::before {
   content: "";
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, var(--banner-overlay-opacity, 0));
+}
+main > .section > div.banner-wrapper .banner-block.banner-background-gallery {
+  height: 100%;
+}
+main > .section > div.banner-wrapper .banner-block.with-background-image {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 main > .section > div.banner-wrapper .banner-block .banner-content {
   z-index: 1;
@@ -138,14 +146,10 @@ main > .section > div.banner-wrapper .banner-block .banner-content .banner-subti
   right: -20px;
   top: 0;
 }
-main > .section > div.banner-wrapper .banner-block .banner-content .vertical-text {
-  position: absolute;
-  bottom: 24px;
-  left: 50px;
-  transform: rotate(-90deg);
-  transform-origin: left bottom;
+main > .section > div.banner-wrapper .banner-block .banner-content .banner-eyebrow {
+  font-weight: 300;
   font-size: 16.8px;
-  color: rgba(255, 255, 255, 0.6);
+  line-height: 52.8px;
   text-transform: uppercase;
 }
 main > .section > div.banner-wrapper .banner-block .gallery-container {
@@ -284,7 +288,4 @@ main > .section > div.banner-wrapper .banner-block .video-container .button-play
 }
 main > .section > div.banner-wrapper .banner-block .video-container .button-play-pause.paused::after {
   background-image: url("../../icons/play.svg");
-}
-main > .section > div.banner-wrapper .banner-background-gallery {
-  height: 100%;
 }

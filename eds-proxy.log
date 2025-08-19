@@ -7,21 +7,3 @@
 info: Starting AEM dev server v16.10.21
 info: Local AEM dev server up and running: http://localhost:3000/
 info: Enabled reverse proxy to https://main--aem-eds-demo--Giordano81.aem.page
-warn: [341] Proxy GET request to https://main--aem-eds-demo--giordano81.aem.page/blocks/be-part-of---teaser/be-part-of---teaser.css: 404 (text/html; charset=utf-8)
-warn: [340] Proxy GET request to https://main--aem-eds-demo--giordano81.aem.page/blocks/be-part-of---teaser/be-part-of---teaser.js: 404 (text/html; charset=utf-8)
-warn: [436] Proxy GET request to https://main--aem-eds-demo--giordano81.aem.page/blocks/be-part-of---teaser/be-part-of---teaser.css: 404 (text/html; charset=utf-8)
-warn: [437] Proxy GET request to https://main--aem-eds-demo--giordano81.aem.page/blocks/be-part-of---teaser/be-part-of---teaser.js: 404 (text/html; charset=utf-8)
-warn: [930] Proxy GET request to https://main--aem-eds-demo--giordano81.aem.page/blocks/be-part-of---teaser/be-part-of---teaser.js: 404 (text/html; charset=utf-8)
-warn: [931] Proxy GET request to https://main--aem-eds-demo--giordano81.aem.page/blocks/be-part-of---teaser/be-part-of---teaser.css: 404 (text/html; charset=utf-8)
-warn: [1083] Proxy GET request to https://main--aem-eds-demo--giordano81.aem.page/blocks/be-part-of---teaser/be-part-of---teaser.css: 404 (text/html; charset=utf-8)
-warn: [1598] Proxy GET request to https://main--aem-eds-demo--giordano81.aem.page/blocks/be-part-of---teaser/be-part-of---teaser.css: 404 (text/html; charset=utf-8)
-warn: [2076] Proxy GET request to https://main--aem-eds-demo--giordano81.aem.page/blocks/be-part-of---teaser/be-part-of---teaser.css: 404 (text/html; charset=utf-8)
-warn: [2179] Proxy GET request to https://main--aem-eds-demo--giordano81.aem.page/blocks/be-part-of---teaser/be-part-of---teaser.css: 404 (text/html; charset=utf-8)
-warn: [2433] Proxy GET request to https://main--aem-eds-demo--giordano81.aem.page/blocks/be-part-of---teaser/be-part-of---teaser.css: 404 (text/html; charset=utf-8)
-warn: [2804] Proxy GET request to https://main--aem-eds-demo--giordano81.aem.page/blocks/be-part-of---teaser/be-part-of---teaser.css: 404 (text/html; charset=utf-8)
-warn: [2920] Proxy GET request to https://main--aem-eds-demo--giordano81.aem.page/blocks/be-part-of---teaser/be-part-of---teaser.css: 404 (text/html; charset=utf-8)
-warn: [3056] Proxy GET request to https://main--aem-eds-demo--giordano81.aem.page/blocks/be-part-of---teaser/be-part-of---teaser.css: 404 (text/html; charset=utf-8)
-warn: [3182] Proxy GET request to https://main--aem-eds-demo--giordano81.aem.page/blocks/be-part-of---teaser/be-part-of---teaser.css: 404 (text/html; charset=utf-8)
-warn: [3336] Proxy GET request to https://main--aem-eds-demo--giordano81.aem.page/blocks/be-part-of---teaser/be-part-of---teaser.css: 404 (text/html; charset=utf-8)
-warn: [3443] Proxy GET request to https://main--aem-eds-demo--giordano81.aem.page/blocks/be-part-of---teaser/be-part-of---teaser.css: 404 (text/html; charset=utf-8)
-warn: [3495] Proxy GET request to https://main--aem-eds-demo--giordano81.aem.page/blocks/be-part-of---teaser/be-part-of---teaser.css: 404 (text/html; charset=utf-8)

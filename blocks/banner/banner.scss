@@ -77,13 +77,23 @@ main>.section>div.banner-wrapper {
       }
     }
 
-    .with-overlay-opacity {
+    &.with-overlay-opacity {
       &::before {
         content: "";
         position: absolute;
         inset: 0;
         background: rgba(0, 0, 0, var(--banner-overlay-opacity, 0));
       }
+    }
+
+    &.banner-background-gallery {
+      height: 100%
+    }
+
+    &.with-background-image {
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
     }
 
     .banner-content {
@@ -173,15 +183,12 @@ main>.section>div.banner-wrapper {
         }
       }
 
-      .vertical-text {
-        position: absolute;
-        bottom: 24px;
-        left: 50px;
-        transform: rotate(-90deg);
-        transform-origin: left bottom;
+      .banner-eyebrow {
+        font-weight: 300;
         font-size: 16.8px;
-        color: rgba(255, 255, 255, 0.6);
+        line-height: 52.8px;
         text-transform: uppercase;
+
       }
     }
 
@@ -370,9 +377,5 @@ main>.section>div.banner-wrapper {
         }
       }
     }
-  }
-
-  .banner-background-gallery {
-    height: 100%
   }
 }

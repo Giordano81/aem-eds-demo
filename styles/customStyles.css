@@ -69,10 +69,6 @@ a.button.cta-light.cta-secondary {
   color: var(--color-secondary-background-blue);
   border: solid 1px var(--color-primary-light-blue);
 }
-a.button.cta-light.cta-tertiary {
-  background-color: #f8f9fa;
-  color: #343a40;
-}
 
 main > .section > div.default-content-wrapper {
   max-width: unset;

@@ -11,6 +11,7 @@ function getProps() {
     { name: 'secondSubtitle', tags: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p'] },
     { name: 'secondSubtitleStyle' },
     { name: 'subtitleQuotes', isBoolean: true },
+    { name: 'eyebrow' },
     { name: 'verticalText' },
     { name: 'horizontalAlign' },
     { name: 'verticalAlign' },
@@ -137,6 +138,7 @@ export default async function decorate(block) {
         imageContainer.appendChild(createImageElement(modelData.images[0]));
         elementsToBeAppendedAtTheEnd.push(imageContainer);
       } else {
+        banner.classList.add('with-background-image');
         banner.style.backgroundImage = `url('${modelData.images[0].image}')`;
       }
     } else if (modelData.mediaType == 'backgroundGallery') {
@@ -166,6 +168,9 @@ function createTextSection(modelData) {
   const content = document.createElement('div');
   content.className = 'banner-content';
 
+  if (modelData.eyebrow) {
+    content.appendChild(createTextElement(modelData.eyebrow, ['banner-eyebrow']));
+  }
   if (modelData.title.value) {
     const titleClasses = ['banner-title'];
     content.appendChild(createTextElement(modelData.title, titleClasses));
