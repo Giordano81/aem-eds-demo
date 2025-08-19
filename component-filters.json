@@ -45,7 +45,8 @@
       "image",
       "columns",
       "text",
-      "button"
+      "button",
+      "image-with-link"
     ]
   },
   {
@@ -54,7 +55,8 @@
       "image",
       "columns",
       "text",
-      "button"
+      "button",
+      "image-with-link"
     ]
   },
   {

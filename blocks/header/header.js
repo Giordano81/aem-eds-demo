@@ -1,5 +1,6 @@
 import { getMetadata } from '../../scripts/aem.js';
 import { loadFragment } from '../fragment/fragment.js';
+import { extractImagesWithLinkElements, createImageElement } from '../../scripts/blockHelper.js';
 
 // media query match that indicates mobile/tablet width
 const isDesktop = window.matchMedia('(min-width: 900px)');
@@ -121,15 +122,23 @@ export default async function decorate(block) {
   nav.id = 'nav';
   while (fragment.firstElementChild) nav.append(fragment.firstElementChild);
 
-  // Add link to logo
-  const imageButton = nav.querySelector('&>div:first-child>div .button-container a');
-  if (imageButton) {
-    const image = nav.querySelector('&>div>div picture');
-    imageButton.textContent = '';
-    imageButton.appendChild(image);
-    imageButton.classList.remove('button');
-    nav.querySelector('&>div>div').innerHTML = '';
-    nav.querySelector('&>div>div').appendChild(imageButton);
+  // Logo wrapper
+  const imagesWithLinkWrapped = nav.querySelectorAll('.image-with-link-wrapper');
+  if (imagesWithLinkWrapped.length) {
+    for (let child of imagesWithLinkWrapped) {
+      const imageWithLinkModel = extractImagesWithLinkElements(child);
+      if (imageWithLinkModel.length) {
+        child.innerHTML = '';
+
+        imageWithLinkModel.forEach(item => {
+          const icon = document.createElement('a');
+          icon.href = item.button?.link;
+          const image = createImageElement(item.image);
+          icon.appendChild(image);
+          child.appendChild(icon);
+        });
+      }
+    }
   }
 
   // Remove class to menu items
@@ -145,11 +154,11 @@ export default async function decorate(block) {
     if (children.length > 1) {
       const submenu = document.createElement('div');
       submenu.classList.add('submenu');
-      
+
       for (let i = 1; i < children.length; i++) {
         submenu.appendChild(children[i]);
       }
-      
+
       item.appendChild(submenu);
     }
   });

@@ -1,5 +1,6 @@
 import { getMetadata } from '../../scripts/aem.js';
 import { loadFragment } from '../fragment/fragment.js';
+import { extractImagesWithLinkElements, createImageElement } from '../../scripts/blockHelper.js';
 
 /**
  * loads and decorates the footer
@@ -20,16 +21,24 @@ export default async function decorate(block) {
   footer.classList.add('footer-content');
   while (fragment.firstElementChild) footer.append(fragment.firstElementChild);
 
-  const imageButton = footer.querySelector('&>div>div .button-container a');
-  if (imageButton) {
-    const image = footer.querySelector('&>div>div picture');
-    imageButton.textContent = '';
-    imageButton.appendChild(image);
-    imageButton.classList.remove('button');
-    footer.querySelector('&>div>div').innerHTML = '';
-    footer.querySelector('&>div>div').appendChild(imageButton);
+  // Logo wrapper
+  const imagesWithLinkWrapped = footer.querySelectorAll('.image-with-link-wrapper');
+  if (imagesWithLinkWrapped.length) {
+    for (let child of imagesWithLinkWrapped) {
+      const imageWithLinkModel = extractImagesWithLinkElements(child);
+      if (imageWithLinkModel.length) {
+        child.innerHTML = '';
+        
+        imageWithLinkModel.forEach(item => {
+          const icon = document.createElement('a');
+          icon.href = item.button?.link;
+          const image = createImageElement(item.image);
+          icon.appendChild(image);
+          child.appendChild(icon);
+        });
+      }
+    }
   }
-
 
   block.append(footer);
 }
