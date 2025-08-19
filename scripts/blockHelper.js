@@ -186,7 +186,7 @@ export function createButtonElement(buttonModel, avoidAnimation = false) {
   return button;
 }
 
-export function createTextElement(prop, classes, avoidAnimation = false) {
+export function createTextElement(prop, classes, avoidAnimation = false, addManualAnimation = false) {
   if (typeof prop === 'string') {
     prop = {
       value: prop
@@ -231,6 +231,9 @@ export function createTextElement(prop, classes, avoidAnimation = false) {
 
   const container = document.createElement('div');
   container.classList.add('text-container');
+  if (addManualAnimation) {
+    container.classList.add('text-container-manual');
+  }
   container.appendChild(text);
   return container;
 }

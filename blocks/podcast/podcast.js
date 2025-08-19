@@ -1,7 +1,5 @@
-import { getBlockModel, createTextElement, createImageElement, createButtonElement, extractImageElements, getButtonModel, extractImagesWithLinkElements } from '../../scripts/blockHelper.js';
-import { createModal } from '../modal/modal.js';
+import { getBlockModel, createTextElement, createImageElement, extractImageElements, extractImagesWithLinkElements } from '../../scripts/blockHelper.js';
 import { loadFragment } from '../fragment/fragment.js';
-import { createImageCarousel } from '../../scripts/imageCarouselHelper.js';
 
 function getProps() {
   return [
@@ -48,7 +46,7 @@ export default async function decorate(block) {
     otherBlocks.appendChild(block.children[getProps().length]);
   }
   modelData.imagesWithLink = extractImagesWithLinkElements(otherBlocks);
-  
+
   block.innerHTML = '';
 
   const container = document.createElement('div');

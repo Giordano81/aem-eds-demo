@@ -1,0 +1,91 @@
+main > .section > div.video-carousel-wrapper {
+  max-width: 100%;
+  height: 100vh;
+  width: 100%;
+  margin: 0;
+}
+main > .section > div.video-carousel-wrapper > div {
+  height: 100%;
+}
+main > .section > div.video-carousel-wrapper .main-container {
+  padding: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+}
+main > .section > div.video-carousel-wrapper .main-container > div {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+main > .section > div.video-carousel-wrapper .main-container > div .video-carousel-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  padding-top: 113px;
+}
+main > .section > div.video-carousel-wrapper .main-container > div .video-carousel-container .video-slide {
+  position: relative;
+  height: 100%;
+}
+main > .section > div.video-carousel-wrapper .main-container > div .video-carousel-container .video-slide .video-overlay {
+  position: absolute;
+  top: 98px;
+  left: 64px;
+  width: 42%;
+  z-index: 1;
+}
+main > .section > div.video-carousel-wrapper .main-container > div .video-carousel-container .video-slide video {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+main > .section > div.video-carousel-wrapper .main-container > div .video-carousel-container .video-slide .play-pause-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-image: url("../../icons/video_play.svg");
+  width: 88px;
+  height: 88px;
+  cursor: pointer;
+}
+main > .section > div.video-carousel-wrapper .main-container > div .video-carousel-container .video-slide .isPlaying .play-pause-icon {
+  background-image: url("../../icons/video_pause.svg");
+}
+main > .section > div.video-carousel-wrapper .main-container > div .video-carousel-container .arrow {
+  background: transparent;
+  border: none;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 24px;
+  height: 24px;
+  margin: auto;
+}
+main > .section > div.video-carousel-wrapper .main-container > div .video-carousel-container .arrow.left-arrow {
+  background-image: url("../../icons/right_arrow.svg");
+  transform: rotate(-180deg);
+  padding: 0 32px 0 37px;
+}
+main > .section > div.video-carousel-wrapper .main-container > div .video-carousel-container .arrow.right-arrow {
+  background-image: url("../../icons/right_arrow.svg");
+  padding: 0 37px 0 32px;
+}
+main > .section > div.video-carousel-wrapper .main-container > div .carousel-indicators {
+  margin: 35px auto 52px;
+  display: flex;
+  gap: 18px;
+}
+main > .section > div.video-carousel-wrapper .main-container > div .carousel-indicators .indicator {
+  width: 28px;
+  height: 1px;
+  background: #FAFAFA;
+  opacity: 0.3;
+}
+main > .section > div.video-carousel-wrapper .main-container > div .carousel-indicators .indicator.active {
+  background: #FFF;
+  opacity: 1;
+}

@@ -36,7 +36,8 @@
       "article-item",
       "be-part-of",
       "be-part-of-teaser",
-      "image-with-link"
+      "image-with-link",
+      "video-carousel"
     ]
   },
   {
@@ -162,6 +163,12 @@
       "button",
       "title",
       "text"
+    ]
+  },
+  {
+    "id": "video-carousel",
+    "components": [
+      "video-item"
     ]
   }
 ]

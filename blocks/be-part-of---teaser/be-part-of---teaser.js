@@ -1,8 +1,4 @@
-import { getBlockModel, extractButtonElements, findAttributeByTag, createTextElement, createImageElement, createButtonElement, extractImageElements, getButtonModel } from '../../scripts/blockHelper.js';
-import { createModal } from '../modal/modal.js';
-import { loadFragment } from '../fragment/fragment.js';
-import { createImageCarousel } from '../../scripts/imageCarouselHelper.js';
-import { createBlock } from '../photo-gallery/photo-gallery.js';
+import { getBlockModel, extractButtonElements, findAttributeByTag, createTextElement, createImageElement, createButtonElement, extractImageElements } from '../../scripts/blockHelper.js';
 
 function getProps() {
   return [

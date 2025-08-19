@@ -1,4 +1,3 @@
-
 import { createOptimizedPicture } from './aem.js';
 
 window.carouselId = window.carouselId || 0;

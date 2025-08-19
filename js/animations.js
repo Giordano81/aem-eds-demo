@@ -1,7 +1,7 @@
-const textContainer = Array.from(document.querySelectorAll('div.text-container'));
+const textContainer = Array.from(document.querySelectorAll('div.text-container:not(.text-container-manual)'));
 const buttons = Array.from(document.querySelectorAll('.button-animation'));
 const bannerGalleryContainer = Array.from(document.querySelectorAll('.gallery-container'));
-const fadeinAnimation = Array.from(document.querySelectorAll('.fade-in-animation'));
+const fadeinAnimation = Array.from(document.querySelectorAll('.fade-in-animation:not(.fade-in-animation-manual)'));
 const verticalText = Array.from(document.querySelectorAll('main > div [class$="-wrapper"]'));
 
 window.addEventListener('scroll', () => {

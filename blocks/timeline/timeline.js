@@ -1,4 +1,4 @@
-import { getBlockModel, getButtonModel, createTextElement, createImageElement, createButtonElement, extractImageElements, crateBackgroundGallery } from '../../scripts/blockHelper.js';
+import { getBlockModel, createTextElement, createImageElement, createButtonElement, extractImageElements, crateBackgroundGallery } from '../../scripts/blockHelper.js';
 import { createModal } from '../modal/modal.js';
 import { loadFragment } from '../fragment/fragment.js';
 import { createImageCarousel } from '../../scripts/imageCarouselHelper.js';
