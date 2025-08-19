@@ -35,7 +35,8 @@
       "articles",
       "article-item",
       "be-part-of",
-      "be-part-of-teaser"
+      "be-part-of-teaser",
+      "image-with-link"
     ]
   },
   {
@@ -131,7 +132,7 @@
   {
     "id": "podcast",
     "components": [
-      "image"
+      "image-with-link"
     ]
   },
   {

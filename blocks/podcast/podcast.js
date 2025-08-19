@@ -1,4 +1,4 @@
-import { getBlockModel, createTextElement, createImageElement, createButtonElement, extractImageElements, getButtonModel } from '../../scripts/blockHelper.js';
+import { getBlockModel, createTextElement, createImageElement, createButtonElement, extractImageElements, getButtonModel, extractImagesWithLinkElements } from '../../scripts/blockHelper.js';
 import { createModal } from '../modal/modal.js';
 import { loadFragment } from '../fragment/fragment.js';
 import { createImageCarousel } from '../../scripts/imageCarouselHelper.js';
@@ -43,6 +43,12 @@ export default async function decorate(block) {
     }
   }
 
+  const otherBlocks = document.createElement('div');
+  while (block.children.length > getProps().length) {
+    otherBlocks.appendChild(block.children[getProps().length]);
+  }
+  modelData.imagesWithLink = extractImagesWithLinkElements(otherBlocks);
+  
   block.innerHTML = '';
 
   const container = document.createElement('div');
@@ -56,6 +62,18 @@ export default async function decorate(block) {
   }
   if (modelData.subtitle.value) {
     textSection.appendChild(createTextElement(modelData.subtitle, ['podcast-subtitle']));
+  }
+  if (modelData.imagesWithLink.length) {
+    const icons = document.createElement('div');
+    icons.classList.add('podcast-icons', 'fade-in-animation');
+    modelData.imagesWithLink.forEach(item => {
+      const icon = document.createElement('a');
+      icon.href = item.button?.link;
+      const image = createImageElement(item.image);
+      icon.appendChild(image);
+      icons.appendChild(icon);
+    });
+    textSection.appendChild(icons);
   }
 
   const carouselSection = document.createElement('div');

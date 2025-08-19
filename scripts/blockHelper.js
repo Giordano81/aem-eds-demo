@@ -269,6 +269,25 @@ export function extractButtonElements(block) {
   return buttons;
 }
 
+export function extractImagesWithLinkElements(block) {
+  const props = [
+    { name: 'imageOpacity', isBoolean: true }
+  ];
+
+  const imagesWithLink = [];
+  for (const child of [...block.children]) {
+    const images = extractImageElements(child).images;
+    const buttons = extractButtonElements(child);
+
+    const modelData = getBlockModel(child, props);
+    modelData.image = images.length ? images[0] : null;
+    modelData.button = buttons.length ? buttons[0] : null;
+    imagesWithLink.push(modelData);
+  }
+
+  return imagesWithLink;
+}
+
 export function crateBackgroundGallery(images) {
   const list1 = [];
   const list2 = [];

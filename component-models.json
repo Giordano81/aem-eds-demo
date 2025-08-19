@@ -1915,5 +1915,32 @@
         "label": "Eyebrow text"
       }
     ]
+  },
+  {
+    "id": "image-with-link",
+    "fields": [
+      {
+        "component": "reference",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": "imageAlt",
+        "label": "Alt Text"
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "imageOpacity",
+        "label": "Add opacity to image"
+      },
+      {
+        "component": "aem-content",
+        "name": "link",
+        "label": "Link"
+      }
+    ]
   }
 ]

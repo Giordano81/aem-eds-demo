@@ -16,6 +16,12 @@ main>.section>div.podcast-wrapper {
     .podcast-text-section {
       width: 25%;
       max-width: 25%;
+
+      .podcast-icons {
+        display: flex;
+        gap: 28px;
+        margin-top: 28px;
+      }
     }
 
     .podcast-carousel-section {
