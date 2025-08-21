@@ -1,4 +1,4 @@
-import { getBlockModel, extractButtonElements, findAttributeByTag, createTextElement, createImageElement, createButtonElement, extractImageElements } from '../../scripts/blockHelper.js';
+import { getBlockModel, extractButtonElements, findAttributeByTag, createTextElement, createImageElement, createButtonElement, extractImageElements, setDataSet } from '../../scripts/blockHelper.js';
 
 function getProps() {
   return [
@@ -26,7 +26,12 @@ export default function decorate(block) {
     for (let i = 0; i < tags.length; i++) {
       const valueFound = findAttributeByTag(child, tags[i]);
       if (valueFound) {
-        textOnTheRight.push(valueFound);
+        const item = {
+          value: valueFound,
+          dataset: {}
+        };
+        setDataSet(item, child);
+        textOnTheRight.push(item);
         break;
       };
     }
@@ -78,16 +83,18 @@ export default function decorate(block) {
       const element = modelData.textOnTheRight[i];
       if (i % 2 == 0) {
         const textOnTheRight = document.createElement('div');
+        setDataSet(textOnTheRight, element);
         textOnTheRight.classList.add('text-on-the-right');
         const title = document.createElement('h3');
         title.classList.add('heading-h3-medium');
-        title.innerHTML = element;
+        title.innerHTML = element.value;
         textOnTheRight.appendChild(title);
         listOfText.push(textOnTheRight);
       } else {
         const text = document.createElement('h3');
+        setDataSet(text, element);
         text.classList.add('body-2-light');
-        text.innerHTML = element;
+        text.innerHTML = element.value;
         listOfText[listOfText.length - 1].appendChild(text);
       }
     }

@@ -1,4 +1,4 @@
-import { getBlockModel, createTextElement } from '../../scripts/blockHelper.js';
+import { getBlockModel, createTextElement, setDataSet } from '../../scripts/blockHelper.js';
 
 function getProps() {
   return [
@@ -30,6 +30,7 @@ export default function decorate(block) {
 
   (modelData.items || []).forEach(item => {
     const itemContainer = document.createElement('div');
+    setDataSet(itemContainer, item);
     itemContainer.className = 'sezione-item';
 
     if (item.title) {

@@ -1,4 +1,4 @@
-import { getBlockModel, getButtonModel, createButtonElement, createTextElement, extractImageElements, createImageElement, crateBackgroundGallery } from '../../scripts/blockHelper.js';
+import { getBlockModel, getButtonModel, createButtonElement, createTextElement, extractImageElements, createImageElement, crateBackgroundGallery, setDataSet } from '../../scripts/blockHelper.js';
 import { loadFragment } from '../fragment/fragment.js';
 
 function getProps() {
@@ -134,12 +134,14 @@ export default async function decorate(block) {
         textSection.classList.add('text-section-splitted');
 
         const imageContainer = document.createElement('div');
+        setDataSet(imageContainer, modelData.images[0]);
         imageContainer.classList.add('image-section-splitted', 'fade-in-animation');
         imageContainer.appendChild(createImageElement(modelData.images[0]));
         elementsToBeAppendedAtTheEnd.push(imageContainer);
       } else {
         banner.classList.add('with-background-image');
         banner.style.backgroundImage = `url('${modelData.images[0].image}')`;
+        setDataSet(banner, modelData.images[0]);
       }
     } else if (modelData.mediaType == 'backgroundGallery') {
       banner.classList.add('banner-background-gallery');

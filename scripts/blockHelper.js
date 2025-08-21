@@ -4,6 +4,8 @@ import { createOptimizedPicture } from './aem.js';
 
 export function getBlockModel(block, props) {
   let modelData = {};
+  modelData.dataset = {};
+  setDataSet(modelData, block);
 
   props.forEach((obj, index) => {
     const propertyName = obj.name;
@@ -121,8 +123,10 @@ export function getButtonModel(element) {
       link: elementFound.getAttribute('href'),
       text: elementFound.textContent.trim(),
       title: elementFound.getAttribute('title'),
-      type: type
+      type: type,
+      dataset: {}
     }
+    setDataSet(result, element);
 
     const otherBlocks = document.createElement('div');
     while (element.children.length > props.length) {
@@ -134,7 +138,8 @@ export function getButtonModel(element) {
     }
 
     for (const key in modelData) {
-      result[key] = modelData[key];
+      if (key != 'dataset')
+        result[key] = modelData[key];
     }
 
     return result;
@@ -146,16 +151,20 @@ export function getButtonModel(element) {
 export function getImageModel(element) {
   let elementFound = element.querySelector('img');
   if (elementFound) {
-    return {
+    const imageModel = {
       image: elementFound.getAttribute('src'),
-      imageAlt: elementFound.getAttribute('alt')
+      imageAlt: elementFound.getAttribute('alt'),
+      dataset: {}
     };
+    setDataSet(imageModel, element);
+    return imageModel;
   }
   return null;
 }
 
 export function createButtonElement(buttonModel, avoidAnimation = false) {
   const button = document.createElement('a');
+  setDataSet(button, buttonModel);
   button.classList.add('button', 'cta-light');
   if (!avoidAnimation)
     button.classList.add('button-animation');
@@ -239,7 +248,9 @@ export function createTextElement(prop, classes, avoidAnimation = false, addManu
 }
 
 export function createImageElement(element) {
-  return createOptimizedPicture(element.image, element.imageAlt, false);
+  const picture = createOptimizedPicture(element.image, element.imageAlt, false);
+  setDataSet(picture, element);
+  return picture;
 }
 
 export function extractImageElements(block) {
@@ -323,4 +334,10 @@ export function crateBackgroundGallery(images) {
     mainDiv.appendChild(backgroundGalleryItem);
   }
   return mainDiv;
+}
+
+export function setDataSet(newElement, oldElement) {
+  for (const key in oldElement.dataset) {
+    newElement.dataset[key] = oldElement.dataset[key];
+  }
 }

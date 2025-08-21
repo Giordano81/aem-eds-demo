@@ -1,4 +1,4 @@
-import { getBlockModel, createTextElement, createImageElement, extractImageElements, extractImagesWithLinkElements } from '../../scripts/blockHelper.js';
+import { getBlockModel, createTextElement, createImageElement, extractImageElements, extractImagesWithLinkElements, setDataSet } from '../../scripts/blockHelper.js';
 import { loadFragment } from '../fragment/fragment.js';
 
 function getProps() {
@@ -66,6 +66,7 @@ export default async function decorate(block) {
     icons.classList.add('podcast-icons', 'fade-in-animation');
     modelData.imagesWithLink.forEach(item => {
       const icon = document.createElement('a');
+      setDataSet(icon, item);
       icon.href = item.button?.link;
       const image = createImageElement(item.image);
       icon.appendChild(image);

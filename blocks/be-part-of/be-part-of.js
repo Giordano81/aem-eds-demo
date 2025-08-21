@@ -38,8 +38,6 @@ export default async function decorate(block) {
     otherBlocks.appendChild(block.children[getProps().length]);
   }
   let modelData = getBlockModel(block, getProps());
-  const { block: updatedBlock, images } = extractImageElements(block);
-  modelData.images = images;
 
   if (modelData.fragment.value) {
     const fragment = await loadFragment(modelData.fragment.value);
@@ -47,14 +45,6 @@ export default async function decorate(block) {
     if (modelData.fragment.html) {
       modelData.fragment.rendered = modelData.fragment.html.querySelector('.photo-gallery-wrapper>div');
       createBlock(modelData.fragment.rendered);
-      // modelData.fragment.items = []
-      // for (let i = 0; i < modelData.fragment.html.children.length; i++) {
-      //   const child = modelData.fragment.html.children[i].querySelector('& > div');
-      //   const { child: updatedBlock, images } = extractImageElements(child);
-      //   const item = getBlockModel(child, getItemsProps());
-      //   item.images = images;
-      //   modelData.fragment.items.push(item);
-      // }
     }
   }
 

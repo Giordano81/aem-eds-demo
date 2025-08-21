@@ -151,12 +151,6 @@
     ]
   },
   {
-    "id": "be-part-of",
-    "components": [
-      "image"
-    ]
-  },
-  {
     "id": "be-part-of-teaser",
     "components": [
       "image",

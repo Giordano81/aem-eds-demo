@@ -1,4 +1,4 @@
-import { createTextElement } from './blockHelper.js';
+import { createTextElement, setDataSet } from './blockHelper.js';
 
 window.videoCarouselId = window.videoCarouselId || 0;
 
@@ -189,6 +189,9 @@ function bindEvents(block) {
 function createVideoSlide(item, slideIndex, carouselId) {
   const slide = document.createElement('li');
   slide.dataset.slideIndex = slideIndex;
+
+  setDataSet(slide, item);
+
   slide.setAttribute('id', `carousel-${carouselId}-slide-${slideIndex}`);
   slide.classList.add('carousel-slide');
   slide.setAttribute('aria-label', `Slide ${slideIndex + 1}`);
