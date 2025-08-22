@@ -1,4 +1,4 @@
-import { getBlockModel, extractButtonElements, findAttributeByTag, createTextElement, createImageElement, createButtonElement, extractImageElements, setDataSet } from '../../scripts/blockHelper.js';
+import { getBlockModel, extractButtonElements, findAttributeByTag, createTextElement, createImageElement, createButtonElement, extractImageElements, setDataSet } from '../../js/blockHelper.js';
 
 function getProps() {
   return [

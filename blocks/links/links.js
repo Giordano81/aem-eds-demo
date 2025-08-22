@@ -1,4 +1,4 @@
-import { getBlockModel, createTextElement, setDataSet } from '../../scripts/blockHelper.js';
+import { getBlockModel, createTextElement, setDataSet } from '../../js/blockHelper.js';
 
 function getProps() {
   return [

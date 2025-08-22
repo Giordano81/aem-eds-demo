@@ -1,18 +1,28 @@
-const verticalText = Array.from(document.querySelectorAll('main > div [class$="-wrapper"]'));
-const blockWrapper = Array.from(document.querySelectorAll('main > div [class$="-wrapper"]'));
+const verticalText = Array.from(document.querySelectorAll('main > div [class*="-wrapper"]'));
+const blockWrapper = Array.from(document.querySelectorAll('main > div [class*="-wrapper"]:not(.be-part-of-wrapper)'));
+// BE PART OF
+const textContainer = Array.from(document.querySelectorAll('main > div .be-part-of-wrapper div.text-container:not(.text-container-manual)'));
+const buttons = Array.from(document.querySelectorAll('main > div .be-part-of-wrapper .button-animation'));
+const fadeinAnimation = Array.from(document.querySelectorAll('main > div .be-part-of-wrapper .fade-in-animation:not(.fade-in-animation-manual)'));
 
 window.addEventListener('scroll', () => {
   scrollEvent();
 });
 
+function isInView(el) {
+  const rect = el.getBoundingClientRect();
+  const elementHeight = rect.height;
+  const visibleHeight = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
+  const isInView = visibleHeight >= (0.75 * elementHeight); // 75%
+  return isInView;
+}
+
 function scrollEvent() {
   for (let i = 0; i < blockWrapper.length; i++) {
     const el = blockWrapper[i];
-    const rect = el.getBoundingClientRect();
-    const isInView = rect.top <= (window.innerHeight / 4) && rect.bottom >= 0;
 
-    if (isInView) {
-      scrollElements(el);
+    if (isInView(el)) {
+      showElementsInBlock(el);
       blockWrapper.splice(i, 1);
       i--;
     }
@@ -23,16 +33,53 @@ function scrollEvent() {
     if (!text) break;
 
     const el = verticalText[i];
-    const rect = el.getBoundingClientRect();
-    const isInView = rect.top <= (window.innerHeight / 2) && rect.bottom >= 0;
-    if (isInView) {
+
+    if (isInView(el)) {
       const child = el.querySelector('[data-vertical-text]')
       text.textContent = child ? child.getAttribute('data-vertical-text') : '';
     }
   }
+
+
+  // BE PART OF
+  for (let i = 0; i < textContainer.length; i++) {
+    const el = textContainer[i];
+
+    if (isInView(el) && !el.children[0].classList.contains('visible')) {
+      setTimeout(() => {
+        el.children[0].classList.add('visible');
+      }, el.children[0].getAttribute('data-delayed') === 'true' ? 1500 : 0);
+      textContainer.splice(i, 1);
+      i--;
+    }
+  }
+
+  for (let i = 0; i < buttons.length; i++) {
+    const el = buttons[i];
+
+    if (isInView(el) && !el.classList.contains('visible')) {
+      setTimeout(() => {
+        el.classList.add('visible');
+      }, el.getAttribute('data-delayed') === 'true' ? 1500 : 0);
+      buttons.splice(i, 1);
+      i--;
+    }
+  }
+
+  for (let i = 0; i < fadeinAnimation.length; i++) {
+    const el = fadeinAnimation[i];
+
+    if (isInView(el) && !el.classList.contains('visible')) {
+      setTimeout(() => {
+        el.classList.add('visible');
+      }, el.getAttribute('data-delayed') ? +el.getAttribute('data-delayed') : 0);
+      fadeinAnimation.splice(i, 1);
+      i--;
+    }
+  }
 }
 
-function scrollElements(block) {
+function showElementsInBlock(block) {
   const textContainer = Array.from(block.querySelectorAll('div.text-container:not(.text-container-manual)'));
   const buttons = Array.from(block.querySelectorAll('.button-animation'));
   const bannerGalleryContainer = Array.from(block.querySelectorAll('.gallery-container'));
@@ -96,11 +143,14 @@ function scrollElements(block) {
       let scrollSpeed = 0;
       function scrollElement() {
         item.style.transform = `translateY(${scrollSpeed}px)`;
-        if (i % 2 == 0)
+        if (i % 2 == 0) {
           scrollSpeed--;
-        else
+          if (scrollSpeed <= -923) clearInterval(scrollInterval);
+        }
+        else {
           scrollSpeed++;
-        if (item.getBoundingClientRect().bottom <= 0) clearInterval(scrollInterval);
+          if (scrollSpeed >= 923) clearInterval(scrollInterval);
+        }
       }
       const scrollInterval = setInterval(scrollElement, 20);
     }
@@ -113,6 +163,50 @@ function initVerticalText() {
     smallText.classList.add('page-vertical-text');
     document.querySelector('main').appendChild(smallText);
   }
+}
+
+export function executeAnimationOnElement(element) {
+  const textContainer = Array.from(element.querySelectorAll('div.text-container:not(.text-container-manual)'));
+  const buttons = Array.from(element.querySelectorAll('.button-animation'));
+  const fadeinAnimation = Array.from(element.querySelectorAll('.fade-in-animation:not(.fade-in-animation-manual)'));
+
+  for (let i = 0; i < textContainer.length; i++) {
+    const el = textContainer[i];
+
+    if (isInView(el) && !el.children[0].classList.contains('visible')) {
+      setTimeout(() => {
+        el.children[0].classList.add('visible');
+      }, el.children[0].getAttribute('data-delayed') === 'true' ? 1500 : 0);
+      textContainer.splice(i, 1);
+      i--;
+    }
+  }
+
+  for (let i = 0; i < buttons.length; i++) {
+    const el = buttons[i];
+
+    if (isInView(el) && !el.classList.contains('visible')) {
+      setTimeout(() => {
+        el.classList.add('visible');
+      }, el.getAttribute('data-delayed') === 'true' ? 1500 : 0);
+      buttons.splice(i, 1);
+      i--;
+    }
+  }
+
+  for (let i = 0; i < fadeinAnimation.length; i++) {
+    const el = fadeinAnimation[i];
+
+    if (isInView(el) && !el.classList.contains('visible')) {
+      setTimeout(() => {
+        el.classList.add('visible');
+      }, el.getAttribute('data-delayed') ? +el.getAttribute('data-delayed') : 0);
+      fadeinAnimation.splice(i, 1);
+      i--;
+    }
+  }
+
+  scrollEvent();
 }
 
 setTimeout(() => {

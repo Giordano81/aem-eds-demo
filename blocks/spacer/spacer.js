@@ -1,4 +1,4 @@
-import { getBlockModel } from '../../scripts/blockHelper.js';
+import { getBlockModel } from '../../js/blockHelper.js';
 
 function getProps() {
   return [

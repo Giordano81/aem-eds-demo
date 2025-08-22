@@ -1,6 +1,6 @@
 import { getMetadata } from '../../scripts/aem.js';
 import { loadFragment } from '../fragment/fragment.js';
-import { extractImagesWithLinkElements, createImageElement } from '../../scripts/blockHelper.js';
+import { extractImagesWithLinkElements, createImageElement } from '../../js/blockHelper.js';
 
 // media query match that indicates mobile/tablet width
 const isDesktop = window.matchMedia('(min-width: 900px)');

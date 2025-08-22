@@ -1,4 +1,4 @@
-import { getBlockModel, createTextElement, createImageElement, createButtonElement, extractImageElements } from '../../scripts/blockHelper.js';
+import { getBlockModel, createTextElement, createImageElement, createButtonElement, extractImageElements } from '../../js/blockHelper.js';
 import { loadFragment } from '../fragment/fragment.js';
 import { createBlock } from '../photo-gallery/photo-gallery.js';
 

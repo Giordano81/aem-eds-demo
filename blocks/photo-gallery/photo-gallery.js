@@ -1,4 +1,4 @@
-import { getBlockModel, createImageElement } from '../../scripts/blockHelper.js';
+import { getBlockModel, createImageElement } from '../../js/blockHelper.js';
 
 function getProps() {
   return [

@@ -1,5 +1,6 @@
-import { getBlockModel, getButtonModel, createButtonElement, createTextElement, extractImageElements } from '../../scripts/blockHelper.js';
-import { createImageCarousel } from '../../scripts/imageCarouselHelper.js';
+import { executeAnimationOnElement } from '../../js/animations.js';
+import { getBlockModel, getButtonModel, createButtonElement, createTextElement, extractImageElements } from '../../js/blockHelper.js';
+import { createImageCarousel } from '../../js/imageCarouselHelper.js';
 import { loadFragment } from '../fragment/fragment.js';
 
 function getProps() {
@@ -51,58 +52,90 @@ export default async function decorate(block) {
 
   const firstElement = modelData.fragment.items[0];
 
-  // Create the main container
   const container = document.createElement('div');
-  container.className = 'teaser-content-container';
+  container.classList.add('teaser-content-container');
+  container.setAttribute('data-slide-index', 0);
 
-  // Create the left section
   const leftSection = document.createElement('div');
-  leftSection.className = 'left-section';
-
-  // Append elements to the left section
-  if (firstElement.eyebrow) {
-    const eyebrowModel = {
-      value: firstElement.eyebrow
-    };
-    leftSection.appendChild(createTextElement(eyebrowModel, ['teaser-eyebrow']));
-  }
-  if (firstElement.title.value) {
-    leftSection.appendChild(createTextElement(firstElement.title, ['teaser-title']));
-  }
-  if (firstElement.subtitle.value) {
-    leftSection.appendChild(createTextElement(firstElement.subtitle, ['teaser-subtitle']));
-  }
-  if (firstElement.button?.link && firstElement.button?.text) {
-    leftSection.appendChild(createButtonElement(firstElement.button));
-  }
-  if (firstElement.verticalText) {
-    leftSection.setAttribute('data-vertical-text', firstElement.verticalText);
-  }
-
-  // Create the right section
-  const rightSection = document.createElement('div');
-  rightSection.className = 'right-section';
-
-  // Append image to the right section
-  rightSection.appendChild(createImageCarousel(firstElement.images));
-
-  // Append both sections to the main container
+  leftSection.classList.add('left-section');
+  populateLeftSection(firstElement, leftSection);
   container.appendChild(leftSection);
+
+  const rightSection = document.createElement('div');
+  rightSection.classList.add('right-section', 'text-container');
+  modelData.fragment.items.forEach((item, index) => {
+    const carousel = createImageCarousel(item.images);
+    carousel.classList.add('carousel-for-teaser');
+    rightSection.appendChild(carousel);
+  });
   container.appendChild(rightSection);
 
-  // Append the main container to the body or a specific element
+  // TODO: AC - Remove mock
+  const mockContainer = document.createElement('div');
+  mockContainer.classList.add('mock-container');
+  const buttonLeft = document.createElement('div');
+  buttonLeft.textContent = "<";
+  buttonLeft.addEventListener('click', function (event) {
+    const index = +container.getAttribute('data-slide-index') - 1;
+    if (index >= 0) {
+      updateSlide(leftSection, modelData.fragment.items[index], container, index, rightSection, index + 1);
+    }
+  });
+  const buttonRight = document.createElement('div');
+  buttonRight.textContent = ">";
+  buttonRight.addEventListener('click', function (event) {
+    const index = +container.getAttribute('data-slide-index') + 1;
+    if (index < modelData.fragment.items.length) {
+      updateSlide(leftSection, modelData.fragment.items[index], container, index, rightSection, index);
+    }
+  });
+  mockContainer.appendChild(buttonLeft);
+  mockContainer.appendChild(buttonRight);
+  container.appendChild(mockContainer);
+
   block.appendChild(container);
 };
 
-/*
-window.addEventListener('scroll', () => {
-  const testElement = document.getElementsByClassName('teaser-content-container')[0];
-  const rect = testElement.getBoundingClientRect();
-    let isInView = false;
-    if (rect.top <= window.innerHeight && rect.bottom >= 0) {
-    isInView = true;
+function populateLeftSection(item, leftSection) {
+  if (item.eyebrow) {
+    const eyebrowModel = {
+      value: item.eyebrow
+    };
+    leftSection.appendChild(createTextElement(eyebrowModel, ['teaser-eyebrow']));
   }
-    console.log(`Top: ${rect.top} - Bottom: ${rect.bottom} - Is in view: ${isInView}`);
-});
+  if (item.title.value) {
+    leftSection.appendChild(createTextElement(item.title, ['teaser-title']));
+  }
+  if (item.subtitle.value) {
+    leftSection.appendChild(createTextElement(item.subtitle, ['teaser-subtitle']));
+  }
+  if (item.button?.link && item.button?.text) {
+    leftSection.appendChild(createButtonElement(item.button));
+  }
+  if (item.verticalText) {
+    leftSection.setAttribute('data-vertical-text', item.verticalText);
+  }
+}
 
-*/
+function updateSlide(leftSection, item, container, index, rightSection, carouselIndex) {
+  const elementsVisible = leftSection.querySelectorAll('.visible');
+  for (let el of elementsVisible) {
+    el.classList.remove('visible');
+  }
+  const timeAnimation = 200;
+  setTimeout(() => {
+    leftSection.innerHTML = '';
+    populateLeftSection(item, leftSection);
+    setTimeout(() => {
+      const carousels = rightSection.querySelectorAll('.carousel');
+      // If the carousel index is major is because is going to left, so I have to hide the image
+      if (carouselIndex > index)
+        carousels[carouselIndex].classList.remove('visible');
+      else
+        carousels[carouselIndex].classList.add('visible');
+
+      executeAnimationOnElement(leftSection);
+    }, timeAnimation);
+    container.setAttribute('data-slide-index', index);
+  }, timeAnimation);
+}

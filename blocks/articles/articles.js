@@ -1,4 +1,4 @@
-import { getBlockModel, createTextElement, createImageElement, extractImageElements } from '../../scripts/blockHelper.js';
+import { getBlockModel, createTextElement, createImageElement, extractImageElements } from '../../js/blockHelper.js';
 import { loadFragment } from '../fragment/fragment.js';
 
 function getProps() {

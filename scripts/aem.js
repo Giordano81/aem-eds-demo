@@ -594,10 +594,10 @@ async function loadBlock(block) {
     try {
       const cssLoaded = loadCSS(`${window.hlx.codeBasePath}/blocks/${blockName}/${blockName}.css`);
       // load the block's CSS CUSTOM file, if it exists
-      const customCssPath = `${window.hlx.codeBasePath}/blocks/${blockName}/${blockName}-custom.css`;
-      await fetch(customCssPath, { method: 'HEAD' }).then((resp) => {
-        if (resp.ok) loadCSS(customCssPath);
-      });
+      // const customCssPath = `${window.hlx.codeBasePath}/blocks/${blockName}/${blockName}-custom.css`;
+      // await fetch(customCssPath, { method: 'HEAD' }).then((resp) => {
+      //   if (resp.ok) loadCSS(customCssPath);
+      // });
       const decorationComplete = new Promise((resolve) => {
         (async () => {
           try {
@@ -613,18 +613,18 @@ async function loadBlock(block) {
             console.log(`failed to load module for ${blockName}`, error);
           }
           // Import JS custom del blocco, se esiste
-          const customJsPath = `${window.hlx.codeBasePath}/blocks/${blockName}/${blockName}-custom.js`;
-          try {
-            const resp = await fetch(customJsPath, { method: 'HEAD' });
-            if (resp.ok) {
-              const customMod = await import(customJsPath);
-              if (customMod.default) {
-                await customMod.default(block);
-              }
-            }
-          } catch (e) {
-            // nessun custom js, ignora
-          }
+          // const customJsPath = `${window.hlx.codeBasePath}/blocks/${blockName}/${blockName}-custom.js`;
+          // try {
+          //   const resp = await fetch(customJsPath, { method: 'HEAD' });
+          //   if (resp.ok) {
+          //     const customMod = await import(customJsPath);
+          //     if (customMod.default) {
+          //       await customMod.default(block);
+          //     }
+          //   }
+          // } catch (e) {
+          //   // nessun custom js, ignora
+          // }
           resolve();
         })();
       });

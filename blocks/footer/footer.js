@@ -1,6 +1,6 @@
 import { getMetadata } from '../../scripts/aem.js';
 import { loadFragment } from '../fragment/fragment.js';
-import { extractImagesWithLinkElements, createImageElement } from '../../scripts/blockHelper.js';
+import { extractImagesWithLinkElements, createImageElement } from '../../js/blockHelper.js';
 
 /**
  * loads and decorates the footer

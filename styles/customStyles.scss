@@ -159,6 +159,15 @@ main>.section>div.default-content-wrapper {
       opacity: 1;
     }
   }
+
+  div.carousel {
+    transform: translateY(100%);
+    transition: transform 1s ease;
+
+    &.visible {
+      transform: translateY(0);
+    }
+  }
 }
 
 .fade-in-animation {

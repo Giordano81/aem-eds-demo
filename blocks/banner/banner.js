@@ -1,4 +1,4 @@
-import { getBlockModel, getButtonModel, createButtonElement, createTextElement, extractImageElements, createImageElement, crateBackgroundGallery, setDataSet } from '../../scripts/blockHelper.js';
+import { getBlockModel, getButtonModel, createButtonElement, createTextElement, extractImageElements, createImageElement, crateBackgroundGallery, setDataSet } from '../../js/blockHelper.js';
 import { loadFragment } from '../fragment/fragment.js';
 
 function getProps() {

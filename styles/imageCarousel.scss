@@ -1,6 +1,9 @@
 .carousel {
+  height: 100%;
+
   .carousel-slides-container {
     position: relative;
+    height: 100%;
 
     .carousel-indicator {
       position: absolute;
@@ -153,6 +156,26 @@
         &[data-align='justify'] {
           --slide-content-width: auto;
         }
+      }
+    }
+  }
+
+  &.carousel-for-teaser {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    .carousel-slides-container {
+      background-color: var(--color-primary-blue-500-bkg);
+
+      .carousel-slides {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
       }
     }
   }

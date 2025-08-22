@@ -2,30 +2,36 @@ main > .section > div.teaser-wrapper {
   max-width: 100%;
   height: 100vh;
 }
-main > .section > div.teaser-wrapper .teaser-content-container {
+main > .section > div.teaser-wrapper > div {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+main > .section > div.teaser-wrapper > div .teaser-content-container {
+  height: 100%;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 48px;
-  padding-bottom: 0;
-  background-color: var(--background-color-dark);
-  color: var(--text-color-light);
+  gap: 112px;
+  padding: 64px;
   position: relative;
+  flex: 1;
 }
-main > .section > div.teaser-wrapper .teaser-content-container .left-section {
+main > .section > div.teaser-wrapper > div .teaser-content-container .left-section {
   max-width: 50%;
+  width: 100%;
   padding-top: 24px;
   padding-left: 12px;
 }
-main > .section > div.teaser-wrapper .teaser-content-container .left-section .teaser-eyebrow {
+main > .section > div.teaser-wrapper > div .teaser-content-container .left-section .teaser-eyebrow {
   font-size: 17px;
   line-height: 53px;
   font-weight: 300;
   letter-spacing: 0;
   text-transform: uppercase;
-  margin: 0 0 16px 0;
+  margin: 0 0 16px;
 }
-main > .section > div.teaser-wrapper .teaser-content-container .left-section .vertical-text {
+main > .section > div.teaser-wrapper > div .teaser-content-container .left-section .vertical-text {
   position: absolute;
   bottom: 24px;
   left: 50px;
@@ -35,10 +41,27 @@ main > .section > div.teaser-wrapper .teaser-content-container .left-section .ve
   color: rgba(255, 255, 255, 0.6);
   text-transform: uppercase;
 }
-main > .section > div.teaser-wrapper .teaser-content-container .right-section {
+main > .section > div.teaser-wrapper > div .teaser-content-container .right-section {
   max-width: 50%;
+  height: 100%;
+  width: 100%;
+  position: relative;
 }
-main > .section > div.teaser-wrapper .teaser-content-container .right-section img {
+main > .section > div.teaser-wrapper > div .teaser-content-container .right-section img {
   width: 100%;
   height: auto;
+}
+
+.mock-container {
+  position: absolute;
+  left: 100px;
+  bottom: 100px;
+  display: flex;
+  gap: 24px;
+}
+.mock-container div {
+  padding: 20px;
+  font-size: 30px;
+  cursor: pointer;
+  border: solid 1px #FFF;
 }

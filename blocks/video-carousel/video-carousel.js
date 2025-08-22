@@ -1,5 +1,5 @@
-import { getBlockModel } from '../../scripts/blockHelper.js';
-import { createVideoCarousel } from '../../scripts/videoCarouselHelper.js';
+import { getBlockModel } from '../../js/blockHelper.js';
+import { createVideoCarousel } from '../../js/videoCarouselHelper.js';
 
 function getProps() {
   return [

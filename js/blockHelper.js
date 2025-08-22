@@ -1,4 +1,4 @@
-import { createOptimizedPicture } from './aem.js';
+import { createOptimizedPicture } from '../scripts/aem.js';
 
 // TODO: centralizzare la lista di tags e inserirla qui
 
@@ -13,7 +13,7 @@ export function getBlockModel(block, props) {
     try {
       textContent = block.children[index].textContent.trim();
     } catch (error) {
-      console.log(error);
+      console.log(error, block, props);
     }
     if (obj.attribute) {
       modelData[propertyName] = {
