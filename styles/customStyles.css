@@ -89,7 +89,7 @@ main > .section > div.default-content-wrapper {
   flex: 1;
   padding: 20px;
   text-align: center;
-  gap: 24px;
+  gap: 60px;
   display: flex;
   flex-direction: column;
 }
@@ -97,6 +97,9 @@ main > .section > div.default-content-wrapper {
   height: 500px;
   min-height: 500px;
   display: flex;
+  opacity: 0.6;
+  background: var(--color-primary-blue);
+  mix-blend-mode: hard-light;
 }
 .background-gallery-container .background-gallery-item picture img {
   object-fit: cover;
