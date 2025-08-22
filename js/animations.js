@@ -1,82 +1,72 @@
 const verticalText = Array.from(document.querySelectorAll('main > div [class*="-wrapper"]'));
 const blockWrapper = Array.from(document.querySelectorAll('main > div [class*="-wrapper"]:not(.be-part-of-wrapper)'));
-// BE PART OF
+// BE PART OF or other pages with very high blocks
 const textContainer = Array.from(document.querySelectorAll('main > div .be-part-of-wrapper div.text-container:not(.text-container-manual)'));
 const buttons = Array.from(document.querySelectorAll('main > div .be-part-of-wrapper .button-animation'));
 const fadeinAnimation = Array.from(document.querySelectorAll('main > div .be-part-of-wrapper .fade-in-animation:not(.fade-in-animation-manual)'));
 
-window.addEventListener('scroll', () => {
-  scrollEvent();
-});
+window.addEventListener('scroll', scrollEvent);
+
+function scrollEvent() {
+  handleVisibility(blockWrapper, false, showElementsInBlock);
+
+  const text = document.querySelector('.page-vertical-text');
+  if (text) {
+    verticalText.forEach(el => {
+      if (isInView(el)) {
+        const child = el.querySelector('[data-vertical-text]');
+        text.textContent = child ? child.getAttribute('data-vertical-text') : '';
+      }
+    });
+  }
+
+  // BE PART OF or other pages with very high blocks
+  handleBasicElements(false, textContainer, buttons, fadeinAnimation);
+}
+
+function handleVisibility(elements, doNotCheckIsInView, callback) {
+  for (let i = 0; i < elements.length; i++) {
+    const el = elements[i];
+    if (doNotCheckIsInView || isInView(el)) {
+      callback(el);
+      elements.splice(i, 1);
+      i--;
+    }
+  }
+}
 
 function isInView(el) {
   const rect = el.getBoundingClientRect();
-  const elementHeight = rect.height;
   const visibleHeight = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
-  const isInView = visibleHeight >= (0.75 * elementHeight); // 75%
-  return isInView;
+  // If the element is greater than the screen, I have to check in another way
+  const isInViewFallback = rect.height > window.innerHeight && rect.top <= (window.innerHeight / 4) && rect.bottom >= 0;
+  return (visibleHeight >= (0.75 * rect.height)) || isInViewFallback; // 75%
 }
 
-function scrollEvent() {
-  for (let i = 0; i < blockWrapper.length; i++) {
-    const el = blockWrapper[i];
-
-    if (isInView(el)) {
-      showElementsInBlock(el);
-      blockWrapper.splice(i, 1);
-      i--;
-    }
-  }
-
-  for (let i = 0; i < verticalText.length; i++) {
-    const text = document.querySelector('.page-vertical-text');
-    if (!text) break;
-
-    const el = verticalText[i];
-
-    if (isInView(el)) {
-      const child = el.querySelector('[data-vertical-text]')
-      text.textContent = child ? child.getAttribute('data-vertical-text') : '';
-    }
-  }
-
-
-  // BE PART OF
-  for (let i = 0; i < textContainer.length; i++) {
-    const el = textContainer[i];
-
-    if (isInView(el) && !el.children[0].classList.contains('visible')) {
+function handleBasicElements(doNotCheckIsInView, textContainer, buttons, fadeinAnimation) {
+  handleVisibility(textContainer, doNotCheckIsInView, el => {
+    if (!el.children[0].classList.contains('visible')) {
       setTimeout(() => {
         el.children[0].classList.add('visible');
       }, el.children[0].getAttribute('data-delayed') === 'true' ? 1500 : 0);
-      textContainer.splice(i, 1);
-      i--;
     }
-  }
+  });
 
-  for (let i = 0; i < buttons.length; i++) {
-    const el = buttons[i];
-
-    if (isInView(el) && !el.classList.contains('visible')) {
+  handleVisibility(buttons, doNotCheckIsInView, el => {
+    if (!el.classList.contains('visible')) {
       setTimeout(() => {
         el.classList.add('visible');
       }, el.getAttribute('data-delayed') === 'true' ? 1500 : 0);
-      buttons.splice(i, 1);
-      i--;
     }
-  }
+  });
 
-  for (let i = 0; i < fadeinAnimation.length; i++) {
-    const el = fadeinAnimation[i];
-
-    if (isInView(el) && !el.classList.contains('visible')) {
+  handleVisibility(fadeinAnimation, doNotCheckIsInView, el => {
+    if (!el.classList.contains('visible')) {
       setTimeout(() => {
         el.classList.add('visible');
       }, el.getAttribute('data-delayed') ? +el.getAttribute('data-delayed') : 0);
-      fadeinAnimation.splice(i, 1);
-      i--;
     }
-  }
+  });
 }
 
 function showElementsInBlock(block) {
@@ -86,23 +76,7 @@ function showElementsInBlock(block) {
   const fadeinAnimation = Array.from(block.querySelectorAll('.fade-in-animation:not(.fade-in-animation-manual)'));
   const backgroundGallery = Array.from(block.querySelectorAll('.banner-background-gallery .background-gallery-container'));
 
-  for (let i = 0; i < textContainer.length; i++) {
-    const el = textContainer[i];
-    if (!el.children[0].classList.contains('visible')) {
-      setTimeout(() => {
-        el.children[0].classList.add('visible');
-      }, el.children[0].getAttribute('data-delayed') === 'true' ? 1500 : 0);
-    }
-  }
-
-  for (let i = 0; i < buttons.length; i++) {
-    const el = buttons[i];
-    if (!el.classList.contains('visible')) {
-      setTimeout(() => {
-        el.classList.add('visible');
-      }, el.getAttribute('data-delayed') === 'true' ? 1500 : 0);
-    }
-  }
+  handleBasicElements(true, textContainer, buttons, fadeinAnimation);
 
   for (let i = 0; i < bannerGalleryContainer.length; i++) {
     const el = bannerGalleryContainer[i];
@@ -122,15 +96,6 @@ function showElementsInBlock(block) {
         }
       }
       showNextImage();
-    }
-  }
-
-  for (let i = 0; i < fadeinAnimation.length; i++) {
-    const el = fadeinAnimation[i];
-    if (!el.classList.contains('visible')) {
-      setTimeout(() => {
-        el.classList.add('visible');
-      }, el.getAttribute('data-delayed') ? +el.getAttribute('data-delayed') : 0);
     }
   }
 
@@ -157,6 +122,18 @@ function showElementsInBlock(block) {
   }
 }
 
+export function executeAnimationOnElement(element) {
+  const textContainer = Array.from(element.querySelectorAll('div.text-container:not(.text-container-manual)'));
+  const buttons = Array.from(element.querySelectorAll('.button-animation'));
+  const fadeinAnimation = Array.from(element.querySelectorAll('.fade-in-animation:not(.fade-in-animation-manual)'));
+
+  handleBasicElements(false, textContainer, buttons, fadeinAnimation);
+
+  scrollEvent();
+}
+
+setTimeout(scrollEvent, 1000);
+
 function initVerticalText() {
   if (document.querySelectorAll('[data-vertical-text]').length) {
     const smallText = document.createElement('span');
@@ -164,53 +141,5 @@ function initVerticalText() {
     document.querySelector('main').appendChild(smallText);
   }
 }
-
-export function executeAnimationOnElement(element) {
-  const textContainer = Array.from(element.querySelectorAll('div.text-container:not(.text-container-manual)'));
-  const buttons = Array.from(element.querySelectorAll('.button-animation'));
-  const fadeinAnimation = Array.from(element.querySelectorAll('.fade-in-animation:not(.fade-in-animation-manual)'));
-
-  for (let i = 0; i < textContainer.length; i++) {
-    const el = textContainer[i];
-
-    if (isInView(el) && !el.children[0].classList.contains('visible')) {
-      setTimeout(() => {
-        el.children[0].classList.add('visible');
-      }, el.children[0].getAttribute('data-delayed') === 'true' ? 1500 : 0);
-      textContainer.splice(i, 1);
-      i--;
-    }
-  }
-
-  for (let i = 0; i < buttons.length; i++) {
-    const el = buttons[i];
-
-    if (isInView(el) && !el.classList.contains('visible')) {
-      setTimeout(() => {
-        el.classList.add('visible');
-      }, el.getAttribute('data-delayed') === 'true' ? 1500 : 0);
-      buttons.splice(i, 1);
-      i--;
-    }
-  }
-
-  for (let i = 0; i < fadeinAnimation.length; i++) {
-    const el = fadeinAnimation[i];
-
-    if (isInView(el) && !el.classList.contains('visible')) {
-      setTimeout(() => {
-        el.classList.add('visible');
-      }, el.getAttribute('data-delayed') ? +el.getAttribute('data-delayed') : 0);
-      fadeinAnimation.splice(i, 1);
-      i--;
-    }
-  }
-
-  scrollEvent();
-}
-
-setTimeout(() => {
-  scrollEvent();
-}, 1000);
 
 initVerticalText();
