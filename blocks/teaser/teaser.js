@@ -65,8 +65,10 @@ export default async function decorate(block) {
   rightSection.classList.add('right-section', 'text-container');
   modelData.fragment.items.forEach((item, index) => {
     const carousel = createImageCarousel(item.images);
-    carousel.classList.add('carousel-for-teaser');
-    rightSection.appendChild(carousel);
+    if (carousel) {
+      carousel.classList.add('carousel-for-teaser');
+      rightSection.appendChild(carousel);
+    }
   });
   container.appendChild(rightSection);
 
@@ -109,7 +111,7 @@ function populateLeftSection(item, leftSection) {
   if (item.subtitle.value) {
     leftSection.appendChild(createTextElement(item.subtitle, ['teaser-subtitle']));
   }
-  if (item.button?.link && item.button?.text) {
+  if (item.button) {
     leftSection.appendChild(createButtonElement(item.button));
   }
   if (item.verticalText) {
@@ -129,10 +131,12 @@ function updateSlide(leftSection, item, container, index, rightSection, carousel
     setTimeout(() => {
       const carousels = rightSection.querySelectorAll('.carousel');
       // If the carousel index is major is because is going to left, so I have to hide the image
-      if (carouselIndex > index)
-        carousels[carouselIndex].classList.remove('visible');
-      else
-        carousels[carouselIndex].classList.add('visible');
+      if (carousels.length > carouselIndex) {
+        if (carouselIndex > index)
+          carousels[carouselIndex].classList.remove('visible');
+        else
+          carousels[carouselIndex].classList.add('visible');
+      }
 
       executeAnimationOnElement(leftSection);
     }, timeAnimation);

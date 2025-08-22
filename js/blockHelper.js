@@ -108,6 +108,11 @@ export function getButtonModel(element) {
     { name: 'slowAnimation', isBoolean: true }
   ];
 
+  let result = {
+    dataset: {}
+  }
+  setDataSet(result, element);
+
   let elementFound = element.querySelector('a');
   if (elementFound) {
     let type = '';
@@ -119,14 +124,10 @@ export function getButtonModel(element) {
       type = 'default';
     }
 
-    let result = {
-      link: elementFound.getAttribute('href'),
-      text: elementFound.textContent.trim(),
-      title: elementFound.getAttribute('title'),
-      type: type,
-      dataset: {}
-    }
-    setDataSet(result, element);
+    result.link = elementFound.getAttribute('href');
+    result.text = elementFound.textContent.trim();
+    result.title = elementFound.getAttribute('title');
+    result.type = type;
 
     const otherBlocks = document.createElement('div');
     while (element.children.length > props.length) {
@@ -145,24 +146,30 @@ export function getButtonModel(element) {
     return result;
   }
 
-  return null;
+  return result;
 }
 
 export function getImageModel(element) {
+  let result = {
+    dataset: {}
+  }
+  setDataSet(result, element);
   let elementFound = element.querySelector('img');
   if (elementFound) {
-    const imageModel = {
-      image: elementFound.getAttribute('src'),
-      imageAlt: elementFound.getAttribute('alt'),
-      dataset: {}
-    };
-    setDataSet(imageModel, element);
-    return imageModel;
+    result.image = elementFound.getAttribute('src');
+    result.imageAlt = elementFound.getAttribute('alt');
+    return result;
   }
-  return null;
+  return result;
 }
 
 export function createButtonElement(buttonModel, avoidAnimation = false) {
+  if (!buttonModel.text && !buttonModel.link) {
+    const button = document.createElement('div');
+    button.classList.add('d-none');
+    setDataSet(button, buttonModel);
+    return button;
+  }
   const button = document.createElement('a');
   setDataSet(button, buttonModel);
   button.classList.add('button', 'cta-light');
@@ -257,7 +264,7 @@ export function extractImageElements(block) {
   const images = [];
 
   for (const child of [...block.children]) {
-    if (child.querySelector('picture')) {
+    if (child.querySelector('picture') || child.getAttribute('data-aue-model') === 'image' || child.getAttribute('data-aue-label') === 'Image') {
       images.push(getImageModel(child));
       block.removeChild(child);
     }
@@ -274,7 +281,7 @@ export function extractButtonElements(block) {
   const buttons = [];
 
   for (const child of [...block.children]) {
-    if (child.querySelector('.button-container')) {
+    if (child.querySelector('.button-container') || child.getAttribute('data-aue-model') === 'button' || child.getAttribute('data-aue-label') === 'Button') {
       buttons.push(getButtonModel(child));
       block.removeChild(child);
     }

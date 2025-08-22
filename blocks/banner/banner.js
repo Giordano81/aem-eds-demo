@@ -213,7 +213,7 @@ function createTextSection(modelData) {
     }
   }
 
-  if (modelData.button?.link && modelData.button?.text) {
+  if (modelData.button) {
     content.appendChild(createButtonElement(modelData.button));
   }
 

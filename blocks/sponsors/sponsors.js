@@ -87,7 +87,7 @@ export default async function decorate(block) {
       if (item.subtitle.value) {
         textSection.appendChild(createTextElement(item.subtitle, ['teaser-subtitle'], true));
       }
-      if (item.button?.link && item.button?.text) {
+      if (item.button) {
         textSection.appendChild(createButtonElement(item.button));
       }
       modalBody.appendChild(textSection);

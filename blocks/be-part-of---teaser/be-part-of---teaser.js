@@ -23,9 +23,11 @@ export default function decorate(block) {
   const textOnTheRight = [];
   const tags = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p'];
   for (const child of [...otherBlocks.children]) {
+    let foundWithTag = false;
     for (let i = 0; i < tags.length; i++) {
       const valueFound = findAttributeByTag(child, tags[i]);
       if (valueFound) {
+        foundWithTag = true;
         const item = {
           value: valueFound,
           dataset: {}
@@ -34,6 +36,14 @@ export default function decorate(block) {
         textOnTheRight.push(item);
         break;
       };
+    }
+    if (!foundWithTag) {
+      const item = {
+        value: '',
+        dataset: {}
+      };
+      setDataSet(item, child);
+      textOnTheRight.push(item);
     }
   }
   modelData.textOnTheRight = textOnTheRight;
