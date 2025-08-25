@@ -56,7 +56,8 @@ main>.section>div.articles-wrapper {
           font-size: 28.8px;
           line-height: 38.4px;
           letter-spacing: 0.48px;
-          margin-top: 10px;
+          margin: 0;
+          margin-top: 9.6px;
         }
 
         .article-date {
@@ -64,7 +65,8 @@ main>.section>div.articles-wrapper {
           font-size: 14.4px;
           line-height: 19.2px;
           letter-spacing: 0px;
-          margin-top: 24px;
+          margin: 0;
+          margin-top: 28px;
         }
 
         .article-link {
@@ -75,6 +77,7 @@ main>.section>div.articles-wrapper {
           text-transform: uppercase;
           margin-top: 22px;
           position: relative;
+          display: block;
 
           &::after {
             content: '';

@@ -670,8 +670,14 @@
       {
         "component": "boolean",
         "valueType": "boolean",
-        "name": "removeFullscreen",
-        "label": "Remove fullscreen"
+        "name": "removeVerticalFullscreen",
+        "label": "Remove vertical fullscreen"
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "addHorizontalFullscreen",
+        "label": "Add horizontal fullscreen"
       }
     ]
   },
@@ -722,7 +728,7 @@
         "label": "Button Link"
       },
       {
-        "component": "text",
+        "component": "richtext",
         "name": "hoverText",
         "label": "Hover Text"
       }

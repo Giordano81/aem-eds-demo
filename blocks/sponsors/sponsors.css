@@ -5,11 +5,17 @@ main > .section > div.sponsors-wrapper {
 }
 main > .section > div.sponsors-wrapper > div {
   height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 main > .section > div.sponsors-wrapper .sponsor-container {
   padding: 100px 77px;
   text-align: center;
   height: 100%;
+  flex: 1;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
 }
 main > .section > div.sponsors-wrapper .sponsor-container .sponsor-title {
   margin-top: 0;
@@ -19,8 +25,10 @@ main > .section > div.sponsors-wrapper .sponsor-container .sponsor-title {
 main > .section > div.sponsors-wrapper .sponsor-container .sponsor-logos {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 80px;
+  gap: 56px;
   height: 100%;
+  flex: 1;
+  overflow: auto;
 }
 main > .section > div.sponsors-wrapper .sponsor-container .sponsor-logos .sponsor-logo {
   width: auto;

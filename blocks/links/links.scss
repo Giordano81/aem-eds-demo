@@ -3,33 +3,30 @@ main>.section>div.links-wrapper {
   height: fit-content;
 
 
-  .sezioni-link {
+  .links-container {
     padding: 70px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 80px 24px;
 
-    .sezione-item {
+    .link-item {
       border-left: 2px solid #FFF;
       padding-left: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 35.8px;
 
       p {
-        font-family: Graphik;
-        font-weight: 500;
-        font-size: 36px;
-        line-height: 48px;
-        letter-spacing: 0px;
+        padding: 0;
         text-transform: uppercase;
-        margin: 0;
-        margin-bottom: 12px;
       }
 
       a {
-        color: var(--text-color-light);
-        font-family: Graphik;
-        font-weight: 300;
         font-size: 24px;
+        font-style: normal;
+        font-weight: 300;
         line-height: 36px;
+        width: fit-content;
 
         &::after {
           content: '';

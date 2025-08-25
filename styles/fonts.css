@@ -74,7 +74,15 @@
 /* Signature */
 @font-face {
   font-family: Signature;
-  src: url('../fonts/Signature/Bartolomeo\ Signature\ 26.woff2') format('woff2'), url('../fonts/Signature/Bartolomeo\ Signature\ 26.woff') format('woff');
+  src: url('../fonts/Signature/Signature.woff2') format('woff2'), url('../fonts/Signature/Signature.woff') format('woff');
   font-weight: 300;
+  font-style: normal;
+}
+
+/* Signature */
+@font-face {
+  font-family: HedvigLettersSerif;
+  src: url('../fonts/HedvigLettersSerif.ttf') format('ttf');
+  font-weight: 400;
   font-style: normal;
 }

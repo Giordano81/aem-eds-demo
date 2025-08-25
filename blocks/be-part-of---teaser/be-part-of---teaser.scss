@@ -11,19 +11,49 @@ main>.section>div.be-part-of---teaser-wrapper {
   .main-section {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    gap: 64px;
 
     .left-section {
       grid-column: 1;
 
+      .be-part-of-teaser-eyebrow {
+        font-size: 16.8px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: 52.8px;
+        text-transform: uppercase;
+        margin: 0;
+        margin-bottom: 16px;
+      }
+
+      .be-part-of-teaser-title {
+        padding-bottom: 40px;
+      }
+
+      .be-part-of-teaser-subtitle {
+        padding-bottom: 40px;
+      }
+
       .buttons-section {
         display: flex;
         gap: 24px;
+
+        a {
+          font-size: 19.2px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 21.6px;
+          letter-spacing: 1.2px;
+          text-transform: uppercase;
+          padding: 21.6px 36px;
+        }
       }
     }
 
     .right-section {
       grid-column: 2;
-      padding-left: 300px;
+      max-width: 80%;
+      margin-left: auto;
 
       .text-on-the-right-section {
         border: 0.5 solid var(--color-secondary-light-blue-2);
@@ -48,6 +78,10 @@ main>.section>div.be-part-of---teaser-wrapper {
             bottom: -60px;
             right: calc(50% - 37px);
             transform: translateX(50%) translateY(100%);
+          }
+
+          .text-on-the-right-title {
+            padding-bottom: 20px;
           }
         }
       }

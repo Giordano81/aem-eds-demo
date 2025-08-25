@@ -101,7 +101,7 @@ function createGridItem(item) {
   if (item.text) {
     const text = document.createElement('div');
     text.textContent = item.text;
-    text.classList.add('bottom-text');
+    text.classList.add('bottom-text', 'body-3-light');
     gridItem.appendChild(text);
   }
 

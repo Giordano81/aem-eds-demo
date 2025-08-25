@@ -49,7 +49,9 @@ main>.section>div.banner-wrapper {
             bottom: 0;
             height: 100%;
             width: 100%;
-            background-color: rgba(var(--color-primary-blue-500-bkg-rgb), 0.6);
+            background-color: var(--color-primary-blue-500-bkg);
+            opacity: 0.6;
+            z-index: 1;
           }
         }
       }
@@ -97,11 +99,10 @@ main>.section>div.banner-wrapper {
     }
 
     .banner-content {
-      z-index: 1;
+      z-index: 10;
       display: flex;
       flex-direction: column;
-
-      padding: 50px;
+      padding: 64px;
       width: 50%;
       margin: auto;
 
@@ -136,8 +137,8 @@ main>.section>div.banner-wrapper {
         text-align: end;
       }
 
-      .button {
-        margin-top: 48px;
+      &.horizontal-fullscreen {
+        width: 100%;
       }
 
       .subtitles-container {
@@ -145,7 +146,8 @@ main>.section>div.banner-wrapper {
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(2, 1fr);
         height: 100%;
-        gap: 10px;
+        gap: 160px 90px;
+        padding: 0 64px;
 
         .subtitle-item {
           display: block;
@@ -165,17 +167,26 @@ main>.section>div.banner-wrapper {
       }
 
       .banner-subtitle-with-quotes {
-        font-size: 1.25rem;
-        margin: 0;
-        font-weight: 400;
+        font-size: 64.186px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: 78.227px;
         position: relative;
+
+        strong {
+          font-family: var(--bartolomeo-signature-font-family);
+        }
 
         &::before,
         &::after {
           content: '"';
-          font-size: 50px;
           color: var(--color-secondary-light-blue-2);
           position: absolute;
+          font-size: 248.372px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 302.703px;
+          font-family: var(--hedvig-letters-serif-font-family);
         }
 
         &::before {
@@ -185,7 +196,7 @@ main>.section>div.banner-wrapper {
 
         &::after {
           right: -20px;
-          top: 0;
+          bottom: 0;
         }
       }
 
@@ -194,7 +205,8 @@ main>.section>div.banner-wrapper {
         font-size: 16.8px;
         line-height: 52.8px;
         text-transform: uppercase;
-
+        padding-bottom: 16px;
+        margin: 0;
       }
     }
 
@@ -258,6 +270,10 @@ main>.section>div.banner-wrapper {
             opacity: 0;
             transition: opacity 0.3s ease;
             z-index: 1 !important;
+            font-size: 28.8px;
+            font-style: normal;
+            font-weight: 300;
+            line-height: normal;
           }
         }
 
@@ -270,7 +286,7 @@ main>.section>div.banner-wrapper {
 
         .overlay-text {
           position: absolute;
-          padding: 8px;
+          padding: 0;
           width: 100%;
           text-align: center;
           z-index: 1;
@@ -282,10 +298,9 @@ main>.section>div.banner-wrapper {
           }
 
           &.overlay-text-bottom {
-            bottom: 24px;
+            bottom: 42px;
             left: 50%;
             transform: translate(-50%, -50%);
-
             font-weight: 400;
             font-size: 15.6px;
             line-height: 21.6px;

@@ -55,6 +55,7 @@ main > .section > div.be-part-of-wrapper .main-section.second-section .contest-t
   font-size: 16.8px;
   line-height: 52.8px;
   text-transform: uppercase;
+  margin: 0;
   margin-bottom: 36px;
 }
 main > .section > div.be-part-of-wrapper .main-section.second-section .contest-text {
@@ -79,6 +80,9 @@ main > .section > div.be-part-of-wrapper .main-section.second-section .contest-c
   padding: 46px 24px 30px 24px;
   position: relative;
 }
+main > .section > div.be-part-of-wrapper .main-section.second-section .contest-cards-container .contest-card .contest-card-title {
+  padding-bottom: 20px;
+}
 main > .section > div.be-part-of-wrapper .main-section.second-section .contest-cards-container .contest-card .contest-card-counter {
   position: absolute;
   top: 22px;
@@ -91,6 +95,7 @@ main > .section > div.be-part-of-wrapper .main-section.second-section .button {
   line-height: 21.6px;
   letter-spacing: 1.2px;
   text-transform: uppercase;
+  margin: 0;
 }
 main > .section > div.be-part-of-wrapper .main-section.third-section {
   padding-bottom: 33px;

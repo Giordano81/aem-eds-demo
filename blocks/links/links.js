@@ -26,15 +26,15 @@ export default function decorate(block) {
   block.innerHTML = '';
 
   const mainContainer = document.createElement('div');
-  mainContainer.className = 'sezioni-link';
+  mainContainer.classList.add('links-container');
 
   (modelData.items || []).forEach(item => {
     const itemContainer = document.createElement('div');
     setDataSet(itemContainer, item);
-    itemContainer.className = 'sezione-item';
+    itemContainer.classList.add('link-item');
 
     if (item.title) {
-      itemContainer.appendChild(createTextElement({value: item.title}));
+      itemContainer.appendChild(createTextElement({value: item.title}, ['heading-h3-medium', 'link-title']));
     }
 
     if (item.ctaText && item.ctaLink.value) {

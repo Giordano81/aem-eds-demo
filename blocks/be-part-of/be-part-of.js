@@ -114,7 +114,8 @@ export default async function decorate(block) {
     type: 'primary',
     text: modelData.ctaText
   }
-  secondSection.appendChild(createButtonElement(buttonModel));
+  const button = createButtonElement(buttonModel);
+  secondSection.appendChild(button);
 
   // Blocco 3
   const thirdSection = document.createElement('div');
@@ -125,20 +126,6 @@ export default async function decorate(block) {
   mainContainer.appendChild(secondSection);
   mainContainer.appendChild(thirdSection);
   block.appendChild(mainContainer);
-  /*
-    Blocco 1
-      titolo
-      sottotitolo
-      arrow
-    Blocco 2
-      tag contest
-      immagine contest
-      testo contest
-      titolo contest
-      cards
-    Blocco 3
-      fragment
-  */
 }
 
 function addCardToContainer(container, title, text, counter) {

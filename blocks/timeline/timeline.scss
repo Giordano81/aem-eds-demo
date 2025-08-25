@@ -69,7 +69,8 @@ main>.section>div.timeline-wrapper {
               bottom: 0;
               height: 100%;
               width: 100%;
-              background-color: rgba(var(--color-primary-blue-rgb), 0.6);
+              background-color: var(--color-primary-blue);
+              opacity: 0.6;
             }
 
             &.selected {
@@ -159,7 +160,8 @@ main>.section>div.timeline-wrapper {
         bottom: 0;
         height: 100%;
         width: 100%;
-        background-color: rgba(var(--color-primary-blue-rgb), 0.6);
+        background-color: var(--color-primary-blue);
+        opacity: 0.6;
       }
     }
   }

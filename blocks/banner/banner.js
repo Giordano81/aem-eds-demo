@@ -25,7 +25,8 @@ function getProps() {
     { name: 'galleryAnimation' },
     { name: 'galleryFastAnimation', isBoolean: true },
     { name: 'galleryFullscreen', isBoolean: true },
-    { name: 'removeFullscreen', isBoolean: true }
+    { name: 'removeVerticalFullscreen', isBoolean: true },
+    { name: 'addHorizontalFullscreen', isBoolean: true }
   ];
 }
 
@@ -37,7 +38,7 @@ function getItemsProps() {
     { name: 'textPosition' },
     { name: 'ctaText' },
     { name: 'ctaLink', attribute: 'href' },
-    { name: 'hoverText' }
+    { name: 'hoverText', tags: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p'] }
   ];
 }
 
@@ -161,14 +162,17 @@ export default async function decorate(block) {
   if (modelData.darkBackground) {
     block.classList.add('dark-background');
   }
-  if (modelData.removeFullscreen) {
+  if (modelData.removeVerticalFullscreen) {
     block.closest('.banner-wrapper').classList.add('not-fullscreen');
   }
 }
 
 function createTextSection(modelData) {
   const content = document.createElement('div');
-  content.className = 'banner-content';
+  content.classList.add('banner-content');
+  if (modelData.addHorizontalFullscreen) {
+    content.classList.add('horizontal-fullscreen');
+  }
 
   if (modelData.eyebrow) {
     content.appendChild(createTextElement(modelData.eyebrow, ['banner-eyebrow']));
@@ -197,6 +201,7 @@ function createTextSection(modelData) {
     const subtitleClasses = [];
     if (modelData.subtitleQuotes) {
       subtitleClasses.push('banner-subtitle-with-quotes');
+      modelData.subtitle.style = '';
     }
     if (modelData.subtitle.value) {
       content.appendChild(createTextElement(modelData.subtitle, subtitleClasses));
@@ -272,11 +277,11 @@ function createGalleryItem(item, modelData) {
     }
   }
 
-  if (item.hoverText) {
+  if (item.hoverText.value) {
     gridItem.classList.add('with-hover-text');
 
     const hoverText = document.createElement('div');
-    hoverText.textContent = item.hoverText;
+    hoverText.innerHTML = item.hoverText.value;
     hoverText.classList.add('overlay-text', 'overlay-text-center', 'hover-text');
     gridItem.appendChild(hoverText);
   }

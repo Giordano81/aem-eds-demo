@@ -75,7 +75,7 @@ main > .section > div.video-carousel-wrapper .main-container > div .video-carous
   padding: 0 37px 0 32px;
 }
 main > .section > div.video-carousel-wrapper .main-container > div .carousel-indicators {
-  margin: 35px auto 52px;
+  margin: 47px auto 64px;
   display: flex;
   gap: 18px;
 }

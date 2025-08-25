@@ -96,7 +96,7 @@ export default function decorate(block) {
         setDataSet(textOnTheRight, element);
         textOnTheRight.classList.add('text-on-the-right');
         const title = document.createElement('h3');
-        title.classList.add('heading-h3-medium');
+        title.classList.add('heading-h3-medium', 'text-on-the-right-title');
         title.innerHTML = element.value;
         textOnTheRight.appendChild(title);
         listOfText.push(textOnTheRight);
@@ -113,18 +113,6 @@ export default function decorate(block) {
     });
     rightSection.appendChild(textOnTheRightSection);
   }
-
-  /*
-    Divisione in 2 colonne
-    A sinistra
-      Tag
-      Title
-      Text
-      Lista buttton sulla stessa riga
-    A destra
-      Se c'è l'immagine mostro quella
-      Altrimenti blocco con lista dei testi
-  */
 
   mainContainer.appendChild(leftSection);
   mainContainer.appendChild(rightSection);

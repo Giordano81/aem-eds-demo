@@ -5,12 +5,18 @@ main>.section>div.sponsors-wrapper {
 
   &>div {
     height: 100%;
+    display: flex;
+    flex-direction: column;
   }
 
   .sponsor-container {
     padding: 100px 77px;
     text-align: center;
     height: 100%;
+    flex: 1;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
 
     .sponsor-title {
       margin-top: 0;
@@ -21,8 +27,10 @@ main>.section>div.sponsors-wrapper {
     .sponsor-logos {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 80px;
+      gap: 56px;
       height: 100%;
+      flex: 1;
+      overflow: auto;
 
       .sponsor-logo {
         width: auto;

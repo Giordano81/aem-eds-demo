@@ -2,34 +2,31 @@ main > .section > div.links-wrapper {
   max-width: 100%;
   height: fit-content;
 }
-main > .section > div.links-wrapper .sezioni-link {
+main > .section > div.links-wrapper .links-container {
   padding: 70px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 80px 24px;
 }
-main > .section > div.links-wrapper .sezioni-link .sezione-item {
+main > .section > div.links-wrapper .links-container .link-item {
   border-left: 2px solid #FFF;
   padding-left: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 35.8px;
 }
-main > .section > div.links-wrapper .sezioni-link .sezione-item p {
-  font-family: Graphik;
-  font-weight: 500;
-  font-size: 36px;
-  line-height: 48px;
-  letter-spacing: 0px;
+main > .section > div.links-wrapper .links-container .link-item p {
+  padding: 0;
   text-transform: uppercase;
-  margin: 0;
-  margin-bottom: 12px;
 }
-main > .section > div.links-wrapper .sezioni-link .sezione-item a {
-  color: var(--text-color-light);
-  font-family: Graphik;
-  font-weight: 300;
+main > .section > div.links-wrapper .links-container .link-item a {
   font-size: 24px;
+  font-style: normal;
+  font-weight: 300;
   line-height: 36px;
+  width: fit-content;
 }
-main > .section > div.links-wrapper .sezioni-link .sezione-item a::after {
+main > .section > div.links-wrapper .links-container .link-item a::after {
   content: "";
   display: inline-block;
   width: 19px;

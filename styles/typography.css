@@ -10,6 +10,7 @@
     font-size: 144px;
     line-height: 150px;
     letter-spacing: 0;
+    padding-bottom: 48px;
   }
 }
 
@@ -27,6 +28,7 @@
   .heading-h1-light {
     font-size: 64px;
     line-height: 78px;
+    padding-bottom: 24px;
   }
 }
 
@@ -41,6 +43,7 @@
   .heading-h1-medium {
     font-size: 64px;
     line-height: 78px;
+    padding-bottom: 24px;
   }
 }
 
@@ -58,6 +61,7 @@
   .heading-h2-light {
     font-size: 48px;
     line-height: 64px;
+    padding-bottom: 24px;
   }
 }
 
@@ -72,6 +76,7 @@
   .heading-h2-medium {
     font-size: 48px;
     line-height: 64px;
+    padding-bottom: 24px;
   }
 }
 
@@ -89,6 +94,7 @@
   .heading-h3-light {
     font-size: 36px;
     line-height: 48px;
+    padding-bottom: 24px;
   }
 }
 
@@ -103,6 +109,7 @@
   .heading-h3-medium {
     font-size: 36px;
     line-height: 48px;
+    padding-bottom: 24px;
   }
 }
 

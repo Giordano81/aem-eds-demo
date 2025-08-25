@@ -6,10 +6,10 @@ main>.section>div.photo-gallery-wrapper {
 .photo-gallery-container {
   display: grid;
   gap: 0;
-  padding: 0 70px;
+  padding: 0 68px;
 
   &.space-between-items {
-    gap: 16px;
+    gap: 37px;
   }
 
   .photo-gallery-item {
@@ -31,6 +31,7 @@ main>.section>div.photo-gallery-wrapper {
       text-align: start;
       padding: 4px 8px;
       border: solid 0.5px var(--color-primary-light-blue);
+      color: var(--color-grey-6);
     }
   }
 }
@@ -41,7 +42,7 @@ main>.section>div.photo-gallery-wrapper {
   font-weight: 400;
   letter-spacing: 1.2px;
   padding: 21px 119px;
-  margin: 36px auto;
+  margin: 36px auto 0;
 
   text-transform: uppercase;
   border: solid 1.2px var(--color-primary-light-blue);

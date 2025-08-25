@@ -63,7 +63,8 @@ main > .section > div.timeline-wrapper .timeline-section .carousel-section .imag
   bottom: 0;
   height: 100%;
   width: 100%;
-  background-color: rgba(var(--color-primary-blue-rgb), 0.6);
+  background-color: var(--color-primary-blue);
+  opacity: 0.6;
 }
 main > .section > div.timeline-wrapper .timeline-section .carousel-section .image-list .image-container picture.selected {
   width: 215px;
@@ -134,5 +135,6 @@ main > .section > div.timeline-wrapper .initial-container picture::after {
   bottom: 0;
   height: 100%;
   width: 100%;
-  background-color: rgba(var(--color-primary-blue-rgb), 0.6);
+  background-color: var(--color-primary-blue);
+  opacity: 0.6;
 }

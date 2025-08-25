@@ -89,10 +89,10 @@ export default async function decorate(block) {
     }
     // Texts
     if (item.numberEpisode) {
-      carouselVideo.appendChild(createTextElement(item.numberEpisode));
+      carouselVideo.appendChild(createTextElement(item.numberEpisode, ['body-2-medium', 'number-of-episodes-text']));
     }
     if (item.title) {
-      carouselVideo.appendChild(createTextElement(item.title));
+      carouselVideo.appendChild(createTextElement(item.title, ['heading-h3-light']));
     }
 
     // Audio reader
@@ -161,10 +161,9 @@ export default async function decorate(block) {
     // Texts under audio
     const carouselText = document.createElement('div');
     if (item.text)
-      carouselText.appendChild(createTextElement(item.text, ['body-2-light', 'podcast-carousel-text']));
+      carouselText.appendChild(createTextElement(item.text, ['podcast-carousel-text']));
     if (item.ctaLink.value && item.ctaText) {
       const link = document.createElement('a');
-      link.classList.add('body-2-medium');
       link.textContent = item.ctaText;
       link.href = item.ctaLink.value;
       carouselText.appendChild(link);

@@ -8,14 +8,11 @@
   --color-dark: #151517;
 
   --color-primary-blue: #152F44;
-  --color-primary-blue-rgb: 21, 47, 68;
   --color-primary-light-blue: #34526E;
   --color-primary-antracite: #2D2D2D;
   --color-primary-white: #FFF;
   --color-primary-blue-500-bkg: #0B1822;
-  --color-primary-blue-500-bkg-rgb: 11, 24, 34;
   --color-primary-antracite-500-bkg: #171717;
-  --color-primary-antracite-500-bkg-rgb: 23, 23, 23;
 
   --color-secondary-light-blue: #41668933;
   --color-secondary-light-blue-2: #A4B9CE;
@@ -37,6 +34,8 @@
   /* font-family */
   --body-font-family: 'Graphik', sans-serif;
   --heading-font-family: 'Graphik', sans-serif;
+  --bartolomeo-signature-font-family: 'Signature', 'Graphik', sans-serif;
+  --hedvig-letters-serif-font-family: 'HedvigLettersSerif', 'Graphik', sans-serif
 }
 
 body {
@@ -58,6 +57,7 @@ a.button.cta-light {
   border: none;
   border-radius: 5px;
   margin: 0;
+  margin-top: 24px;
 
   &.button-animation {
     opacity: 0;

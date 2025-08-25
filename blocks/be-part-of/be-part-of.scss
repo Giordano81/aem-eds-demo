@@ -68,6 +68,7 @@ main>.section>div.be-part-of-wrapper {
         font-size: 16.8px;
         line-height: 52.8px;
         text-transform: uppercase;
+        margin: 0;
         margin-bottom: 36px;
       }
 
@@ -95,6 +96,10 @@ main>.section>div.be-part-of-wrapper {
           padding: 46px 24px 30px 24px;
           position: relative;
 
+          .contest-card-title {
+            padding-bottom: 20px;
+          }
+
           .contest-card-counter {
             position: absolute;
             top: 22px;
@@ -110,6 +115,7 @@ main>.section>div.be-part-of-wrapper {
         line-height: 21.6px;
         letter-spacing: 1.2px;
         text-transform: uppercase;
+        margin: 0;
       }
     }
 
