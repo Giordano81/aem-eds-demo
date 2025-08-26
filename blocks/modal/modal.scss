@@ -15,6 +15,49 @@ body.modal-open {
     padding: 0;
     border: none;
 
+    .section {
+      padding: 0;
+    }
+
+    .close-button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin: 0;
+      padding: 22px 30px;
+      border: none;
+      border-radius: 0;
+      background-color: transparent;
+      color: #FFF;
+      line-height: 0;
+      outline: none;
+
+      .icon.icon-close {
+        content: '';
+        width: 24px;
+        height: 24px;
+
+        &::before,
+        &::after {
+          content: '';
+          box-sizing: border-box;
+          display: block;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%) rotate(45deg);
+          width: 24px;
+          height: 2px;
+          border-radius: 2px;
+          background-color: currentcolor;
+        }
+
+        &::after {
+          transform: translate(-50%, -50%) rotate(-45deg);
+        }
+      }
+    }
+
     .modal-content {
       box-sizing: border-box;
       overflow-y: auto;
@@ -25,9 +68,28 @@ body.modal-open {
       background-color: var(--background-color-dark);
       color: var(--text-color-light);
 
-      .text-section {
-        &.with-images {
-          max-width: 40%;
+      .text-section.with-images {
+        max-width: 40%;
+      }
+    }
+
+    &.modal-timeline {
+      .modal-content {
+        padding: 87px 79px 61px 59px;
+
+        .modal-timeline-text-section-title {
+          padding-bottom: 40px;
+        }
+
+        .modal-timeline-carousel {
+          picture {
+            width: 100%;
+
+            img {
+              width: 100%;
+              object-fit: cover;
+            }
+          }
         }
       }
     }
@@ -50,51 +112,4 @@ body.modal-open {
       }
     }
   }
-}
-
-.modal {
-  .close-button {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 66px;
-    height: 66px;
-    margin: 0;
-    border: none;
-    border-radius: 0;
-    padding: 0;
-    background-color: transparent;
-    color: #FFF;
-    line-height: 0;
-    outline: none;
-
-    .icon.icon-close {
-      content: '';
-      width: 13px;
-      height: 13px;
-
-      &::before,
-      &::after {
-        content: '';
-        box-sizing: border-box;
-        display: block;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) rotate(45deg);
-        width: 13px;
-        height: 2px;
-        border-radius: 2px;
-        background-color: currentcolor;
-      }
-
-      &::after {
-        transform: translate(-50%, -50%) rotate(-45deg);
-      }
-    }
-  }
-}
-
-.modal dialog .section {
-  padding: 0;
 }

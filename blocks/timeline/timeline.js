@@ -58,10 +58,16 @@ export default async function decorate(block) {
   block.parentElement.classList.add('double-content');
 
   const initialContainer = document.createElement('div');
+  initialContainer.addEventListener('click', () => {
+    initialContainer.style.opacity = 0;
+    setTimeout(() => {
+      mainContainer.style.opacity = 1;
+    }, 200);
+  });
   initialContainer.classList.add('initial-container');
   if (modelData.title.value) {
     const initialText = document.createElement('div');
-    initialText.className = 'text-section';
+    initialText.classList.add('text-section');
     initialText.appendChild(createTextElement(modelData.title, ['timeline-title']));
     initialContainer.appendChild(initialText);
   }
@@ -76,11 +82,11 @@ export default async function decorate(block) {
 
   // Create the main container
   const mainContainer = document.createElement('div');
-  mainContainer.className = 'timeline-section';
+  mainContainer.classList.add('timeline-section');
 
   // Create the text section
   const textSection = document.createElement('div');
-  textSection.className = 'text-section';
+  textSection.classList.add('text-section');
   if (modelData.title.value) {
     textSection.appendChild(createTextElement(modelData.title, ['timeline-title']));
   }
@@ -90,11 +96,11 @@ export default async function decorate(block) {
 
   // Create the carousel section
   const carouselSection = document.createElement('div');
-  carouselSection.className = 'carousel-section';
+  carouselSection.classList.add('carousel-section');
 
   // Create a list for images
   const imageList = document.createElement('div');
-  imageList.className = 'image-list';
+  imageList.classList.add('image-list');
 
   // create the child's content
   const timelineContentItem = document.createElement('div');
@@ -146,12 +152,12 @@ export default async function decorate(block) {
         button.onclick = async (event) => {
           event.stopPropagation();
 
-          let dialogClasses = [];
+          let dialogClasses = ['modal-timeline'];
           const modalBody = document.createElement('div');
           const textSection = document.createElement('div');
           textSection.classList.add('text-section');
           if (item.modalTitle.value) {
-            textSection.appendChild(createTextElement(item.modalTitle, [], true));
+            textSection.appendChild(createTextElement(item.modalTitle, ['modal-timeline-text-section-title'], true));
           }
           if (item.modalSubtitle.value) {
             textSection.appendChild(createTextElement(item.modalSubtitle, [], true));
@@ -160,7 +166,9 @@ export default async function decorate(block) {
 
           if (item.images.length) {
             textSection.classList.add('with-images');
-            modalBody.appendChild(createImageCarousel(item.images));
+            const carousel = createImageCarousel(item.images);
+            carousel.classList.add('modal-timeline-carousel');
+            modalBody.appendChild(carousel);
           } else {
             dialogClasses.push('without-images');
           }
@@ -186,20 +194,41 @@ export default async function decorate(block) {
     imageContainer.appendChild(image);
     imageList.appendChild(imageContainer);
   });
-
   carouselSection.appendChild(imageList);
+
+  const carouselIndicator = document.createElement('div');
+  carouselIndicator.classList.add('carousel-indicators');
+  const buttonLeft = document.createElement('div');
+  const iconLeft = document.createElement('span');
+  iconLeft.classList.add('indicator-left');
+  buttonLeft.appendChild(iconLeft);
+  buttonLeft.addEventListener('click', () => {
+    const scrollWidth = ((imageList.clientWidth - window.innerWidth) / 3) * -1;
+    carouselSection.scrollBy({
+      top: 0,
+      left: scrollWidth,
+      behavior: 'smooth'
+    });
+  });
+  carouselIndicator.appendChild(buttonLeft);
+  const buttonLRight = document.createElement('div');
+  const iconRight = document.createElement('span');
+  iconRight.classList.add('indicator-right');
+  buttonLRight.appendChild(iconRight);
+  buttonLRight.addEventListener('click', () => {
+    const scrollWidth = (imageList.clientWidth - window.innerWidth) / 3;
+    carouselSection.scrollBy({
+      top: 0,
+      left: scrollWidth,
+      behavior: 'smooth'
+    });
+  });
+  carouselIndicator.appendChild(buttonLRight);
+
+  carouselSection.appendChild(carouselIndicator);
   mainContainer.appendChild(textSection);
   mainContainer.appendChild(timelineContentItem);
   mainContainer.appendChild(carouselSection);
+  mainContainer.appendChild(carouselIndicator);
   block.appendChild(mainContainer);
-
-  // window.addEventListener('scroll', () => {
-  //   const testElement = document.getElementsByClassName('initial-container')[0];
-  //   const rect = testElement.getBoundingClientRect();
-  //   let isInView = false;
-  //   if (rect.top <= window.innerHeight && rect.bottom >= 0) {
-  //     isInView = true;
-  //   }
-  //   console.log(`Top: ${rect.top} - Bottom: ${rect.bottom} - Is in view: ${isInView}`);
-  // });
 }

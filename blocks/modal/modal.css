@@ -13,6 +13,43 @@ body.modal-open {
 .modal dialog::backdrop {
   background-color: rgba(0, 0, 0, 0.7);
 }
+.modal dialog .section {
+  padding: 0;
+}
+.modal dialog .close-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 22px 30px;
+  border: none;
+  border-radius: 0;
+  background-color: transparent;
+  color: #FFF;
+  line-height: 0;
+  outline: none;
+}
+.modal dialog .close-button .icon.icon-close {
+  content: "";
+  width: 24px;
+  height: 24px;
+}
+.modal dialog .close-button .icon.icon-close::before, .modal dialog .close-button .icon.icon-close::after {
+  content: "";
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  width: 24px;
+  height: 2px;
+  border-radius: 2px;
+  background-color: currentcolor;
+}
+.modal dialog .close-button .icon.icon-close::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
 .modal dialog .modal-content {
   box-sizing: border-box;
   overflow-y: auto;
@@ -25,6 +62,19 @@ body.modal-open {
 }
 .modal dialog .modal-content .text-section.with-images {
   max-width: 40%;
+}
+.modal dialog.modal-timeline .modal-content {
+  padding: 87px 79px 61px 59px;
+}
+.modal dialog.modal-timeline .modal-content .modal-timeline-text-section-title {
+  padding-bottom: 40px;
+}
+.modal dialog.modal-timeline .modal-content .modal-timeline-carousel picture {
+  width: 100%;
+}
+.modal dialog.modal-timeline .modal-content .modal-timeline-carousel picture img {
+  width: 100%;
+  object-fit: cover;
 }
 
 @media (width >= 900px) {
@@ -39,44 +89,4 @@ body.modal-open {
     display: flex;
     gap: 64px;
   }
-}
-.modal .close-button {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 66px;
-  height: 66px;
-  margin: 0;
-  border: none;
-  border-radius: 0;
-  padding: 0;
-  background-color: transparent;
-  color: #FFF;
-  line-height: 0;
-  outline: none;
-}
-.modal .close-button .icon.icon-close {
-  content: "";
-  width: 13px;
-  height: 13px;
-}
-.modal .close-button .icon.icon-close::before, .modal .close-button .icon.icon-close::after {
-  content: "";
-  box-sizing: border-box;
-  display: block;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(45deg);
-  width: 13px;
-  height: 2px;
-  border-radius: 2px;
-  background-color: currentcolor;
-}
-.modal .close-button .icon.icon-close::after {
-  transform: translate(-50%, -50%) rotate(-45deg);
-}
-
-.modal dialog .section {
-  padding: 0;
 }
