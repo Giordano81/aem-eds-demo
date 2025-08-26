@@ -165,10 +165,8 @@ export default async function decorate(block) {
           modalBody.appendChild(textSection);
 
           if (item.images.length) {
-            textSection.classList.add('with-images');
-            const carousel = createImageCarousel(item.images);
-            carousel.classList.add('modal-timeline-carousel');
-            modalBody.appendChild(carousel);
+            dialogClasses.push('with-images');
+            modalBody.appendChild(createImageCarousel(item.images));
           } else {
             dialogClasses.push('without-images');
           }

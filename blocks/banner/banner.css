@@ -83,7 +83,7 @@ main > .section > div.banner-wrapper .banner-block .banner-content {
   display: flex;
   flex-direction: column;
   padding: 64px;
-  width: 50%;
+  width: 55%;
   margin: auto;
 }
 main > .section > div.banner-wrapper .banner-block .banner-content.banner-ver-align-top {
@@ -96,6 +96,7 @@ main > .section > div.banner-wrapper .banner-block .banner-content.banner-ver-al
 main > .section > div.banner-wrapper .banner-block .banner-content.banner-ver-align-bottom {
   justify-content: flex-end;
   margin-bottom: 0;
+  padding-bottom: 125px;
 }
 main > .section > div.banner-wrapper .banner-block .banner-content.banner-hor-align-left {
   align-items: flex-start;
@@ -141,6 +142,7 @@ main > .section > div.banner-wrapper .banner-block .banner-content .banner-subti
   font-weight: 300;
   line-height: 78.227px;
   position: relative;
+  text-align: center;
 }
 main > .section > div.banner-wrapper .banner-block .banner-content .banner-subtitle-with-quotes strong {
   font-family: var(--bartolomeo-signature-font-family);

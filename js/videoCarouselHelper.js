@@ -209,6 +209,9 @@ function createVideoSlide(item, slideIndex, carouselId) {
   }
 
   const video = document.createElement('video');
+  if (item.altText) {
+      video.setAttribute('alt', item.altText);
+    }
   video.muted = true;
   const source = document.createElement('source');
   source.src = item.video.value;

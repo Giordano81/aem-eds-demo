@@ -49,7 +49,7 @@ main > .section > div.be-part-of---teaser-wrapper .main-section .right-section {
   margin-left: auto;
 }
 main > .section > div.be-part-of---teaser-wrapper .main-section .right-section .text-on-the-right-section {
-  border: 0.5 solid var(--color-secondary-light-blue-2);
+  border: 0.5px solid var(--color-secondary-light-blue-2);
   padding: 16px 24px;
   background-color: var(--color-primary-blue-500-bkg);
   text-align: center;

@@ -13,7 +13,7 @@ function getProps() {
     { name: 'contestTag' },
     { name: 'contestImage', attribute: 'src' },
     { name: 'contestAlt' },
-    { name: 'contestText' },
+    { name: 'contestText', tags: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p'] },
     { name: 'contestTitle' },
     { name: 'card1Title' },
     { name: 'card1Subtitle', tags: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p'] },
@@ -93,7 +93,7 @@ export default async function decorate(block) {
     imageContainer.appendChild(createImageElement(imageModel));
     secondSection.appendChild(imageContainer);
   }
-  if (modelData.contestText) {
+  if (modelData.contestText.value) {
     secondSection.appendChild(createTextElement(modelData.contestText, ['contest-text', 'fade-in-animation'], true));
   }
   if (modelData.contestTitle) {

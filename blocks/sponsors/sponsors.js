@@ -40,7 +40,7 @@ export default async function decorate(block) {
         const item = getBlockModel(sponsorItem, getItemsProps());
         const { otherBlocks: updatedBlock, images } = extractImageElements(otherBlocks);
         item.images = images;
-        
+
         if (otherBlocks.children.length) {
           item.button = getButtonModel(otherBlocks.children[0]);
         }
@@ -73,7 +73,7 @@ export default async function decorate(block) {
     }
     const image = createImageElement(model);
     image.querySelector('img').onclick = async () => {
-      const dialogClasses = [];
+      const dialogClasses = ['modal-sponsors'];
 
       const modalBody = document.createElement('div');
 
@@ -82,18 +82,18 @@ export default async function decorate(block) {
       textSection.classList.add('text-section');
       textSection.appendChild(createImageElement(model));
       if (item.title.value) {
-        textSection.appendChild(createTextElement(item.title, ['teaser-title'], true));
+        textSection.appendChild(createTextElement(item.title, [], true));
       }
       if (item.subtitle.value) {
-        textSection.appendChild(createTextElement(item.subtitle, ['teaser-subtitle'], true));
+        textSection.appendChild(createTextElement(item.subtitle, [], true));
       }
       if (item.button) {
-        textSection.appendChild(createButtonElement(item.button));
+        textSection.appendChild(createButtonElement(item.button, true));
       }
       modalBody.appendChild(textSection);
 
       if (item.images.length) {
-        textSection.classList.add('with-images');
+        dialogClasses.push('with-images');
         modalBody.appendChild(createImageCarousel(item.images));
       } else {
         dialogClasses.push('without-images');

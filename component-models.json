@@ -601,6 +601,19 @@
         }
       },
       {
+        "component": "text",
+        "name": "videoAltText",
+        "label": "Video alt Text",
+        "condition": {
+          "===": [
+            {
+              "var": "mediaType"
+            },
+            "video"
+          ]
+        }
+      },
+      {
         "component": "boolean",
         "valueType": "boolean",
         "name": "galleryZoom",
@@ -1748,7 +1761,7 @@
             "label": "Contest tag text"
           },
           {
-            "component": "aem-content",
+            "component": "reference",
             "name": "contestImage",
             "label": "Contest image"
           },
@@ -1759,7 +1772,7 @@
             "label": "Contest Image alt text"
           },
           {
-            "component": "text",
+            "component": "richtext",
             "valueType": "string",
             "name": "contestText",
             "label": "Contest text"
@@ -2041,10 +2054,15 @@
         ]
       },
       {
-        "component": "aem-content",
+        "component": "reference",
         "name": "video",
         "label": "Video",
         "required": true
+      },
+      {
+        "component": "text",
+        "name": "altText",
+        "label": "Alt Text"
       }
     ]
   }

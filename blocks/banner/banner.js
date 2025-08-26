@@ -21,6 +21,7 @@ function getProps() {
     { name: 'darkBackground', isBoolean: true },
     { name: 'galleryMediaFragment', attribute: 'href' },
     { name: 'video', attribute: 'href' },
+    { name: 'videoAltText' },
     { name: 'galleryZoom', isBoolean: true },
     { name: 'galleryAnimation' },
     { name: 'galleryFastAnimation', isBoolean: true },
@@ -105,6 +106,9 @@ export default async function decorate(block) {
     videoContainer.classList.add('video-container');
 
     const video = document.createElement('video');
+    if (modelData.videoAltText) {
+      video.setAttribute('alt', modelData.videoAltText);
+    }
     video.autoplay = true;
     video.muted = true;
     video.loop = true;
@@ -135,7 +139,6 @@ export default async function decorate(block) {
         textSection.classList.add('text-section-splitted');
 
         const imageContainer = document.createElement('div');
-        setDataSet(imageContainer, modelData.images[0]);
         imageContainer.classList.add('image-section-splitted', 'fade-in-animation');
         imageContainer.appendChild(createImageElement(modelData.images[0]));
         elementsToBeAppendedAtTheEnd.push(imageContainer);

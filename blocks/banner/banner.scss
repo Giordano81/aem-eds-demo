@@ -103,7 +103,7 @@ main>.section>div.banner-wrapper {
       display: flex;
       flex-direction: column;
       padding: 64px;
-      width: 50%;
+      width: 55%;
       margin: auto;
 
       &.banner-ver-align-top {
@@ -118,6 +118,7 @@ main>.section>div.banner-wrapper {
       &.banner-ver-align-bottom {
         justify-content: flex-end;
         margin-bottom: 0;
+        padding-bottom: 125px;
       }
 
       &.banner-hor-align-left {
@@ -172,6 +173,7 @@ main>.section>div.banner-wrapper {
         font-weight: 300;
         line-height: 78.227px;
         position: relative;
+        text-align: center;
 
         strong {
           font-family: var(--bartolomeo-signature-font-family);

@@ -60,19 +60,29 @@ body.modal-open {
   background-color: var(--background-color-dark);
   color: var(--text-color-light);
 }
-.modal dialog .modal-content .text-section.with-images {
+.modal dialog.with-images .text-section {
   max-width: 40%;
 }
-.modal dialog.modal-timeline .modal-content {
-  padding: 87px 79px 61px 59px;
+.modal dialog.with-images .modal-content {
+  padding-right: 79px;
 }
 .modal dialog.modal-timeline .modal-content .modal-timeline-text-section-title {
   padding-bottom: 40px;
 }
-.modal dialog.modal-timeline .modal-content .modal-timeline-carousel picture {
+.modal dialog.modal-timeline .modal-content .carousel picture {
   width: 100%;
 }
-.modal dialog.modal-timeline .modal-content .modal-timeline-carousel picture img {
+.modal dialog.modal-timeline .modal-content .carousel picture img {
+  width: 100%;
+  object-fit: cover;
+}
+.modal dialog.modal-sponsors .modal-content a {
+  margin-top: 48px;
+}
+.modal dialog.modal-sponsors .modal-content .carousel picture {
+  width: 100%;
+}
+.modal dialog.modal-sponsors .modal-content .carousel picture img {
   width: 100%;
   object-fit: cover;
 }
@@ -85,7 +95,7 @@ body.modal-open {
     width: 40%;
   }
   .modal dialog .modal-content {
-    padding: 64px;
+    padding: 87px 47px 61px 59px;
     display: flex;
     gap: 64px;
   }

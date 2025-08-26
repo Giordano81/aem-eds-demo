@@ -67,21 +67,44 @@ body.modal-open {
       padding-top: 0;
       background-color: var(--background-color-dark);
       color: var(--text-color-light);
+    }
 
-      .text-section.with-images {
+    &.with-images {
+      .text-section {
         max-width: 40%;
+      }
+
+      .modal-content {
+        padding-right: 79px;
       }
     }
 
     &.modal-timeline {
       .modal-content {
-        padding: 87px 79px 61px 59px;
-
         .modal-timeline-text-section-title {
           padding-bottom: 40px;
         }
 
-        .modal-timeline-carousel {
+        .carousel {
+          picture {
+            width: 100%;
+
+            img {
+              width: 100%;
+              object-fit: cover;
+            }
+          }
+        }
+      }
+    }
+
+    &.modal-sponsors {
+      .modal-content {
+        a {
+          margin-top: 48px;
+        }
+
+        .carousel {
           picture {
             width: 100%;
 
@@ -106,7 +129,7 @@ body.modal-open {
       }
 
       .modal-content {
-        padding: 64px;
+        padding: 87px 47px 61px 59px;
         display: flex;
         gap: 64px;
       }
