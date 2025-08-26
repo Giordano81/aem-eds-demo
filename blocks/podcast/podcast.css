@@ -6,11 +6,27 @@ main > .section > div.podcast-wrapper {
 }
 main > .section > div.podcast-wrapper > div {
   height: 100%;
+  display: flex;
+  overflow: hidden;
+  flex-direction: column;
+}
+main > .section > div.podcast-wrapper .podcast-link {
+  width: 28.8px;
+  height: 28.8px;
+  background-image: url("../../icons/left_arrow_big.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-left: auto;
+  margin-right: 76.8px;
+  margin-top: 88.8px;
 }
 main > .section > div.podcast-wrapper .main-container {
   display: flex;
   gap: 36px;
   padding: 100px 0 100px 70px;
+  height: 100%;
+  flex: 1;
 }
 main > .section > div.podcast-wrapper .main-container .podcast-text-section {
   width: 25%;
@@ -28,6 +44,7 @@ main > .section > div.podcast-wrapper .main-container .podcast-carousel-section 
   gap: 36px;
   overflow-x: auto;
   scrollbar-width: none;
+  padding-right: 64px;
 }
 main > .section > div.podcast-wrapper .main-container .podcast-carousel-section .podcast-carousel-item {
   min-width: 400px;

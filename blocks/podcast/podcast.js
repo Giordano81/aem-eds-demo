@@ -9,6 +9,7 @@ function getProps() {
     { name: 'subtitleStyle', },
     { name: 'subtitleSlowAnimation', isBoolean: true },
     { name: 'fragment', attribute: 'href' },
+    { name: 'link', attribute: 'href' },
   ];
 }
 
@@ -51,6 +52,13 @@ export default async function decorate(block) {
 
   const container = document.createElement('div');
   container.classList.add('main-container');
+
+  if (modelData.link.value) {
+    const link = document.createElement('a');
+    link.classList.add('podcast-link');
+    link.href = modelData.link.value;
+    block.appendChild(link);
+  }
 
   const textSection = document.createElement('div');
   textSection.classList.add('podcast-text-section');

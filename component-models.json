@@ -1464,6 +1464,11 @@
         "name": "fragment",
         "label": "Fragment",
         "required": true
+      },
+      {
+        "component": "aem-content",
+        "name": "link",
+        "label": "Link"
       }
     ]
   },
