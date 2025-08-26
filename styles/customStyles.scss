@@ -110,10 +110,10 @@ main>.section>div.default-content-wrapper {
       display: flex;
       opacity: 0.6;
       background: var(--color-primary-blue);
-      mix-blend-mode: hard-light;
 
       img {
         object-fit: cover;
+        mix-blend-mode: luminosity;
       }
     }
   }

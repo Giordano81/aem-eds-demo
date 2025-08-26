@@ -99,10 +99,10 @@ main > .section > div.default-content-wrapper {
   display: flex;
   opacity: 0.6;
   background: var(--color-primary-blue);
-  mix-blend-mode: hard-light;
 }
 .background-gallery-container .background-gallery-item picture img {
   object-fit: cover;
+  mix-blend-mode: luminosity;
 }
 
 .text-container {
