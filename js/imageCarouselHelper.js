@@ -2,12 +2,16 @@ import { createOptimizedPicture } from '../scripts/aem.js';
 
 window.carouselId = window.carouselId || 0;
 
-export function createImageCarousel(imageList) {
+export function createImageCarousel(imageList, withOutsideIndicators = false) {
   if (!imageList || !imageList.length) return null;
 
   window.carouselId += 1;
   const block = document.createElement('div');
   block.classList.add('carousel');
+
+  if (withOutsideIndicators) {
+    block.classList.add('with-outside-indicators');
+  }
 
   const isSingleSlide = imageList.length < 2;
 
@@ -35,6 +39,14 @@ export function createImageCarousel(imageList) {
     indicator.style.width = `${indicatorWidth}%`;
     indicator.style.left = 0;
     container.appendChild(indicator);
+
+    if (withOutsideIndicators) {
+      const leftButton = document.createElement('button');
+      leftButton.type = 'button';
+      leftButton.classList.add('slide-prev', 'indicator');
+      leftButton.ariaLabel = `${placeholders.previousSlide || 'Previous Slide'}`;
+      block.append(leftButton);
+    }
   }
 
   block.append(container);
@@ -52,14 +64,24 @@ export function createImageCarousel(imageList) {
     slideIndicatorsNav.append(slideIndicators);
     block.append(slideIndicatorsNav);
 
-    const slideNavButtons = document.createElement('div');
-    slideNavButtons.classList.add('carousel-navigation-buttons');
-    slideNavButtons.innerHTML = `
+    if (!withOutsideIndicators) {
+      const slideNavButtons = document.createElement('div');
+      slideNavButtons.classList.add('carousel-navigation-buttons');
+      slideNavButtons.innerHTML = `
       <button type="button" class= "slide-prev" aria-label="${placeholders.previousSlide || 'Previous Slide'}"></button>
       <button type="button" class="slide-next" aria-label="${placeholders.nextSlide || 'Next Slide'}"></button>
     `;
 
-    container.append(slideNavButtons);
+      container.append(slideNavButtons);
+    }
+
+    if (withOutsideIndicators) {
+      const rightButton = document.createElement('button');
+      rightButton.type = 'button';
+      rightButton.classList.add('slide-next', 'indicator');
+      rightButton.ariaLabel = `${placeholders.nextSlide || 'Next Slide'}`;
+      block.append(rightButton);
+    }
   }
 
   // Create slides and indicators from the imageList object array

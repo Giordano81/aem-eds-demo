@@ -18,7 +18,7 @@ main > .section > div.teaser-wrapper > div .teaser-content-container {
   flex: 1;
 }
 main > .section > div.teaser-wrapper > div .teaser-content-container .left-section {
-  max-width: 50%;
+  max-width: 45%;
   width: 100%;
   padding-top: 24px;
   padding-left: 12px;
@@ -42,14 +42,10 @@ main > .section > div.teaser-wrapper > div .teaser-content-container .left-secti
   text-transform: uppercase;
 }
 main > .section > div.teaser-wrapper > div .teaser-content-container .right-section {
-  max-width: 50%;
+  max-width: 55%;
   height: 100%;
   width: 100%;
   position: relative;
-}
-main > .section > div.teaser-wrapper > div .teaser-content-container .right-section img {
-  width: 100%;
-  height: auto;
 }
 
 .mock-container {

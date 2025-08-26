@@ -28,9 +28,9 @@ main>.section>div.banner-wrapper {
     height: 100%;
 
     &.banner-with-gallery {
-      display: grid;
-      grid-template-columns: repeat(1, 1fr);
-      grid-template-rows: repeat(2, 1fr);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
     }
 
     &.banner-with-gallery-fullscreen {
@@ -214,6 +214,10 @@ main>.section>div.banner-wrapper {
 
     .gallery-container {
       display: flex;
+      flex: 1;
+      max-height: 100%;
+      overflow: hidden;
+      width: 100%;
 
       .photo-gallery-item {
         position: relative;
@@ -261,6 +265,7 @@ main>.section>div.banner-wrapper {
           &:hover {
             .overlay-text {
               z-index: 0;
+              opacity: 0;
             }
 
             .hover-text {

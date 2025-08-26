@@ -18,7 +18,7 @@ main>.section>div.teaser-wrapper {
       flex: 1;
 
       .left-section {
-        max-width: 50%;
+        max-width: 45%;
         width: 100%;
         padding-top: 24px;
         padding-left: 12px;
@@ -45,15 +45,10 @@ main>.section>div.teaser-wrapper {
       }
 
       .right-section {
-        max-width: 50%;
+        max-width: 55%;
         height: 100%;
         width: 100%;
         position: relative;
-
-        img {
-          width: 100%;
-          height: auto;
-        }
       }
     }
   }

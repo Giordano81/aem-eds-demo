@@ -24,9 +24,9 @@ main > .section > div.banner-wrapper .banner-block {
   height: 100%;
 }
 main > .section > div.banner-wrapper .banner-block.banner-with-gallery {
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 main > .section > div.banner-wrapper .banner-block.banner-with-gallery-fullscreen .gallery-container {
   position: absolute;
@@ -175,6 +175,10 @@ main > .section > div.banner-wrapper .banner-block .banner-content .banner-eyebr
 }
 main > .section > div.banner-wrapper .banner-block .gallery-container {
   display: flex;
+  flex: 1;
+  max-height: 100%;
+  overflow: hidden;
+  width: 100%;
 }
 main > .section > div.banner-wrapper .banner-block .gallery-container .photo-gallery-item {
   position: relative;
@@ -205,6 +209,7 @@ main > .section > div.banner-wrapper .banner-block .gallery-container .photo-gal
 }
 main > .section > div.banner-wrapper .banner-block .gallery-container .photo-gallery-item.with-hover-text:hover .overlay-text {
   z-index: 0;
+  opacity: 0;
 }
 main > .section > div.banner-wrapper .banner-block .gallery-container .photo-gallery-item.with-hover-text:hover .hover-text {
   opacity: 1;
