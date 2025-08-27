@@ -198,14 +198,17 @@ function createVideoSlide(item, slideIndex, carouselId) {
   slide.setAttribute('aria-roledescription', 'slide');
   const videoOverlay = document.createElement('div');
   videoOverlay.classList.add('video-overlay');
+  const videoOverlayForMobile = document.createElement('div');
+  videoOverlayForMobile.classList.add('video-overlay-for-mobile');
 
   if (item.title) {
-    videoOverlay.appendChild(createTextElement(item.title, 'carousel-title', false, slideIndex > 0));
+    videoOverlay.appendChild(createTextElement(item.title, ['carousel-title'], false, slideIndex > 0));
   }
   if (item.subtitle) {
-    const subtitleClasses = ['carousel-subtitle', 'fade-in-animation'];
+    const subtitleClasses = ['carousel-subtitle', 'fade-in-animation', 'only-for-desktop'];
     if (slideIndex > 0) subtitleClasses.push('fade-in-animation-manual');
     videoOverlay.appendChild(createTextElement(item.subtitle, subtitleClasses, true));
+    videoOverlayForMobile.appendChild(createTextElement(item.subtitle, subtitleClasses, true));
   }
 
   const video = document.createElement('video');
@@ -240,5 +243,6 @@ function createVideoSlide(item, slideIndex, carouselId) {
   slide.appendChild(videoOverlay);
   slide.appendChild(video);
   slide.appendChild(playPauseIcon);
+  slide.appendChild(videoOverlayForMobile);
   return slide;
 }

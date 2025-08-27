@@ -91,6 +91,14 @@ export default async function decorate(block) {
     articlesSection.appendChild(articleItem);
   });
 
+  const loadMoreButton = document.createElement('button');
+  loadMoreButton.textContent = 'Load More';
+  loadMoreButton.classList.add('button', 'cta-light', 'cta-secondary', 'articles-button');
+  loadMoreButton.onclick = () => {
+    block.parentElement.classList.add('show-all-articles');
+  };
+  articlesSection.appendChild(loadMoreButton);
+
   container.appendChild(textSection);
   container.appendChild(articlesSection);
   block.appendChild(container);

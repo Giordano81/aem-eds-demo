@@ -3,6 +3,7 @@ main > .section > div.video-carousel-wrapper {
   height: 100vh;
   width: 100%;
   margin: 0;
+  padding: 0;
 }
 main > .section > div.video-carousel-wrapper > div {
   height: 100%;
@@ -36,6 +37,9 @@ main > .section > div.video-carousel-wrapper .main-container > div .video-carous
   left: 64px;
   width: 42%;
   z-index: 1;
+}
+main > .section > div.video-carousel-wrapper .main-container > div .video-carousel-container .video-slide .video-overlay-for-mobile {
+  display: none;
 }
 main > .section > div.video-carousel-wrapper .main-container > div .video-carousel-container .video-slide video {
   object-fit: cover;
@@ -88,4 +92,43 @@ main > .section > div.video-carousel-wrapper .main-container > div .carousel-ind
 main > .section > div.video-carousel-wrapper .main-container > div .carousel-indicators .indicator.active {
   background: #FFF;
   opacity: 1;
+}
+@media (width < 900px) {
+  main > .section > div.video-carousel-wrapper .main-container > div {
+    justify-content: center;
+  }
+  main > .section > div.video-carousel-wrapper .main-container > div .video-carousel-container {
+    padding: 24px;
+    box-sizing: border-box;
+    height: fit-content;
+  }
+  main > .section > div.video-carousel-wrapper .main-container > div .video-carousel-container .carousel-slides-container {
+    height: fit-content;
+  }
+  main > .section > div.video-carousel-wrapper .main-container > div .video-carousel-container .video-slide {
+    gap: 24px;
+  }
+  main > .section > div.video-carousel-wrapper .main-container > div .video-carousel-container .video-slide .carousel-slide {
+    gap: 44px;
+    max-width: calc(100% - 48px);
+  }
+  main > .section > div.video-carousel-wrapper .main-container > div .video-carousel-container .video-slide .video-overlay {
+    width: 100%;
+    position: unset;
+  }
+  main > .section > div.video-carousel-wrapper .main-container > div .video-carousel-container .video-slide .video-overlay .only-for-desktop {
+    display: none;
+  }
+  main > .section > div.video-carousel-wrapper .main-container > div .video-carousel-container .video-slide .video-overlay-for-mobile {
+    display: block;
+  }
+  main > .section > div.video-carousel-wrapper .main-container > div .video-carousel-container .video-slide video {
+    height: auto;
+  }
+  main > .section > div.video-carousel-wrapper .main-container > div .video-carousel-container .arrow {
+    display: none;
+  }
+  main > .section > div.video-carousel-wrapper .main-container > div .carousel-indicators {
+    margin: 0 auto;
+  }
 }

@@ -1,9 +1,14 @@
 header {
   height: unset;
+  // position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
 
   .nav-wrapper {
     width: 100%;
-    background-color: rgba(var(--color-primary-antracite-500-bkg), 0.8);
+    background-color: rgba(var(--color-primary-antracite-500-bkg-rgb), 0.8);
   }
 
   nav {
@@ -40,6 +45,11 @@ header {
 
       picture {
         display: flex;
+
+        img {
+          width: 74.4px;
+          height: 74.4px;
+        }
       }
     }
 

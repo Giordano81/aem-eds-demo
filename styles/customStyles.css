@@ -11,6 +11,7 @@
   --color-primary-white: #FFF;
   --color-primary-blue-500-bkg: #0B1822;
   --color-primary-antracite-500-bkg: #171717;
+  --color-primary-antracite-500-bkg-rgb: 23, 23, 23;
   --color-secondary-light-blue: #41668933;
   --color-secondary-light-blue-2: #A4B9CE;
   --color-secondary-background-blue: #E8EDF3;
@@ -45,29 +46,54 @@ main > .section {
   display: none !important;
 }
 
-a.button.cta-light {
+a.button.cta-light,
+button.button.cta-light {
   text-transform: uppercase;
   padding: 21px 36px;
   border: none;
   border-radius: 5px;
   margin: 0;
   margin-top: 24px;
+  word-wrap: break-word;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 19.2px;
+  line-height: 21.6px;
+  letter-spacing: 1.2px;
+  font-weight: 400;
+  font-style: normal;
 }
-a.button.cta-light.button-animation {
+a.button.cta-light.button-animation,
+button.button.cta-light.button-animation {
   opacity: 0;
   transition: opacity 1s ease;
 }
-a.button.cta-light.button-animation.visible {
+a.button.cta-light.button-animation.visible,
+button.button.cta-light.button-animation.visible {
   opacity: 1;
 }
-a.button.cta-light.cta-primary {
+a.button.cta-light.cta-primary,
+button.button.cta-light.cta-primary {
   background-color: var(--color-primary-blue);
   color: var(--color-primary-white);
 }
-a.button.cta-light.cta-secondary {
+a.button.cta-light.cta-secondary,
+button.button.cta-light.cta-secondary {
   background-color: transparent;
   color: var(--color-secondary-background-blue);
   border: solid 1px var(--color-primary-light-blue);
+}
+@media (width < 900px) {
+  a.button.cta-light,
+  button.button.cta-light {
+    width: 100%;
+    white-space: normal;
+    text-overflow: clip;
+    padding: 12px 24px;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 1px;
+  }
 }
 
 main > .section > div.default-content-wrapper {
@@ -122,7 +148,7 @@ main > .section > div.default-content-wrapper {
   font-size: 16.8px;
   color: rgba(255, 255, 255, 0.6);
   text-transform: uppercase;
-  z-index: 999;
+  z-index: 10;
 }
 
 .text-container h1,

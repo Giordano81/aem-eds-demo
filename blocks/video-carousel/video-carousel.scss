@@ -3,6 +3,7 @@ main>.section>div.video-carousel-wrapper {
   height: 100vh;
   width: 100%;
   margin: 0;
+  padding: 0;
 
   &>div {
     height: 100%;
@@ -37,6 +38,11 @@ main>.section>div.video-carousel-wrapper {
             left: 64px;
             width: 42%;
             z-index: 1;
+
+          }
+
+          .video-overlay-for-mobile {
+            display: none;
           }
 
           video {
@@ -101,6 +107,59 @@ main>.section>div.video-carousel-wrapper {
         .indicator.active {
           background: #FFF;
           opacity: 1;
+        }
+      }
+    }
+  }
+
+  // Mobile
+  @media (width <900px) {
+    .main-container {
+      &>div {
+        justify-content: center;
+
+        .video-carousel-container {
+          padding: 24px;
+          box-sizing: border-box;
+          height: fit-content;
+
+          .carousel-slides-container {
+            height: fit-content;
+          }
+
+          .video-slide {
+            gap: 24px;
+            
+            .carousel-slide {
+              gap: 44px;
+              max-width: calc(100% - 48px); // Fullscreen less horizontal padding
+            }
+
+            .video-overlay {
+              width: 100%;
+              position: unset;
+
+              .only-for-desktop {
+                display: none;
+              }
+            }
+
+            .video-overlay-for-mobile {
+              display: block;
+            }
+
+            video {
+              height: auto;
+            }
+          }
+
+          .arrow {
+            display: none;
+          }
+        }
+
+        .carousel-indicators {
+          margin: 0 auto;
         }
       }
     }

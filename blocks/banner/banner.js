@@ -138,10 +138,21 @@ export default async function decorate(block) {
         banner.classList.add('splitted-in-2-rows');
         textSection.classList.add('text-section-splitted');
 
-        const imageContainer = document.createElement('div');
-        imageContainer.classList.add('image-section-splitted', 'fade-in-animation');
-        imageContainer.appendChild(createImageElement(modelData.images[0]));
-        elementsToBeAppendedAtTheEnd.push(imageContainer);
+        const imageForDesktop = document.createElement('div');
+        imageForDesktop.classList.add('image-section-splitted', 'fade-in-animation');
+        imageForDesktop.appendChild(createImageElement(modelData.images[0]));
+        const imageForMobile = imageForDesktop.cloneNode(true);
+        imageForDesktop.classList.add('image-for-desktop');
+        elementsToBeAppendedAtTheEnd.push(imageForDesktop);
+
+        imageForMobile.classList.add('image-for-mobile');
+        const buttonExist = textSection.querySelector('a.button');
+
+        if (buttonExist) {
+          textSection.insertBefore(imageForMobile, buttonExist);
+        } else {
+          textSection.appendChild(imageForMobile);
+        }
       } else {
         banner.classList.add('with-background-image');
         banner.style.backgroundImage = `url('${modelData.images[0].image}')`;
@@ -185,7 +196,7 @@ function createTextSection(modelData) {
     content.appendChild(createTextElement(modelData.title, titleClasses));
 
     if (modelData.title.style === 'main-title') {
-      content.style.width = '100%';
+      content.classList.add('horizontal-fullscreen');
     }
   }
 
@@ -199,11 +210,11 @@ function createTextSection(modelData) {
     subtitlesContainer.appendChild(subtitle);
     subtitlesContainer.appendChild(secondSubtitle);
     content.appendChild(subtitlesContainer);
-    content.style.width = '100%';
+    content.classList.add('horizontal-fullscreen');
   } else {
     const subtitleClasses = [];
     if (modelData.subtitleQuotes) {
-      subtitleClasses.push('banner-subtitle-with-quotes');
+      subtitleClasses.push('banner-subtitle-with-quotes', 'heading-h1-light');
       modelData.subtitle.style = '';
     }
     if (modelData.subtitle.value) {
@@ -262,8 +273,8 @@ function createGalleryItem(item, modelData) {
     container.appendChild(button);
     gridItem.appendChild(container);
 
-    if (!modelData.galleryFullscreen)
-      gridItem.classList.add('medium-shadow');
+    // if (!modelData.galleryFullscreen)
+      // gridItem.classList.add('medium-shadow');
   } else {
     // Choose overlay or bottom text
     if (item.textPosition === 'center') {
@@ -275,8 +286,8 @@ function createGalleryItem(item, modelData) {
     if (item.text) {
       gridItem.appendChild(text);
 
-      if (!modelData.galleryFullscreen)
-        gridItem.classList.add('small-shadow');
+      // if (!modelData.galleryFullscreen)
+      //   gridItem.classList.add('small-shadow');
     }
   }
 

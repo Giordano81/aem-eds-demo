@@ -3,6 +3,7 @@ main > .section > div.articles-wrapper {
   height: 100vh;
   width: 100%;
   margin: 0;
+  padding: 0;
 }
 main > .section > div.articles-wrapper > div {
   height: 100%;
@@ -13,6 +14,11 @@ main > .section > div.articles-wrapper .main-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+main > .section > div.articles-wrapper .main-container .articles-text-section {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
 }
 main > .section > div.articles-wrapper .main-container .articles-section {
   display: flex;
@@ -87,4 +93,52 @@ main > .section > div.articles-wrapper .main-container .articles-section .articl
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+}
+main > .section > div.articles-wrapper .main-container .articles-section .articles-button {
+  display: none;
+  border-radius: 4px;
+}
+@media (width < 900px) {
+  main > .section > div.articles-wrapper.show-all-articles {
+    height: max-content;
+  }
+  main > .section > div.articles-wrapper.show-all-articles .main-container .articles-section .articles-button {
+    display: none;
+  }
+  main > .section > div.articles-wrapper.show-all-articles .main-container .articles-section .article-item {
+    display: block;
+  }
+  main > .section > div.articles-wrapper .main-container {
+    padding: 44px 24px 37px;
+    box-sizing: border-box;
+    justify-content: unset;
+  }
+  main > .section > div.articles-wrapper .main-container .articles-text-section {
+    gap: 16px;
+  }
+  main > .section > div.articles-wrapper .main-container .articles-section {
+    margin-top: 31px;
+    flex-direction: column;
+    gap: 31px;
+  }
+  main > .section > div.articles-wrapper .main-container .articles-section .articles-button {
+    display: block;
+  }
+  main > .section > div.articles-wrapper .main-container .articles-section .article-item {
+    width: 100%;
+    max-width: 100%;
+    display: none;
+  }
+  main > .section > div.articles-wrapper .main-container .articles-section .article-item:first-child {
+    display: block;
+  }
+  main > .section > div.articles-wrapper .main-container .articles-section .article-item .article-date {
+    margin-top: 20.9px;
+  }
+  main > .section > div.articles-wrapper .main-container .articles-section .article-item .article-title {
+    margin-top: 5.9px;
+  }
+  main > .section > div.articles-wrapper .main-container .articles-section .article-item .article-link {
+    margin-top: 5.9px;
+  }
 }

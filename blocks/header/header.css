@@ -1,9 +1,13 @@
 header {
   height: unset;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
 }
 header .nav-wrapper {
   width: 100%;
-  background-color: rgba(var(--color-primary-antracite-500-bkg), 0.8);
+  background-color: rgba(var(--color-primary-antracite-500-bkg-rgb), 0.8);
 }
 header nav {
   box-sizing: border-box;
@@ -32,6 +36,10 @@ header nav > :first-child {
 }
 header nav > :first-child picture {
   display: flex;
+}
+header nav > :first-child picture img {
+  width: 74.4px;
+  height: 74.4px;
 }
 header nav > :nth-child(2) .columns > div {
   gap: 0;
