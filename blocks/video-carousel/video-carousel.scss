@@ -45,10 +45,14 @@ main>.section>div.video-carousel-wrapper {
             display: none;
           }
 
-          video {
-            object-fit: cover;
-            height: 100%;
-            width: 100%;
+          .carousel-video-container {
+            position: relative;
+
+            video {
+              object-fit: cover;
+              height: 100%;
+              width: 100%;
+            }
           }
 
           .play-pause-icon {
@@ -129,10 +133,10 @@ main>.section>div.video-carousel-wrapper {
 
           .video-slide {
             gap: 24px;
-            
+
             .carousel-slide {
               gap: 44px;
-              max-width: calc(100% - 48px); // Fullscreen less horizontal padding
+              max-width: 100%;
             }
 
             .video-overlay {
@@ -159,7 +163,7 @@ main>.section>div.video-carousel-wrapper {
         }
 
         .carousel-indicators {
-          margin: 0 auto;
+          margin: 20px auto 0;
         }
       }
     }

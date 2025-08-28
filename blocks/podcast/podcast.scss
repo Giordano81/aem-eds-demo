@@ -213,6 +213,8 @@ main>.section>div.podcast-wrapper {
         max-width: 100%;
 
         .podcast-carousel-item {
+          min-width: calc(100vw - 48px);
+          
           &>:nth-child(2) {
             display: none;
           }

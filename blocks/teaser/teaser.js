@@ -58,7 +58,9 @@ export default async function decorate(block) {
 
   const leftSection = document.createElement('div');
   leftSection.classList.add('left-section');
-  populateLeftSection(firstElement, leftSection);
+  const leftSectionForMobile = document.createElement('div');
+  leftSectionForMobile.classList.add('left-section-for-mobile');
+  populateLeftSection(firstElement, leftSection, leftSectionForMobile);
   container.appendChild(leftSection);
 
   const rightSection = document.createElement('div');
@@ -72,6 +74,8 @@ export default async function decorate(block) {
   });
   container.appendChild(rightSection);
 
+  container.appendChild(leftSectionForMobile);
+
   // TODO: AC - Remove mock
   const mockContainer = document.createElement('div');
   mockContainer.classList.add('mock-container');
@@ -80,7 +84,7 @@ export default async function decorate(block) {
   buttonLeft.addEventListener('click', function (event) {
     const index = +container.getAttribute('data-slide-index') - 1;
     if (index >= 0) {
-      updateSlide(leftSection, modelData.fragment.items[index], container, index, rightSection, index + 1);
+      updateSlide(leftSection, modelData.fragment.items[index], container, index, rightSection, index + 1, leftSectionForMobile);
     }
   });
   const buttonRight = document.createElement('div');
@@ -88,7 +92,7 @@ export default async function decorate(block) {
   buttonRight.addEventListener('click', function (event) {
     const index = +container.getAttribute('data-slide-index') + 1;
     if (index < modelData.fragment.items.length) {
-      updateSlide(leftSection, modelData.fragment.items[index], container, index, rightSection, index);
+      updateSlide(leftSection, modelData.fragment.items[index], container, index, rightSection, index, leftSectionForMobile);
     }
   });
   mockContainer.appendChild(buttonLeft);
@@ -98,7 +102,7 @@ export default async function decorate(block) {
   block.appendChild(container);
 };
 
-function populateLeftSection(item, leftSection) {
+function populateLeftSection(item, leftSection, leftSectionForMobile) {
   if (item.eyebrow) {
     const eyebrowModel = {
       value: item.eyebrow
@@ -113,21 +117,27 @@ function populateLeftSection(item, leftSection) {
   }
   if (item.button) {
     leftSection.appendChild(createButtonElement(item.button));
+    leftSectionForMobile.appendChild(createButtonElement(item.button));
   }
   if (item.verticalText) {
     leftSection.setAttribute('data-vertical-text', item.verticalText);
   }
 }
 
-function updateSlide(leftSection, item, container, index, rightSection, carouselIndex) {
+function updateSlide(leftSection, item, container, index, rightSection, carouselIndex, leftSectionForMobile) {
   const elementsVisible = leftSection.querySelectorAll('.visible');
+  const elementsVisibleForMobile = leftSectionForMobile.querySelectorAll('.visible');
   for (let el of elementsVisible) {
+    el.classList.remove('visible');
+  }
+  for (let el of elementsVisibleForMobile) {
     el.classList.remove('visible');
   }
   const timeAnimation = 200;
   setTimeout(() => {
     leftSection.innerHTML = '';
-    populateLeftSection(item, leftSection);
+    leftSectionForMobile.innerHTML = '';
+    populateLeftSection(item, leftSection, leftSectionForMobile);
     setTimeout(() => {
       const carousels = rightSection.querySelectorAll('.carousel');
       // If the carousel index is major is because is going to left, so I have to hide the image
@@ -139,6 +149,7 @@ function updateSlide(leftSection, item, container, index, rightSection, carousel
       }
 
       executeAnimationOnElement(leftSection);
+      executeAnimationOnElement(leftSectionForMobile);
     }, timeAnimation);
     container.setAttribute('data-slide-index', index);
   }, timeAnimation);

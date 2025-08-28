@@ -101,6 +101,8 @@ function updateActiveSlide(slide) {
     aSlide.setAttribute('aria-hidden', idx !== slideIndex);
     aSlide.setAttribute('tabindex', idx !== slideIndex ? '-1' : '0');
   });
+
+  afterChangeSlideEvent(slides, block, slideIndex);
 }
 
 function showSlide(block, slideIndex = 0) {
@@ -119,6 +121,10 @@ function showSlide(block, slideIndex = 0) {
     behavior: 'smooth',
   });
 
+  afterChangeSlideEvent(slides, block, realSlideIndex);
+}
+
+function afterChangeSlideEvent(slides, block, slideIndex) {
   // Stop every video and set time to 0
   for (let i = 0; i < slides.length; i++) {
     const video = slides[i].querySelector('video');
@@ -127,16 +133,19 @@ function showSlide(block, slideIndex = 0) {
   }
 
   // Update current indicator
-  let indicators = block.parentElement.querySelectorAll('.carousel-indicators .indicator');
-  for (let i = 0; i < indicators.length; i++) {
-    const indicator = indicators[i];
-    indicator.classList.remove('active');
-    if (indicator.getAttribute('data-slide-index') == realSlideIndex) {
-      indicator.classList.add('active');
+  if (block.parentElement) {
+    let indicators = block.parentElement.querySelectorAll('.carousel-indicators .indicator');
+    for (let i = 0; i < indicators.length; i++) {
+      const indicator = indicators[i];
+      indicator.classList.remove('active');
+      if (indicator.getAttribute('data-slide-index') == slideIndex) {
+        indicator.classList.add('active');
+      }
     }
   }
 
   // Add animations
+  const activeSlide = slides[slideIndex];
   setTimeout(() => {
     const textContainer = activeSlide.querySelectorAll('.text-container-manual');
     const fadeinAnimation = activeSlide.querySelectorAll('.fade-in-animation-manual');
@@ -211,14 +220,17 @@ function createVideoSlide(item, slideIndex, carouselId) {
     videoOverlayForMobile.appendChild(createTextElement(item.subtitle, subtitleClasses, true));
   }
 
+  const videoContainer = document.createElement('div');
+  videoContainer.classList.add('carousel-video-container');
   const video = document.createElement('video');
   if (item.altText) {
-      video.setAttribute('alt', item.altText);
-    }
+    video.setAttribute('alt', item.altText);
+  }
   video.muted = true;
   const source = document.createElement('source');
   source.src = item.video.value;
   video.appendChild(source);
+  videoContainer.appendChild(video);
 
   // Event needed when changing slide
   video.addEventListener('pause', () => {
@@ -239,10 +251,10 @@ function createVideoSlide(item, slideIndex, carouselId) {
       slide.classList.remove('isPlaying');
     }
   });
+  videoContainer.appendChild(playPauseIcon);
 
   slide.appendChild(videoOverlay);
-  slide.appendChild(video);
-  slide.appendChild(playPauseIcon);
+  slide.appendChild(videoContainer);
   slide.appendChild(videoOverlayForMobile);
   return slide;
 }

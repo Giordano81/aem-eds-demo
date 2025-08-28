@@ -41,7 +41,10 @@ main > .section > div.video-carousel-wrapper .main-container > div .video-carous
 main > .section > div.video-carousel-wrapper .main-container > div .video-carousel-container .video-slide .video-overlay-for-mobile {
   display: none;
 }
-main > .section > div.video-carousel-wrapper .main-container > div .video-carousel-container .video-slide video {
+main > .section > div.video-carousel-wrapper .main-container > div .video-carousel-container .video-slide .carousel-video-container {
+  position: relative;
+}
+main > .section > div.video-carousel-wrapper .main-container > div .video-carousel-container .video-slide .carousel-video-container video {
   object-fit: cover;
   height: 100%;
   width: 100%;
@@ -110,7 +113,7 @@ main > .section > div.video-carousel-wrapper .main-container > div .carousel-ind
   }
   main > .section > div.video-carousel-wrapper .main-container > div .video-carousel-container .video-slide .carousel-slide {
     gap: 44px;
-    max-width: calc(100% - 48px);
+    max-width: 100%;
   }
   main > .section > div.video-carousel-wrapper .main-container > div .video-carousel-container .video-slide .video-overlay {
     width: 100%;
@@ -129,6 +132,6 @@ main > .section > div.video-carousel-wrapper .main-container > div .carousel-ind
     display: none;
   }
   main > .section > div.video-carousel-wrapper .main-container > div .carousel-indicators {
-    margin: 0 auto;
+    margin: 20px auto 0;
   }
 }

@@ -124,6 +124,7 @@ function updateActiveSlide(slide) {
     aSlide.setAttribute('tabindex', idx !== slideIndex ? '-1' : '0');
   });
 
+  afterChangeSlideEvent(block, slideIndex);
   // const indicators = block.querySelectorAll('.carousel-slide-indicator');
   // indicators.forEach((indicator, idx) => {
   //   const button = indicator.querySelector('button');
@@ -150,9 +151,14 @@ function showSlide(block, slideIndex = 0) {
     left: activeSlide.offsetLeft,
     behavior: 'smooth',
   });
+
+  afterChangeSlideEvent(block, realSlideIndex);
+}
+
+function afterChangeSlideEvent(block, index) {
   const indicator = block.querySelector('.carousel-indicator');
   if (indicator) {
-    const left = realSlideIndex * +indicator.getAttribute('data-width');
+    const left = index * +indicator.getAttribute('data-width');
     if (left != null && !isNaN(left)) {
       indicator.style.left = `${left}%`;
     }

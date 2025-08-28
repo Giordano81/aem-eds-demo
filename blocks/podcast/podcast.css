@@ -178,6 +178,9 @@ main > .section > div.podcast-wrapper .main-container .podcast-carousel-section 
     width: 100%;
     max-width: 100%;
   }
+  main > .section > div.podcast-wrapper .main-container .podcast-carousel-section .podcast-carousel-item {
+    min-width: calc(100vw - 48px);
+  }
   main > .section > div.podcast-wrapper .main-container .podcast-carousel-section .podcast-carousel-item > :nth-child(2) {
     display: none;
   }
